@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="25px" version="1.1" viewBox="0 0 25 25" width="25px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Language</title>
+    <desc>Created with Sketch.</desc>
+    <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+        <g id="Pitch---Thumbnail-1" transform="translate(-623.000000, -640.000000)">
+            <g id="Group-2" transform="translate(385.000000, 624.000000)">
+                <g id="Group-4">
+                    <g id="Group-3" transform="translate(57.000000, 15.000000)">
+                        <g id="Language" transform="translate(181.000000, 1.000000)">
+                            <rect height="24" id="Rectangle-3-Copy" stroke="#FACA0D" width="24"
+                                x="0.5" y="0.5"></rect>
+                            <text fill="#FACA0D" font-family="Roboto-Regular, Roboto" font-size="12"
+                                font-weight="normal" id="EN">
+                                <tspan x="5.21289062" y="17">EN</tspan>
+                            </text>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

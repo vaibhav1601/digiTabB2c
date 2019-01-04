@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ll_language_setting_dialog"
+    android:layout_width="300dp"
+    android:layout_height="wrap_content"
+    android:background="@color/white"
+    android:orientation="vertical"
+    android:visibility="gone">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp"
+        android:text="Language" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="2dp"
+        android:background="@color/color_light_gray" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_lang_hindi"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/language_rouded_borders"
+            android:padding="3dp"
+            android:text="Hindi"
+            android:textAlignment="center"
+            android:textColor="@color/color_text_gray" />
+
+        <TextView
+            android:id="@+id/tv_lang_english"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/language_rouded_borders"
+            android:padding="3dp"
+            android:text="English"
+            android:textAlignment="center"
+            android:textColor="@color/color_text_gray" />
+
+        <TextView
+            android:id="@+id/tv_lang_gujrati"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/language_rouded_borders"
+            android:padding="3dp"
+            android:text="Gujrati"
+            android:textAlignment="center"
+            android:textColor="@color/color_text_gray" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tv_lang_tamil"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/language_rouded_borders"
+            android:padding="3dp"
+            android:text="Tamil"
+            android:textAlignment="center"
+            android:textColor="@color/color_text_gray" />
+
+        <TextView
+            android:id="@+id/tv_lang_bengali"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/language_rouded_borders"
+            android:padding="3dp"
+            android:text="Bengali"
+            android:textAlignment="center"
+            android:textColor="@color/color_text_gray" />
+
+        <TextView
+            android:id="@+id/tv_lang_kannada"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:layout_weight="1"
+            android:background="@drawable/language_rouded_borders"
+            android:padding="3dp"
+            android:text="Kannada"
+            android:textAlignment="center"
+            android:textColor="@color/color_text_gray" />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btn_language_update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="5dp"
+        android:background="@color/yellow_800"
+        android:text="Update" />
+
+</LinearLayout>

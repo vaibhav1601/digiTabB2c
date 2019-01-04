@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:background="@drawable/dialog_bg"
+    android:layout_height="wrap_content">
+
+
+    <TextView
+        android:id="@+id/txtScore"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/_20sdp"
+        android:gravity="center"
+        android:text="Do you want to continue with your previous pitch ?"
+        android:textColor="@color/background_color"
+        android:textSize="@dimen/_15sdp" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/txtScore"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btn_yes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:background="@drawable/rounded_yellow_button"
+            android:gravity="center"
+            android:padding="@dimen/_3sdp"
+            android:text="YES"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_10sdp" />
+
+
+        <Button
+            android:id="@+id/btn_no"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_toRightOf="@+id/btn_later"
+            android:background="@drawable/rounded_yellow_button"
+
+            android:gravity="center"
+            android:padding="@dimen/_3sdp"
+            android:text="NO"
+            android:textColor="@color/text_color"
+            android:textSize="@dimen/_10sdp" />
+
+
+    </LinearLayout>
+
+
+</RelativeLayout>
+

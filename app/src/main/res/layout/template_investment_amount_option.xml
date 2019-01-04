@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/tv_investment_amount"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:background="@drawable/language_rouded_borders"
+    android:gravity="center"
+    android:padding="4dp"
+    android:text="1 lakh"
+    android:textColor="@android:color/black"
+    android:textSize="16sp" />

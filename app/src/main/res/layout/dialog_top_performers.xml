@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_bg"
+    tools:ignore="MissingDefaultResource">
+
+
+    <RelativeLayout
+        android:id="@+id/rl_head"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bg_header">
+
+        <TextView
+            android:id="@+id/txt_heading"
+            style="@style/custom_font_roboto_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentTop="true"
+            android:layout_margin="@dimen/_10sdp"
+            android:text="Top Performers"
+            android:textSize="@dimen/_10sdp"
+            android:textStyle="bold" />
+
+
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/img_close"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:padding="5dp"
+            android:src="@drawable/ic_close_black_24dp" />
+
+
+    </RelativeLayout>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
+        android:gravity="center"
+        android:text="Investment of \u20B910,000 in year 2000"
+        android:textColor="@color/blue_500"
+        android:textSize="24sp" />
+
+    <android.support.v4.view.ViewPager
+        android:id="@+id/vp_performer"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_130sdp" />
+
+</LinearLayout>
+

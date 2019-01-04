@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="colorAccent">#FFCB08</color>
+
+    <color name="colorButtonBackground">#FFCB08</color>
+
+
+    <color name="text_selected">#888</color>
+
+    <color name="color_equity">#5B9BD5</color>
+    <color name="color_debt">#A5A5A5</color>
+    <color name="color_gold">#ED7D31</color>
+
+    <color name="green_color">#22B24C</color>
+    <color name="yellow_color">#FFCB08</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
+    <color name="mf_dia_txt">#333333</color>
+
+    <color name="colorBuyFrame">#014880</color>
+
+    <!--DIY-->
+    <color name="qsip_text_label">#232323</color>
+    <color name="color_light_background">#f2f2f2</color>
+
+    <color name="dash_text_color">#303030</color>
+
+    <color name="mf_elss_rs_bg_color">#7c202020</color>
+    <color name="mf_elss_amt_invest_color">#505050</color>
+
+    <!--SchemeLandingFragment-->
+    <color name="welcome_txt_color">#c9c9c9</color>
+    <color name="sub_welcome_txt_color">#e6e6e6</color>
+
+    <color name="colorPrimary">#2c2a2b</color>
+    <color name="colorPrimaryDark">#2c2a2b</color>
+
+    <color name="color_202020">#202020</color>
+
+    <color name="color_303030">#303030</color>
+    <color name="color_505050">#505050</color>
+    <color name="color_909090">#909090</color>
+
+    <color name="white_opacity_80">#CCFFFFFF</color>
+    <color name="color_303030_opacity_80">#CC303030</color>
+    <color name="color_454545">#454545</color>
+    <color name="transparent">#00000000</color>
+
+    <color name="color_cecece">#cecece</color>
+
+
+    <color name="red_300">#E57373</color>
+    <color name="red_400">#EF5350</color>
+    <color name="red_500">#F44336</color>
+    <color name="red_600">#E53935</color>
+    <color name="red_700">#D32F2F</color>
+    <color name="red_800">#C62828</color>
+    <color name="red_900">#B71C1C</color>
+
+
+    <color name="green_400">#66BB6A</color>
+    <color name="green_600">#43A047</color>
+    <color name="green_800">#2E7D32</color>
+
+    <color name="yellow_500">#FFEB3B</color>
+    <color name="yellow_800">#F9A825</color>
+
+    <color name="blue_grey_50">#ECEFF1</color>
+    <color name="blue_grey_100">#CFD8DC</color>
+    <color name="blue_grey_200">#B0BEC5</color>
+    <color name="blue_grey_300">#90A4AE</color>
+    <color name="blue_grey_700">#455A64</color>
+    <color name="blue_grey_800">#37474F</color>
+    <color name="blue_grey_900">#263238</color>
+
+
+    <color name="blue_200">#90CAF9</color>
+    <color name="blue_400">#42A5F5</color>
+    <color name="blue_500">#2196F3</color>
+    <color name="blue_800">#1565C0</color>
+    <color name="blue_900">#0D47A1</color>
+
+
+    <color name="grey_50">#FAFAFA</color>
+    <color name="grey_100">#F5F5F5</color>
+    <color name="grey_200">#EEEEEE</color>
+    <color name="grey_300">#E0E0E0</color>
+    <color name="grey_400">#BDBDBD</color>
+    <color name="grey_500">#9E9E9E</color>
+    <color name="grey_600">#757575</color>
+    <color name="grey_700">#616161</color>
+    <color name="grey_800">#424242</color>
+    <color name="grey_900">#212121</color>
+
+    <color name="amber_300">#FFD54F</color>
+
+    <color name="slide_blue">#254d65</color>
+
+
+    <color name="chart_color1">#0071bb</color>
+    <color name="chart_color2">#5aafd2</color>
+    <color name="chart_color3">#234182</color>
+    <color name="chart_color4">#faaf16</color>
+    <color name="chart_color5">#fc8817</color>
+    <color name="chart_color6">#a0b43c</color>
+    <color name="chart_color7">#c3c850</color>
+    <color name="chart_color8">#becd8c</color>
+    <color name="chart_color9">#fb8817</color>
+    <color name="chart_color10">#fbaf17</color>
+    <color name="chart_color11">#cb04</color>
+    <color name="chart_color12">#eeda84</color>
+    <color name="chart_color13">#595959</color>
+    <color name="chart_color14">#a0b43c</color>
+    <color name="chart_color15">#242424</color>
+    <color name="chart_color16">#949494</color>
+    <color name="chart_color17">#d6d6d6</color>
+    <color name="chart_color18">#9087be</color>
+    <color name="chart_color19">#234182</color>
+    <color name="chart_color20">#141e55</color>
+
+    <color name="color_light_gray">#727272</color>
+    <color name="color_fund_prize">#b3000000</color>
+    <color name="colorBackground">#f5f5f5</color>
+    <color name="color_green_border">#7cb342</color>
+
+    <color name="green_button">#04972f</color>
+
+    <color name="search_tab">#232323</color>
+
+    <color name="radio_button_selected_color">@color/colorPrimary</color>
+    <color name="radio_button_unselected_color">@color/white</color>
+
+    <color name="colorStockName">#232323</color>
+    <color name="colorSellRed">#ff0000</color>
+    <color name="color_submit_blue">#01579B</color>
+    <color name="color_view_separator">#cacaca</color>
+    <color name="color_order_review">#7c7c7c</color>
+    <color name="color_edittext_background">#cacaca</color>
+    <color name="color_quantity_background">#cccccc</color>
+    <color name="color_quantity_text">#6d6d6d</color>
+    <color name="color_quantity_cursor">#01579b</color>
+    <color name="color_buysell_text">#757575</color>
+    <color name="color_buysell_selltext">#ea2a2a</color>
+    <color name="color_text_gray">#cac9c9</color>
+    <color name="color_watchlist_line">#568fbc</color>
+    <color name="color_nifty_background">#f2f6fa</color>
+
+    <color name="place_buy">#01579B</color>
+    <color name="place_sell">#FF0000</color>
+    <color name="nifty_bg">#f2f6fa</color>
+    <color name="quote_text">#474747</color>
+    <color name="search_line">#cacaca</color>
+    <color name="watchlist_title_text">#232323</color>
+    <color name="seekbar_color">#9d9d9d</color>
+
+    <color name="color_mf_text_color">#232323</color>
+
+    <color name="mf_quote_company_top_five_header">#f3f3f3</color>
+    <color name="mf_adapter_expandable_color">#E4E4E4</color>
+    <color name="pending_color">#E7851B</color>
+
+    <color name="news_head">#0d4da1</color>
+    <color name="news_body">#444444</color>
+    <color name="news_time">#808285</color>
+    <color name="portfolio_gl">#0A7EC4</color>
+
+    <color name="portfolio_donut_color">#5B9BD5</color>
+    <color name="qsip_header_color">#666666</color>
+    <color name="qsip_nav_color">#333333</color>
+    <color name="qsip_bag_color">#01579b</color>
+    <color name="qsip_bag_month">#314d63</color>
+    <color name="qsip_bag_amt">#7c8e9d</color>
+    <color name="qsip_bag_monthheader">#60788b</color>
+    <color name="goals_heading">#303030</color>
+    <color name="goals_description">#505050</color>
+    <color name="goals_more">#005cc2</color>
+    <color name="goals_background">#f2f2f2</color>
+    <color name="goals_line_seprator">#dadada</color>
+    <color name="goal_color_202020">#202020</color>
+    <color name="goal_color_dadada">#dadada</color>
+    <color name="goal_color_e00707">#e00707</color>
+    <color name="goal_color_646464">#646464</color>
+
+    <color name="lf_order_detail_gray">#909090</color>
+    <color name="goal_color_heading_background">#bbbbbb</color>
+    <color name="goal_color_aeaeae">#aeaeae</color>
+
+    <color name="lf_header_background">#efefef</color>
+    <color name="goal_green_159f3d">#159f3d</color>
+    <color name="goal_e8e8e8">#e8e8e8</color>
+    <color name="lf_727272">#727272</color>
+    <color name="lf_212121">#212121</color>
+    <color name="color_d8d8d8">#d8d8d8</color>
+
+    <color name="color_929292">#929292</color>
+    <color name="color_00233f">#00233f</color>
+
+    <!--Health Insurance-->
+    <color name="lightblue">#005cc2</color>
+    <color name="grey">#e9e9e9</color>
+    <color name="health_nominee">#505050</color>
+    <color name="health_bars">#bbbbbb</color>
+
+    <color name="color_606060">#606060</color>
+    <color name="color_707070">#707070</color>
+    <color name="color_878787">#878787</color>
+    <color name="color_f9f9f9">#f9f9f9</color>
+    <color name="color_ffcb08">#ffcb08</color>
+
+    <color name="color_email_status_text_not_verified">#ff8362</color>
+    <color name="color_email_status_icon_not_verified">#fa4444</color>
+
+    <color name="color_email_status_verified">#65f08d</color>
+    <color name="divider_color">#F0F0F0</color>
+    <color name="pressed_color">#E7E7E7</color>
+
+    <!--New UI Dashboard-->
+    <color name="background_color">#2c2a2b</color>
+    <color name="background_login_color">#251F21</color>
+    <color name="button_color">#f8c90b</color>
+    <color name="button_color_pressed">#E7851B</color>
+    <color name="text_color">#303030</color>
+    <color name="background_card_color">#d6d6d6</color>
+    <color name="background_card_text_color">#303030</color>
+    <color name="blue_color">#005cc2</color>
+    <color name="color_scheme_Details_row">#949292</color>
+    <color name="color_scheme_Details_line">#173344</color>
+
+    <color name="color_a6a6a6">#a6a6a6</color>
+    <color name="color_535353">#535353</color>
+    <color name="color_b2303030">#b2303030</color>
+    <color name="color_pan_verified">#0eaa0b</color>
+    <color name="color_pan_not_verified">#E00B0B</color>
+    <color name="color_8d8d8d">#8d8d8d</color>
+
+    <!--Transactions(Order) status color-->
+    <color name="color_order_status_executed">#31b018</color>
+    <color name="color_order_status_canceled">#bc2032</color>
+    <color name="color_order_status_in_process">#005cc2</color>
+    <color name="color_order_status_pending">#8d8d8d</color>
+
+    <!-- New ic_sip_earnings Book-->
+    <color name="color_34910b">#34910b</color>
+    <color name="color_d83b11">#d83b11</color>
+    <color name="color_d09f08">#d09f08</color>
+    <color name="color_bc821d">#bc821d</color>
+    <color name="color_f30000">#f30000</color>
+
+
+    <color name="color_2f2f2f">#2f2f2f</color>
+    <color name="color_8b8b8b">#8b8b8b</color>
+    <color name="color_8f8f8f">#8f8f8f</color>
+    <color name="color_828282">#828282</color>
+    <color name="color_2c2b2a">#2c2b2a</color>
+    <color name="color_e2e2e2">#e2e2e2</color>
+
+    <!--Feedback-->
+    <color name="feedback_category_balck_border">#2c2b2a</color>
+    <color name="feedback_category_grey">#e2e2e2</color>
+    <color name="feedback_303030_30opacity">#4D303030</color>
+
+    <!--MF screener-->
+    <color name="screener_scheme_color">#0072bb</color>
+    <!--GOAL INVESTMNENT_NEW SCREEN-->
+    <color name="goal_investment_top_bg_color">#363636</color>
+    <color name="goal_reprofile">#6dbcff</color>
+    <color name="goal_schemeName">#0072bb</color>
+    <color name="goal_color_707070">#707070</color>
+    <color name="goal_color_7a7a7a">#7a7a7a</color>
+    <color name="goal_color_898989">#898989</color>
+    <color name="goal_color_c1c1c1">#c1c1c1</color>
+    <color name="goal_color_5e5e5e">#5E5E5E</color>
+    <color name="goal_color_2c2c2c">#2c2c2c</color>
+    <color name="goal_color_d7d7d7">#d7d7d7</color>
+    <color name="blue_bestpolicy">#2853a7</color>
+    <color name="darkest_grey">#2d2b2c</color>
+    <color name="darkest_grey_opaque">#8b2d2b2c</color>
+
+    <!--Mpin -->
+    <color name="mpin_forgot_mpin">#bababa</color>
+
+    <color name="nav_green_color">#4fbb3a</color>
+</resources>

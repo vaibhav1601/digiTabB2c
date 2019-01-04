@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <!-- Slide Container -->
+    <WebView
+        android:id="@+id/wv_slides2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp" />
+
+    <WebView
+        android:id="@+id/wv_slides1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginTop="0dp" />
+
+    <FrameLayout
+        android:visibility="gone"
+        android:id="@+id/fl_native_slide"
+        android:layout_width="match_parent"
+        android:layout_marginTop="0dp"
+        android:layout_height="match_parent"/>
+
+    <TextView
+        android:id="@+id/tv_slide_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Title"
+        android:textAllCaps="true"
+        android:textColor="@color/black"
+        style="@style/custom_font_montserrat_black"
+        android:textSize="30sp"
+        android:textStyle="bold" />
+
+    <!-- Calculator -->
+    <fragment
+        android:id="@+id/fragment_calculator"
+        android:name="z_aksys.solutions.digiappequitybb.Fragment.CalculatorFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+
+    <!-- Slide Index -->
+    <fragment
+        android:id="@+id/fragment_slide_index"
+        android:name="z_aksys.solutions.digiappequitybb.Fragment.SlideIndexFragment"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal"
+        android:visibility="gone" />
+
+    <!-- Toolbar -->
+    <LinearLayout
+        android:id="@+id/rl_toolbar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:background="@color/mf_dia_txt"
+        android:padding="5dp">
+
+        <ImageView
+            android:id="@+id/im_calculators"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_calc_o" />
+
+
+        <ImageView
+            android:id="@+id/mn_slide_navigation"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_thumbnail_o" />
+
+        <ImageView
+            android:visibility="gone"
+            android:id="@+id/mn_pitch_language_settings"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_language" />
+
+        <ImageView
+            android:id="@+id/mn_pitch_exit"
+            android:layout_width="50dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginBottom="5dp"
+            android:src="@drawable/ic_stop" />
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/v_popup_overlay"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentBottom="true"
+        android:background="#77000000"
+        android:visibility="gone" />
+
+    <!-- Languague Settings Dailog-->
+    <include
+        layout="@layout/dialog_languague_settings"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true" />
+
+</RelativeLayout>

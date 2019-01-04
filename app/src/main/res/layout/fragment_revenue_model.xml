@@ -1,0 +1,229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/grey_50"
+        android:orientation="vertical">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <z_aksys.solutions.digiappequitybb.CustomWidgets.CalculatorWidget
+                android:id="@+id/cw_account"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                app:icon="@drawable/ic_sip_earnings"
+                app:is_show_amount="false"
+                app:is_show_duration="false"
+                app:is_show_numbers="true"
+                app:label_numbers="Number of accounts"
+                app:step_numbers="1"
+                app:title="Account Earnings"
+                app:value_numbers="2" />
+
+            <z_aksys.solutions.digiappequitybb.CustomWidgets.CalculatorWidget
+                android:id="@+id/cw_equity"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                app:icon="@drawable/ic_sip_earnings"
+                app:is_show_amount="false"
+                app:is_show_duration="false"
+                app:is_show_numbers="true"
+                app:label_numbers="Active Clients"
+                app:step_numbers="1"
+                app:title="Equity Earnings"
+                app:value_numbers="15" />
+
+            <z_aksys.solutions.digiappequitybb.CustomWidgets.CalculatorWidget
+                android:id="@+id/cw_sip"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                app:icon="@drawable/ic_sip_earnings"
+                app:is_show_amount="true"
+                app:is_show_duration="true"
+                app:is_show_numbers="true"
+                app:label_amount="Amount Invested"
+                app:label_duration="Duration"
+                app:label_numbers="SIP(s) per month"
+                app:step_amount="10000"
+                app:step_duration="12"
+                app:step_numbers="1"
+                app:title="SIP Earnings"
+                app:value_amount="10000"
+                app:value_duration="36"
+                app:value_numbers="2" />
+
+            <z_aksys.solutions.digiappequitybb.CustomWidgets.CalculatorWidget
+                android:id="@+id/cw_lumpsum"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                app:icon="@drawable/ic_lumpsum_earnings"
+                app:is_show_amount="true"
+                app:is_show_duration="true"
+                app:is_show_numbers="true"
+                app:label_amount="Amount Invested"
+                app:label_duration="Duration"
+                app:label_numbers="Lumpsum(s) per month"
+                app:step_amount="10000"
+                app:step_duration="5"
+                app:step_numbers="1"
+                app:title="Lumpsum Earning"
+                app:value_amount="50000"
+                app:value_duration="5"
+                app:value_numbers="1" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <z_aksys.solutions.digiappequitybb.CustomWidgets.CalculatorWidget
+                android:id="@+id/cw_motor"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                app:icon="@drawable/ic_sip_earnings"
+                app:is_show_amount="true"
+                app:is_show_duration="false"
+                app:is_show_numbers="true"
+                app:label_amount="Premium Amount"
+                app:label_numbers="No. of Premiums"
+                app:step_amount="10000"
+                app:step_numbers="1"
+                app:title="Motor Insurance Earnings"
+                app:value_amount="50000"
+                app:value_numbers="1" />
+
+            <z_aksys.solutions.digiappequitybb.CustomWidgets.CalculatorWidget
+                android:id="@+id/cw_health"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                app:icon="@drawable/ic_sip_earnings"
+                app:is_show_amount="true"
+                app:is_show_duration="false"
+                app:is_show_numbers="true"
+                app:label_amount="No. of Premiums"
+                app:label_numbers="No. of Premiums"
+                app:step_amount="10000"
+                app:step_numbers="1"
+                app:title="Health Insurance Earnings"
+                app:value_amount="40000"
+                app:value_numbers="2" />
+
+            <z_aksys.solutions.digiappequitybb.CustomWidgets.CalculatorWidget
+                android:id="@+id/cw_life"
+                android:layout_width="200dp"
+                android:layout_height="150dp"
+                android:layout_margin="5dp"
+                app:icon="@drawable/ic_sip_earnings"
+                app:is_show_amount="true"
+                app:is_show_duration="false"
+                app:is_show_numbers="true"
+                app:label_amount="No. of Premiums"
+                app:label_numbers="No. of Premiums"
+                app:step_amount="10000"
+                app:step_numbers="1"
+                app:title="Life Insurance Earnings"
+                app:value_amount="80000"
+                app:value_numbers="1" />
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:drawableLeft="@drawable/ic_bulb"
+            android:gravity="center_vertical"
+            android:text="The above figures reflect Mutual Fund and Insurance business for one month. Tap on boxes to change assumptions"
+            android:textSize="14sp" />
+
+        <!-- Calculation results -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="50dp"
+            android:background="@color/green_800"
+            android:orientation="horizontal"
+            android:padding="20dp">
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lbl_insuranace_results"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Monthly Income"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_monthly_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="40sp" />
+            </LinearLayout>
+
+            <!-- Verticle separator -->
+            <TextView
+                android:layout_width="1dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="@dimen/dimen_5_dp"
+                android:background="@color/white" />
+
+
+            <LinearLayout
+                android:layout_width="300dp"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/lbl_mutual_fund_result"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Annual Income"
+                    android:textColor="@color/white"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:id="@+id/tv_annual_income"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:textColor="@color/white"
+                    android:textSize="40sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</ScrollView>

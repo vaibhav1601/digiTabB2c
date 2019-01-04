@@ -1,0 +1,720 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+    android:background="@color/white_opacity_80"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Slide 1" />
+
+    <!--<?xml version="1.0" encoding="utf-8"?>
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/base_layout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:keepScreenOn="true">
+
+        <LinearLayout
+            android:id="@+id/web_display_layout"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="@dimen/dimen_10_dp"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+
+            <im.delight.android.webview.AdvancedWebView
+                android:id="@+id/webview"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:visibility="gone" />
+
+            <im.delight.android.webview.AdvancedWebView
+                android:id="@+id/webviewTicker"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/height_ticker_view"
+                android:visibility="gone" />
+
+            <LinearLayout
+                android:id="@+id/layoutTicker"
+                android:layout_width="fill_parent"
+                android:layout_height="50dp"
+                android:orientation="vertical"
+                android:visibility="gone"
+                android:weightSum="1">
+
+                <TextView
+                    android:layout_width="fill_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/grey_50" />
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="50dp"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/txtTicker"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_weight=".25"
+                        android:background="@color/button_color"
+                        android:gravity="center"
+                        android:text="Today's Recommendation"
+                        android:textColor="@color/white" />
+
+                    <im.delight.android.webview.AdvancedWebView
+                        android:id="@+id/webviewTextTicker"
+                        android:layout_width="0dp"
+                        android:layout_height="fill_parent"
+                        android:layout_marginTop="10dp"
+                        android:layout_weight=".75" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ViewStub
+            android:id="@+id/viewstub"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent" />
+
+        <LinearLayout
+            android:id="@+id/back_ll"
+            android:layout_width="wrap_content"
+            android:layout_height="60dp"
+            android:layout_marginLeft="20dip"
+            android:layout_marginTop="20dip"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="10dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="top"
+                android:layout_marginRight="10dip"
+                android:src="@drawable/ic_play_arrow_black_24dp" />
+
+            <TextView
+                android:id="@+id/back_tv"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:textSize="@dimen/dimen_14_dp" />
+        </LinearLayout>
+
+        &lt;!&ndash;<RelativeLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/toolbar_height"
+            android:layout_marginTop="@dimen/toolbar_margin"
+            android:background="@drawable/open_menu"
+            android:visibility="visible">AQAAAQQSZXSZSSZSSWZ
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/drawer_brokerage_home_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/home_circle_icon" />
+
+                <ImageView
+                    android:id="@+id/drawer_brokerage_faq_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/faq_circle_icon" />
+
+                <ImageView
+                    android:id="@+id/drawer_brokerage_calc_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:layout_marginRight="10dip"
+                    android:src="@drawable/calc_circle_icon" />
+
+                <ImageView
+                    android:id="@+id/drawer_brokerage_logout_iv"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="10dip"
+                    android:src="@drawable/logout_circle_icon" />
+            </LinearLayout>
+        </RelativeLayout>
+    &ndash;&gt;
+        <LinearLayout
+            android:id="@+id/toolbar_layout"
+            android:layout_width="match_parent"
+            android:layout_height="600dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="@dimen/album_title"
+            android:background="@color/white"
+            android:orientation="vertical"
+            android:weightSum="10">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_marginTop="10dp"
+                android:layout_weight="2"
+                android:visibility="visible">
+
+                <LinearLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/drawer_brokerage_home_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="10dip"
+                        android:src="@drawable/ic_play_arrow_black_24dp" />
+
+                    <ImageView
+                        android:id="@+id/drawer_brokerage_faq_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginRight="10dip"
+                        android:src="@drawable/ic_share" />
+
+                    <ImageView
+                        android:id="@+id/drawer_brokerage_calc_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginRight="10dip"
+                        android:src="@drawable/ic_picture_as_pdf_red_24dp" />
+
+                    <ImageView
+                        android:id="@+id/drawer_brokerage_video_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:layout_marginRight="10dip"
+                        android:src="@drawable/ic_person" />
+
+                    <ImageView
+                        android:id="@+id/drawer_brokerage_logout_iv"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="10dip"
+                        android:src="@drawable/ic_share_black_24dp" />
+
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutSecond"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/txtNewInvestor"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="0.85"
+                        android:background="#d3d3d3"
+                        android:paddingBottom="@dimen/dimen_10_dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="@dimen/dimen_10_dp"
+                        android:text="New Investor"
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
+
+
+                    <ImageView
+                        android:id="@+id/imgTextArrow1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight=".15"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_play_arrow_black_24dp"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/txtExperienceInvestor"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".85"
+                        android:background="#d3d3d3"
+                        android:paddingBottom="@dimen/dimen_10_dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="@dimen/dimen_10_dp"
+                        android:text="Experienced Investor"
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
+
+
+                    <ImageView
+                        android:id="@+id/imgTextArrow2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight=".15"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_play_arrow_black_24dp"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
+
+                <TextView
+                    android:layout_width="2dp"
+                    android:layout_height="wrap_content" />
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="fill_parent"
+                    android:layout_weight="1"
+                    android:orientation="vertical"
+                    android:weightSum="1">
+
+                    <TextView
+                        android:id="@+id/txtExpertInvestor"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight=".85"
+                        android:background="#d3d3d3"
+                        android:paddingBottom="@dimen/dimen_10_dp"
+                        android:paddingLeft="10dp"
+                        android:paddingTop="@dimen/dimen_10_dp"
+                        android:text="Expert Investor"
+                        android:textColor="#000000"
+                        android:textSize="20dp" />
+
+                    <ImageView
+                        android:id="@+id/imgTextArrow3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="0dp"
+                        android:layout_gravity="left"
+                        android:layout_marginLeft="20dp"
+                        android:layout_weight=".15"
+                        android:adjustViewBounds="true"
+                        android:scaleType="fitXY"
+                        android:src="@drawable/ic_play_arrow_black_24dp"
+                        android:visibility="invisible" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/layoutThird"
+                android:layout_width="fill_parent"
+                android:layout_height="0dp"
+                android:layout_weight="6.5"
+                android:orientation="horizontal"
+                android:weightSum="10">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="3.3">
+
+                    <ListView
+                        android:id="@+id/main_MenuList"
+                        android:layout_width="fill_parent"
+                        android:layout_height="fill_parent"
+                        android:layout_gravity="fill_vertical"
+                        android:layout_marginTop="0dp" />
+                </LinearLayout>
+
+                &lt;!&ndash;  <TextView
+                      android:layout_width="1dp"
+                      android:layout_height="fill_parent"
+                      android:background="@color/bg_grey"/>&ndash;&gt;
+
+
+                <LinearLayout
+                    android:id="@+id/mainLayout"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_gravity="center"
+                    android:layout_weight="6.7"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:visibility="visible"
+                    android:weightSum="3.0">
+
+                    <LinearLayout
+                        android:id="@+id/subMenuLayout1"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="2dp"
+                        android:visibility="visible"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout1child1"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView1"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_person_outline_black_24dp" />
+
+                            <TextView
+                                android:id="@+id/txt1"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="bets info"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout1child2"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="opning" />
+
+                            <TextView
+                                android:id="@+id/txt2"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="bets"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout1child3"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView3"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="account opening" />
+
+                            <TextView
+                                android:id="@+id/txt3"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="bets"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/subMenuLayout2"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp"
+                        android:visibility="visible"
+                        android:weightSum="3">
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout2child1"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView4"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_picture_as_pdf_red_24dp" />
+
+                            <TextView
+                                android:id="@+id/txt4"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="bets"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout2child2"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView5"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_person_outline_black_24dp" />
+
+                            <TextView
+                                android:id="@+id/txt5"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="bets information"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout2child3"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView6"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="account opening " />
+
+                            <TextView
+                                android:id="@+id/txt6"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="beats_inflation"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/subMenuLayout3"
+                        android:layout_width="fill_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:orientation="horizontal"
+                        android:paddingTop="5dp"
+                        android:visibility="visible"
+                        android:weightSum="4">
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout3child1"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView7"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/side_nav_bar" />
+
+                            <TextView
+                                android:id="@+id/txt7"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="beats_inflation"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout3child2"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView8"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="account_opening" />
+
+                            <TextView
+                                android:id="@+id/txt8"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="beats_inflation"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout3child3"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView9"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_person_outline_black_24dp" />
+
+                            <TextView
+                                android:id="@+id/txt9"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="beats_inflation"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:id="@+id/subMenuLayout3child4"
+                            android:layout_width="0dp"
+                            android:layout_height="fill_parent"
+                            android:layout_weight="1"
+                            android:orientation="vertical"
+                            android:visibility="gone"
+                            android:weightSum="0.6">
+
+                            <ImageView
+                                android:id="@+id/imgView10"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.35"
+                                android:adjustViewBounds="true"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/ic_person_outline_black_24dp" />
+
+                            <TextView
+                                android:id="@+id/txt10"
+                                android:layout_width="fill_parent"
+                                android:layout_height="0dp"
+                                android:layout_weight="0.25"
+                                android:gravity="center"
+                                android:text="beats_inflation"
+                                android:textColor="@color/black" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/imgMainLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            android:layout_marginTop="10dp"
+            android:src="10" />
+
+    </RelativeLayout>-->
+
+</RelativeLayout>

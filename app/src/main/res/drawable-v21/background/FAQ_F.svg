@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg height="21px" version="1.1" viewBox="0 0 20 21" width="20px"
+    xmlns="http://www.w3.org/2000/svg">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Icon Fill</title>
+    <desc>Created with Sketch.</desc>
+    <g fill="none" fill-rule="evenodd" id="Page-1" stroke="none" stroke-width="1">
+        <g fill-rule="nonzero" id="Share---Documents"
+            transform="translate(-1050.000000, -624.000000)">
+            <g id="Bottom-Navigation" transform="translate(0.000000, 613.000000)">
+                <g id="FAQs" transform="translate(1005.000000, 11.000000)">
+                    <g id="Icon-Fill" transform="translate(45.000000, 0.000000)">
+                        <path
+                            d="M14.4396,1.24215 C10.1847185,-1.00022852 4.93086519,0.185584268 2.05163503,4.03815636 C-0.827595138,7.89072846 -0.476659403,13.2652955 2.8791,16.71075 L2.4696,19.61715 C2.44389882,19.7686926 2.51071374,19.9210155 2.63961408,20.0047437 C2.76851443,20.0884719 2.93484461,20.0875901 3.06285,20.0025 L5.2836,18.5325 C10.0581983,21.0608595 15.9784153,19.2399232 18.5067749,14.4653249 C21.0351344,9.69072667 19.2141982,3.77050963 14.4396,1.24215 Z"
+                            fill="#FACA0A" id="Path_933-path" stroke="#FACA0A"
+                            stroke-width="0.2"></path>
+                        <path
+                            d="M10.08525,4.92135 C9.50883041,4.92135 9.04155,5.38863041 9.04155,5.96505 C9.04155,6.54146959 9.50883041,7.00875 10.08525,7.00875 C10.6616696,7.00875 11.12895,6.54146959 11.12895,5.96505 C11.12895,5.38863041 10.6616696,4.92135 10.08525,4.92135 Z"
+                            fill="#1E1E1E" id="Path_935"></path>
+                        <rect fill="#1E1E1E" height="5.96085" id="Rectangle-path" rx="0.5"
+                            width="1.05" x="9.555" y="9.199575"></rect>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

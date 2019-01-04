@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="start"
+    android:background="@color/white_opacity_80"
+    android:fitsSystemWindows="true">
+
+    <LinearLayout
+        android:id="@+id/ll_main_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/black"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_2sdp"
+            android:layout_marginRight="@dimen/_2sdp">
+
+            <TextView
+                android:id="@+id/txt_empname"
+                style="@style/custom_font_roboto_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:text="vaibhav kulkarni"
+                android:textColor="@color/button_color"
+                android:textSize="@dimen/_8sdp">
+
+            </TextView>
+
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="@dimen/_2sdp"
+            android:layout_marginRight="@dimen/_2sdp"
+            android:layout_weight="4"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txt_empnumber"
+                style="@style/custom_font_roboto_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="A118070"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8sdp">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/txt_logout"
+                style="@style/custom_font_roboto_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:text="Logout"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8sdp">
+
+            </TextView>
+
+
+            <TextView
+                android:id="@+id/txt_hide"
+                style="@style/custom_font_roboto_medium"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="@dimen/_120sdp"
+                android:layout_marginTop="@dimen/_2sdp"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:text="Hide"
+                android:textColor="@color/white"
+                android:textSize="@dimen/_8sdp">
+
+            </TextView>
+
+
+        </LinearLayout>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_main_"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/custom_font_roboto_medium"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:text="GOALSHEET"
+            android:textSize="@dimen/_8sdp" />
+
+
+        <android.support.v7.widget.AppCompatTextView
+            style="@style/custom_font_roboto_bold"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            android:layout_weight="1"
+            android:text="TOTAL SCORE: 68.30"
+            android:textSize="@dimen/_8sdp" />
+
+    </LinearLayout>
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_goal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ll_score"
+        android:layout_marginLeft="@dimen/_19sdp"
+        android:layout_marginTop="@dimen/_8sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:clipToPadding="true"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

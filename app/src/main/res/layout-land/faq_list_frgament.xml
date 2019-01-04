@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+
+    <SearchView
+        android:id="@+id/simpleSearchView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="false"
+        android:layout_marginLeft="@dimen/_10sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginRight="@dimen/_40sdp"
+        android:clickable="true"
+        android:queryHint="Search"
+        android:autofillHints="Search"
+        android:gravity="center"
+        android:iconifiedByDefault="true" />
+
+
+    <ImageView
+        android:id="@+id/imgvoice"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_marginLeft="-70dp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:layout_toRightOf="@+id/simpleSearchView"
+        app:srcCompat="@drawable/ic_settings_voice_black_24dp" />
+
+
+
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/recycler_view_faq"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/simpleSearchView"
+        android:layout_marginLeft="@dimen/_8sdp"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginRight="@dimen/_8sdp"
+        android:layout_marginBottom="@dimen/_8sdp"
+        android:clipToPadding="true"
+        android:scrollbars="vertical" />
+
+</RelativeLayout>

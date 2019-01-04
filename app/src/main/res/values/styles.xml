@@ -1,0 +1,90 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+
+    </style>
+
+
+    <style name="Theme.AppCompat.Light.NoActionBar.FullScreen" parent="@style/Theme.AppCompat.Light">
+        <item name="windowNoTitle">true</item>
+        <item name="windowActionBar">false</item>
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowBackground">@drawable/bg</item>
+        <item name="android:windowContentOverlay">@null</item>
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorPrimaryDark</item>
+        <item name="android:windowBackground">@drawable/why_angel</item>
+        <item name="android:buttonStyle">@style/Widget.AppCompat.Button.Borderless</item>
+    </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Light">
+        <item name="android:dropDownListViewStyle">@style/searchResultsList</item>
+
+    </style>
+
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+
+
+    <!-- Roboto fonts -->
+    <style name="custom_font_roboto_bold">
+        <item name="android:fontFamily">fonts/Lato-Bold.ttf</item>
+    </style>
+
+    <style name="custom_font_roboto_light">
+        <item name="android:fontFamily">fonts/Lato-Light.ttf</item>
+    </style>
+
+    <style name="custom_font_roboto_regular">
+        <item name="android:fontFamily">fonts/Lato-Regular.ttf</item>
+    </style>
+
+    <style name="custom_font_roboto_medium">
+        <item name="android:fontFamily">fonts/Lato-Regular.ttf</item>
+    </style>
+
+    <style name="custom_font_roboto_italic">
+        <item name="android:fontFamily">fonts/Lato-Italic.ttf</item>
+    </style>
+
+    <style name="custom_font_montserrat_black">
+        <item name="android:fontFamily">fonts/Montserrat-Black.ttf</item>
+    </style>
+
+    <style name="custom_font_montserrat_Extrablack">
+        <item name="android:fontFamily">fonts/ Montserrat-ExtraBold.ttf</item>
+    </style>
+
+
+    <style name="searchResultsList" parent="@style/Widget.AppCompat.ListView.DropDown">
+        <item name="android:divider">@android:color/transparent</item>
+        <item name="android:dividerHeight">0dp</item>
+    </style>
+
+    <style name="AppTheme.ActionBar" parent="Widget.AppCompat.Light.ActionBar">
+        <item name="android:layout_width">@dimen/_100sdp</item>
+        <item name="android:layout_height">@dimen/_100sdp</item>
+    </style>
+
+    <style name="DialogTheme">
+        <item name="android:windowEnterAnimation">@anim/left_slide_in</item>
+        <item name="android:windowExitAnimation">@anim/left_slide_out</item>
+    </style>
+
+
+</resources>
