@@ -58,7 +58,7 @@ public class CalculatorFragment extends Fragment {
     private void setupViewPager(ViewPagerNoSwipe viewPager) {
 
         ViewPagerAdapter adapter = new ViewPagerAdapter(getChildFragmentManager(), 1);
-        adapter.addFrag(new BrokerageCalculatorFragment(), "BROKERAGE");
+        adapter.addFrag(new InvestmentCalculatorFragment(), "INVESTMENT CALCULATOR");
         adapter.addFrag(new RevenueModelFragment(), "REVENUE MODEL");
         viewPager.setAdapter(adapter);
     }
@@ -74,7 +74,7 @@ public class CalculatorFragment extends Fragment {
         tabLayout.getTabAt(1).setCustomView(tabTwo);
 
         TextView tabOne = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_document, null);
-        tabOne.setText("BROKERAGE");
+        tabOne.setText("INVESTMENT CALCULATOR");
         tabOne.setTextSize(14);
         tabOne.getMaxWidth();
         //tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.ic_view_list_black_24dp, 0, 0);
