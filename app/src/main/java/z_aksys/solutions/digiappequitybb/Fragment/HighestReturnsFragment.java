@@ -21,7 +21,7 @@ public class HighestReturnsFragment extends Fragment {
     private String slideUrl;
     private WebView wvSlide;
     private Button btnTopPerformer;
-    private String[] performerImageArray= {"file:///android_asset/slides/pt1.svg", "file:///android_asset/slides/pt2.svg", "file:///android_asset/slides/pt3.svg"};
+    private int[] performerImageArray= {R.drawable.pt1, R.drawable.pt2, R.drawable.pt3, R.drawable.pt4, R.drawable.pt5};
 
     public HighestReturnsFragment() {
     }
@@ -34,7 +34,7 @@ public class HighestReturnsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_better_returns, container, false);
+        final View view = inflater.inflate(R.layout.fragment_highest_returns, container, false);
 
         slideUrl= getArguments().getString("slide_url");
         wvSlide= view.findViewById(R.id.wv_slide);
@@ -67,12 +67,10 @@ public class HighestReturnsFragment extends Fragment {
                     @NonNull
                     @Override
                     public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                        WebView wvPerformer= new WebView(getContext());
-                        wvPerformer.getSettings().setLoadWithOverviewMode(true);
-                        wvPerformer.getSettings().setUseWideViewPort(true);
-                        wvPerformer.loadUrl(performerImageArray[position]);
-                        container.addView(wvPerformer);
-                        return wvPerformer;
+                        ImageView ivSlide= new ImageView(getContext());
+                        ivSlide.setImageResource(performerImageArray[position]);
+                        container.addView(ivSlide);
+                        return ivSlide;
                     }
 
                     @Override

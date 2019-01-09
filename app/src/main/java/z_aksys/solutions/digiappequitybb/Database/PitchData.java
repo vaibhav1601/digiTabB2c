@@ -237,7 +237,7 @@ public class PitchData {
 
         PitchSlide pitchSlide12 = new PitchSlide();
         pitchSlide12.id = 11;
-        pitchSlide12.category = 3;
+        pitchSlide12.category = 2;
         pitchSlide12.slideThumbnailPath="slides/thumbnails/growing-need-for-channel-partners.png";
         pitchSlide12.path = "file:///android_asset/slides/growing-need-for-channel-partners.svg";
         pitchSlide12.title.put(LANG_ENG, "Growing need for Channel Partners");
@@ -320,7 +320,7 @@ public class PitchData {
         pitchSlide16.category = 4;
         pitchSlide16.isNative= true;
         pitchSlide16.nativeSlide= new InvestmentCalculatorFragment();
-        //pitchSlide16.slideThumbnailPath="slides/thumbnails/one-app-multiple-features.png";
+        pitchSlide16.slideThumbnailPath="slides/thumbnails/one-time-registration-fees.png";
         pitchSlide16.path = "file:///android_asset/slides/13-ONE-APP-MULTIPLE-FEATURES.svg";
         pitchSlide16.title.put(LANG_ENG, "One-time registration fees");
         pitchSlide16.title.put(LANG_HINDI, "One-time registration fees");
@@ -335,7 +335,7 @@ public class PitchData {
         pitchSlide17.category = 4;
         pitchSlide17.isNative= true;
         pitchSlide17.nativeSlide= new RevenueModelFragment();
-        //pitchSlide17.slideThumbnailPath="slides/thumbnails/one-app-multiple-features.png";
+        pitchSlide17.slideThumbnailPath="slides/thumbnails/revenue-model.png";
         //pitchSlide17.path = "file:///android_asset/slides/13-ONE-APP-MULTIPLE-FEATURES.svg";
         pitchSlide17.title.put(LANG_ENG, "Revenue Model");
         pitchSlide17.title.put(LANG_HINDI, "Revenue Model");

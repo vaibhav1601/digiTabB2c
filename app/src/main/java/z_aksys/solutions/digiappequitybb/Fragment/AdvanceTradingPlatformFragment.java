@@ -34,7 +34,7 @@ public class AdvanceTradingPlatformFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_better_returns, container, false);
+        final View view = inflater.inflate(R.layout.fragment_highest_returns, container, false);
 
         slideUrl= getArguments().getString("slide_url");
         wvSlide= view.findViewById(R.id.wv_slide);

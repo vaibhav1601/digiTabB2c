@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <WebView
+        android:id="@+id/wv_slide"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+
+    <!--<TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/red_400" />-->
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="@dimen/_50sdp">
+
+        <Button
+            android:id="@+id/btn_recommendations"
+            style="@style/custom_font_roboto_regular"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@color/green_600"
+            android:padding="@dimen/_5sdp"
+            android:layout_marginRight="@dimen/_10sdp"
+            android:text="Recommendations"
+            android:textColor="@color/white" />
+
+        <Button
+            android:id="@+id/btn_researcher"
+            style="@style/custom_font_roboto_regular"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:background="@color/green_600"
+            android:padding="@dimen/_5sdp"
+            android:text="Research Team"
+            android:textColor="@color/white" />
+    </LinearLayout>
+</RelativeLayout>
