@@ -13,15 +13,17 @@ import android.view.ViewGroup;
 import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import z_aksys.solutions.digiappequitybb.R;
 
-public class AdvanceTradingPlatformFragment extends Fragment {
+public class AdvanceTradingPlatformFragment extends Fragment implements View.OnClickListener {
 
     private String slideUrl;
     private WebView wvSlide;
-    private Button btnTopPerformer;
-    private String[] performerImageArray= {"file:///android_asset/slides/pt1.svg", "file:///android_asset/slides/pt2.svg", "file:///android_asset/slides/pt3.svg"};
+    private Button btnTradePlatform, btnMobileApp, btnSpeedPro;
+    private String[] advanceTradingPlatformImages = {"file:///android_asset/slides/p1.svg", "file:///android_asset/slides/p2.svg", "file:///android_asset/slides/p3.svg"};
+    private String[] advanceTradingPlatformTitle = {"Angle Broking Trade Features", "Angle Broking Mobile App", "Angle Speed Pro Features"};
 
     public AdvanceTradingPlatformFragment() {
     }
@@ -34,7 +36,7 @@ public class AdvanceTradingPlatformFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        final View view = inflater.inflate(R.layout.fragment_highest_returns, container, false);
+        final View view = inflater.inflate(R.layout.fragment_advance_trading_platform, container, false);
 
         slideUrl= getArguments().getString("slide_url");
         wvSlide= view.findViewById(R.id.wv_slide);
@@ -43,56 +45,99 @@ public class AdvanceTradingPlatformFragment extends Fragment {
         wvSlide.getSettings().setUseWideViewPort(true);
         wvSlide.loadUrl(slideUrl);
 
-        btnTopPerformer= view.findViewById(R.id.btn_top_performer);
-        btnTopPerformer.setOnClickListener(new View.OnClickListener() {
+        btnTradePlatform= view.findViewById(R.id.btn_trade_platform);
+        btnMobileApp= view.findViewById(R.id.btn_mobile_app);
+        btnSpeedPro= view.findViewById(R.id.btn_speed_pro);
+
+        btnTradePlatform.setOnClickListener(this);
+        btnSpeedPro.setOnClickListener(this);
+        btnMobileApp.setOnClickListener(this);
+
+        return view;
+    }
+
+    private void showFeaturesDialog(int selectedSlideIndex) {
+        final Dialog advanceTradingPlatform = new Dialog(getActivity());
+        LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        View advanceTradingPlatformView = inflater.inflate(R.layout.dialog_advance_trading_platform, null);
+        advanceTradingPlatform.setContentView(advanceTradingPlatformView);
+
+        TextView tvHeading= advanceTradingPlatform.findViewById(R.id.txt_heading);
+        tvHeading.setText(advanceTradingPlatformTitle[selectedSlideIndex]);
+
+        ViewPager vpAdvanceTradingPlatform= advanceTradingPlatformView.findViewById(R.id.vp_performer);
+        vpAdvanceTradingPlatform.setAdapter(new PagerAdapter() {
             @Override
-            public void onClick(View v) {
-                final Dialog topPerformerDialog = new Dialog(getActivity());
-                LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-                View topPerformerView = inflater.inflate(R.layout.dialog_top_performers, null);
-                topPerformerDialog.setContentView(topPerformerView);
+            public int getCount() {
+                return advanceTradingPlatformImages.length;
+            }
 
-                ViewPager vpPerformer= topPerformerView.findViewById(R.id.vp_performer);
-                vpPerformer.setAdapter(new PagerAdapter() {
-                    @Override
-                    public int getCount() {
-                        return performerImageArray.length;
-                    }
+            @Override
+            public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
+                return view==o;
+            }
 
-                    @Override
-                    public boolean isViewFromObject(@NonNull View view, @NonNull Object o) {
-                        return view==o;
-                    }
+            @NonNull
+            @Override
+            public Object instantiateItem(@NonNull ViewGroup container, int position) {
+                WebView wvPerformer= new WebView(getContext());
+                wvPerformer.getSettings().setLoadWithOverviewMode(true);
+                wvPerformer.getSettings().setUseWideViewPort(true);
+                wvPerformer.loadUrl(advanceTradingPlatformImages[position]);
+                container.addView(wvPerformer);
+                return wvPerformer;
+            }
 
-                    @NonNull
-                    @Override
-                    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-                        WebView wvPerformer= new WebView(getContext());
-                        wvPerformer.getSettings().setLoadWithOverviewMode(true);
-                        wvPerformer.getSettings().setUseWideViewPort(true);
-                        wvPerformer.loadUrl(performerImageArray[position]);
-                        container.addView(wvPerformer);
-                        return wvPerformer;
-                    }
-
-                    @Override
-                    public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
-                        container.removeView((View) object);
-                    }
-                });
-
-                ImageView img_close = topPerformerView.findViewById(R.id.img_close);
-                img_close.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        topPerformerDialog.dismiss();
-                    }
-                });
-
-                topPerformerDialog.show();
+            @Override
+            public void destroyItem(@NonNull ViewGroup container, int position, @NonNull Object object) {
+                container.removeView((View) object);
             }
         });
 
-        return view;
+        vpAdvanceTradingPlatform.setOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+            @Override
+            public void onPageScrolled(int i, float v, int i1) {
+
+            }
+
+            @Override
+            public void onPageSelected(int i) {
+                tvHeading.setText(advanceTradingPlatformTitle[i]);
+            }
+
+            @Override
+            public void onPageScrollStateChanged(int i) {
+
+            }
+        });
+
+        vpAdvanceTradingPlatform.setCurrentItem(selectedSlideIndex);
+
+        ImageView img_close = advanceTradingPlatform.findViewById(R.id.img_close);
+        img_close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                advanceTradingPlatform.dismiss();
+            }
+        });
+
+        advanceTradingPlatform.show();
+    }
+
+    @Override
+    public void onClick(View v) {
+        switch (v.getId()){
+            case R.id.btn_trade_platform:
+                showFeaturesDialog( 0);
+                break;
+            case R.id.btn_mobile_app:
+                showFeaturesDialog( 1);
+                break;
+            case R.id.btn_speed_pro:
+                showFeaturesDialog( 2);
+                break;
+                default:
+                    break;
+        }
     }
 }
