@@ -13,15 +13,13 @@ public class Constants {
     public static final String appSec="42d34bd99093094714e0257e391a810c";
 */
     //b2c
+    /*public static final String appKey="ws08skwgk4c40s0s8k4c0wscwc4s0o4kk4oow048";
+    public static final String appSec="517b85b30db64d0256c1b3fb049b9aed";*/
 
-    public static final String appKey="ws08skwgk4c40s0s8k4c0wscwc4s0o4kk4oow048";
-    public static final String appSec="517b85b30db64d0256c1b3fb049b9aed";
     //b2b
-
-
- /*   public static final String appKey="o4gsgk0w0kcskoos0wsgggg48k4csccgoc8sks0o ";
+    public static final String appKey="o4gsgk0w0kcskoos0wsgggg48k4csccgoc8sks0o ";
     public static final String appSec="c91fbf2ce50a58765123973ebe4b14c7";
-*/
+
     public static final String user="test";
 
 

@@ -1,12 +1,101 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center_horizontal"
+    android:padding="@dimen/_10sdp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_15sdp"
+        >
+
+        <TextView
+            android:id="@+id/tb_24x7_services"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/nav_green_color"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="24X7 Services" />
+
+        <TextView
+            android:id="@+id/tb_extensive_offerings"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/blue_200"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="Extensive Offerings" />
+
+        <TextView
+            android:id="@+id/tb_training_assistance"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/blue_800"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="Training Assistance" />
+
+        <TextView
+            android:id="@+id/tb_unmatched_support"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/green_400"
+            android:gravity="center"
+            android:padding="@dimen/_5sdp"
+            android:text="Unmatched Support" />
+
+    </LinearLayout>
+
+    <RelativeLayout
+        android:background="@drawable/we_got_your_back_content_rouded_borders"
+        android:layout_width="match_parent"
+        android:padding="@dimen/_15sdp"
+        android:layout_height="wrap_content"
+        >
+
+        <android.support.v7.widget.RecyclerView
+            android:id="@+id/rv_feature_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            />
+
+        <LinearLayout
+            android:visibility="gone"
+
+            android:layout_below="@id/rv_feature_list"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:id="@+id/navigation_panel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <View
+                android:id="@+id/nav_dot1"
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:layout_margin="1dp" />
+
+            <View
+                android:id="@+id/nav_dot2"
+                android:layout_width="3dp"
+                android:layout_height="3dp"
+                android:layout_margin="1dp" />
+
+        </LinearLayout>
+    </RelativeLayout>
 
     <TextView
-        android:gravity="center"
-        android:text="We got your back"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:text="*Intraday limit against security deposit of SB for clients"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </LinearLayout>
