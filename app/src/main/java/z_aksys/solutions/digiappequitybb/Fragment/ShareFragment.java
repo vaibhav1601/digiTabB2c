@@ -1,5 +1,6 @@
 package z_aksys.solutions.digiappequitybb.Fragment;
 
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
@@ -20,7 +21,6 @@ import z_aksys.solutions.digiappequitybb.custom.ViewPagerNoSwipe;
 import z_aksys.solutions.digiappequitybb.model.News;
 
 public class ShareFragment extends Fragment {
-
     private RecyclerView recyclerView;
     private NewsAdapter adapter;
     private List<News> albumList;
@@ -66,12 +66,16 @@ public class ShareFragment extends Fragment {
 
         TextView tabOne = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_document, null);
         tabOne.setText("DOCUMENTS");
-        tabOne.setTextSize(14);
+        tabOne.setTextSize(13);
+        Typeface face = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
+        tabOne.setTypeface(face);
         tabOne.getMaxWidth();
         tabLayout.getTabAt(0).setCustomView(tabOne);
         TextView tabTwo = (TextView) LayoutInflater.from(getContext()).inflate(R.layout.custom_tab_document, null);
         tabTwo.setText("VIDEOS");
-        tabTwo.setTextSize(14);
+        tabTwo.setTextSize(13);
+        Typeface face2 = Typeface.createFromAsset(getActivity().getAssets(), "fonts/Roboto-Regular.ttf");
+        tabTwo.setTypeface(face);
         tabTwo.getMaxWidth();
         tabLayout.getTabAt(1).setCustomView(tabTwo);
     }

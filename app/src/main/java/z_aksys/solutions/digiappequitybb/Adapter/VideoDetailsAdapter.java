@@ -59,7 +59,7 @@ public class VideoDetailsAdapter extends RecyclerView.Adapter<VideoDetailsAdapte
         final ShareVideoResponse.share_video object = shareVideoList.get(position);
 
         if (ObjectUtils.isNotNull(object)) {
-            holder.textViewName.setText(object.getTitle());
+            //  holder.textViewName.setText(object.getTitle());
 
             holder.videoTitle.setText(object.getTitle());
             holder.videoDuration.setText("www.youtube.com");
@@ -148,18 +148,6 @@ public class VideoDetailsAdapter extends RecyclerView.Adapter<VideoDetailsAdapte
             // holder.relativeLayout.startAnimation(slideDown);
         }
 
-        holder.textViewName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //getting the position of the item to expand it
-                currentPosition = position;
-
-                //reloding the list
-                notifyDataSetChanged();
-            }
-        });
-
 
         holder.thumbnail.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -188,7 +176,7 @@ public class VideoDetailsAdapter extends RecyclerView.Adapter<VideoDetailsAdapte
         public MyViewHolder(View view) {
             super(view);
 
-            this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
+            //this.textViewName = (TextView) itemView.findViewById(R.id.textViewName);
             this.txtAns = (TextView) itemView.findViewById(R.id.txt_ans);
             this.imageView = (ImageView) itemView.findViewById(R.id.imageView);
             // this.relativeLayout = (RelativeLayout) itemView.findViewById(R.id.relativeLayout);

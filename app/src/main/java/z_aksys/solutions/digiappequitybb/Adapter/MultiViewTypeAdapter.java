@@ -42,6 +42,7 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
     Context mContext;
     int total_types;
     MediaPlayer mPlayer;
+    boolean readyForLoadingYoutubeThumbnail = true;
     private List<NewsResponse.News> newsResponseList;
     private boolean fabStateVolume = false;
     private OnClickVideo onClickVideo;
@@ -111,11 +112,11 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
 
                 case "image":
                     ((ImageTypeViewHolder) holder).title.setText(object.getTitle());
-                    ((ImageTypeViewHolder) holder).count.setText(object.getSource_link());
+                    ((ImageTypeViewHolder) holder).count.setText(object.getSource());
 
                     Glide.with(mContext).load(object.getImage()).into(((ImageTypeViewHolder) holder).thumbnail);
 
-                    newsurl = object.getSource_link();
+                    newsurl = object.getSource();
                     title = object.getTitle();
 
                     ((ImageTypeViewHolder) holder).overflow.setOnClickListener(new View.OnClickListener() {
@@ -127,7 +128,7 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
                         }
                     });
 
-                    ((ImageTypeViewHolder) holder).rl_news.setOnClickListener(new View.OnClickListener() {
+                    ((ImageTypeViewHolder) holder).thumbnail.setOnClickListener(new View.OnClickListener() {
                         @Override
                         public void onClick(View view) {
 
@@ -152,39 +153,48 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
                     ((YouTubeTypeViewHolder) holder).videoTitle.setText(object.getTitle());
 
                     //((YouTubeTypeViewHolder) holder).count.setText(Html.fromHtml(object.getPublish_date()));
-                    ((YouTubeTypeViewHolder) holder).count.setText(Html.fromHtml("Youtube.com"));
+                    ((YouTubeTypeViewHolder) holder).count.setText(object.getSource());
 
                     Glide.with(mContext).load(object.getImage()).into(((YouTubeTypeViewHolder) holder).thumbnail);
 
 
-                    ((YouTubeTypeViewHolder) holder).videoThumbnailImageView.initialize(VideoKEY, new YouTubeThumbnailView.OnInitializedListener() {
-                        @Override
-                        public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, final YouTubeThumbnailLoader youTubeThumbnailLoader) {
-                            //when initialization is sucess, set the video id to thumbnail to load
-                            youTubeThumbnailLoader.setVideo(videoId);
+                    if (readyForLoadingYoutubeThumbnail) {
+                        Log.d(TAG, "initializing for youtube thumbnail view...");
+                        readyForLoadingYoutubeThumbnail = false;
 
-                            youTubeThumbnailLoader.setOnThumbnailLoadedListener(new YouTubeThumbnailLoader.OnThumbnailLoadedListener() {
-                                @Override
-                                public void onThumbnailLoaded(YouTubeThumbnailView youTubeThumbnailView, String s) {
-                                    //when thumbnail loaded successfully release the thumbnail loader as we are showing thumbnail in adapter
-                                    youTubeThumbnailLoader.release();
-                                }
+                        ((YouTubeTypeViewHolder) holder).videoThumbnailImageView.initialize(VideoKEY, new YouTubeThumbnailView.OnInitializedListener() {
+                            @Override
+                            public void onInitializationSuccess(YouTubeThumbnailView youTubeThumbnailView, final YouTubeThumbnailLoader youTubeThumbnailLoader) {
+                                //when initialization is sucess, set the video id to thumbnail to load
+                                youTubeThumbnailLoader.setVideo(videoId);
 
-                                @Override
-                                public void onThumbnailError(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader.ErrorReason errorReason) {
-                                    //print or show error when thumbnail load failed
-                                    Log.e(TAG, "Youtube Thumbnail Error");
-                                }
-                            });
-                        }
+                                youTubeThumbnailLoader.setOnThumbnailLoadedListener(new YouTubeThumbnailLoader.OnThumbnailLoadedListener() {
+                                    @Override
+                                    public void onThumbnailLoaded(YouTubeThumbnailView youTubeThumbnailView, String s) {
+                                        //when thumbnail loaded successfully release the thumbnail loader as we are showing thumbnail in adapter
+                                        youTubeThumbnailLoader.release();
+                                    }
 
-                        @Override
-                        public void onInitializationFailure(YouTubeThumbnailView youTubeThumbnailView, YouTubeInitializationResult youTubeInitializationResult) {
-                            //print or show error when initialization failed
-                            Log.e(TAG, "Youtube Initialization Failure");
+                                    @Override
+                                    public void onThumbnailError(YouTubeThumbnailView youTubeThumbnailView, YouTubeThumbnailLoader.ErrorReason errorReason) {
+                                        //print or show error when thumbnail load failed
+                                        Log.e(TAG, "Youtube Thumbnail Error");
+                                    }
+                                });
+                                readyForLoadingYoutubeThumbnail = true;
+                            }
 
-                        }
-                    });
+                            @Override
+                            public void onInitializationFailure(YouTubeThumbnailView youTubeThumbnailView, YouTubeInitializationResult youTubeInitializationResult) {
+                                //print or show error when initialization failed
+                                Log.e(TAG, "Youtube Initialization Failure");
+
+                                readyForLoadingYoutubeThumbnail = true;
+
+                            }
+                        });
+
+                    }
 
 
                     ((YouTubeTypeViewHolder) holder).thumbnail.setOnClickListener(new View.OnClickListener() {
@@ -232,11 +242,11 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
         public ImageTypeViewHolder(View itemView) {
             super(itemView);
 
-            this.title = (TextView) itemView.findViewById(R.id.title);
-            this.count = (TextView) itemView.findViewById(R.id.count);
-            this.thumbnail = (ImageView) itemView.findViewById(R.id.thumbnail);
-            this.overflow = (ImageView) itemView.findViewById(R.id.overflow);
-            this.rl_news = (RelativeLayout) itemView.findViewById(R.id.rl_news);
+            this.title = itemView.findViewById(R.id.title);
+            this.count = itemView.findViewById(R.id.count);
+            this.thumbnail = itemView.findViewById(R.id.thumbnail);
+            this.overflow = itemView.findViewById(R.id.overflow);
+            this.rl_news = itemView.findViewById(R.id.rl_news);
 
 
         }
@@ -256,7 +266,7 @@ public class MultiViewTypeAdapter extends RecyclerView.Adapter<RecyclerView.View
             this.videoThumbnailImageView = itemView.findViewById(R.id.video_thumbnail_image_view);
             this.videoTitle = itemView.findViewById(R.id.title);
             this.videoPlay = itemView.findViewById(R.id.video_duration_label);
-            this.thumbnail = (ImageView) itemView.findViewById(R.id.thumbnail);
+            this.thumbnail = itemView.findViewById(R.id.thumbnail);
             this.count = itemView.findViewById(R.id.count);
 
         }

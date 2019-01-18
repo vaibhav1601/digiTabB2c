@@ -28,7 +28,6 @@ import static z_aksys.solutions.digiappequitybb.utils.Constants.VideoKEY;
 
 public class VideoAdapter extends RecyclerView.Adapter<VideoAdapter.MyViewHolder> {
 
-
     private Context mContext;
     private ArrayList<ShareVideoResponse.share_video> shareVideoArrayList;
     private OnClickVideo onClickVideo;

@@ -13,10 +13,25 @@
         android:id="@+id/ll_main_Share"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/black"
+        android:background="#004270"
         android:orientation="vertical"
-        android:visibility="visible"
-        android:padding="@dimen/_10sdp">
+        android:padding="@dimen/_10sdp"
+        android:visibility="visible">
+
+        <TextView
+            android:id="@+id/tv_check_connection1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text=""
+            android:textColor="@color/white"
+            android:textSize="@dimen/_6sdp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
 
 
         <LinearLayout
@@ -24,7 +39,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="18"
-            android:background="@color/black"
+            android:background="#004270"
             android:orientation="horizontal"
             android:paddingRight="@dimen/_30sdp">
 
@@ -43,7 +58,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="USDINR"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -58,7 +73,7 @@
                 android:layout_marginLeft="-5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="10305.50"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -74,8 +89,7 @@
                 android:layout_weight="1"
                 android:drawableRight="@drawable/ic_arrow_drop_down_red_24dp"
                 android:gravity="center"
-                android:text="-149.50"
-                android:textColor="@color/red_400"
+                android:text=""
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -96,7 +110,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="NIFTY"
+                android:text="Nifty"
                 android:textColor="@color/white"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -111,7 +125,7 @@
                 android:layout_marginLeft="-5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="10305.50"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -125,10 +139,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-5dp"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/ic_arrow_drop_down_red_24dp"
                 android:gravity="center"
-                android:text="-149.50"
-                android:textColor="@color/red_400"
+                android:text=""
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -148,7 +160,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="SENSEX"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -163,7 +175,7 @@
                 android:layout_marginLeft="-5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="10305.50"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -177,10 +189,8 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-5dp"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/ic_arrow_drop_down_red_24dp"
                 android:gravity="center"
-                android:text="-149.50"
-                android:textColor="@color/red_400"
+                android:text=""
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
@@ -200,7 +210,7 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="GOLD"
+                android:text=""
                 android:textColor="@color/white"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -215,7 +225,7 @@
                 android:layout_marginLeft="-5dp"
                 android:layout_weight="1"
                 android:gravity="center"
-                android:text="10305.50"
+                android:text=" "
                 android:textColor="@color/white"
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
@@ -229,19 +239,13 @@
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="-5dp"
                 android:layout_weight="1"
-                android:drawableRight="@drawable/ic_arrow_drop_up_green_24dp"
                 android:gravity="center"
-                android:text="-149.50"
-                android:textColor="@color/green_400"
+                android:text=""
                 android:textSize="@dimen/_6sdp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintLeft_toLeftOf="parent"
                 app:layout_constraintRight_toRightOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
-
-
-
-
 
 
         </LinearLayout>
@@ -263,21 +267,21 @@
         android:id="@+id/viewpager"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/ll_main_Share">
+        android:layout_below="@+id/ll_main_Share">>
 
     </z_aksys.solutions.digiappequitybb.custom.ViewPagerNoSwipe>
 
 
-   <!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        android:id="@+id/con_main_section"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/ll_main_"
-        android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-        android:background="@color/white_opacity_80"
-        app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
--->
+    <!-- <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+         xmlns:app="http://schemas.android.com/apk/res-auto"
+         android:id="@+id/con_main_section"
+         android:layout_width="match_parent"
+         android:layout_height="match_parent"
+         android:layout_below="@+id/ll_main_"
+         android:layout_marginTop="@dimen/nav_header_vertical_spacing"
+         android:background="@color/white_opacity_80"
+         app:layout_behavior="@string/appbar_scrolling_view_behavior"/>
+ -->
     <!--
        <android.support.v4.view.ViewPager
             android:id="@+id/viewpager"

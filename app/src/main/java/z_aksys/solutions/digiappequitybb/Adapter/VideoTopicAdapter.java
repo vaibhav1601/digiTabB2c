@@ -8,6 +8,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -21,7 +22,6 @@ import z_aksys.solutions.digiappequitybb.listener.OnClickVideo;
 import z_aksys.solutions.digiappequitybb.utils.ObjectUtils;
 
 public class VideoTopicAdapter extends RecyclerView.Adapter<VideoTopicAdapter.MyViewHolder> {
-
 
     private Context mContext;
     private ArrayList<ShareVideoTopicResponse.share_video_topic> share_video_topics;
@@ -59,7 +59,7 @@ public class VideoTopicAdapter extends RecyclerView.Adapter<VideoTopicAdapter.My
                     .placeholder(R.drawable.angel_logo)
                     .into(holder.thumbnail);
 
-            holder.cardView.setOnClickListener(new View.OnClickListener() {
+            holder.thumbnail.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
 
@@ -83,7 +83,7 @@ public class VideoTopicAdapter extends RecyclerView.Adapter<VideoTopicAdapter.My
     }
 
     public class MyViewHolder extends RecyclerView.ViewHolder {
-        public CardView cardView;
+        public LinearLayout cardView;
         public YouTubeThumbnailView videoThumbnailImageView;
         public TextView videoTitle, videoDuration;
         public ImageView videoPlay, shareVideo, thumbnail;
@@ -98,7 +98,7 @@ public class VideoTopicAdapter extends RecyclerView.Adapter<VideoTopicAdapter.My
             this.shareVideo = itemView.findViewById(R.id.shareVideo);
             this.videoDuration = itemView.findViewById(R.id.count);
             this.thumbnail = itemView.findViewById(R.id.thumbnail);
-            this.cardView = itemView.findViewById(R.id.card_view_videoTopic);
+            this.cardView = itemView.findViewById(R.id.card_view_videoTopicll);
 
         }
     }

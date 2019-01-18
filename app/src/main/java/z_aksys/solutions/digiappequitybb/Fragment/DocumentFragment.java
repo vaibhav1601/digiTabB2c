@@ -60,7 +60,7 @@ public class DocumentFragment extends Fragment {
         recycler_view_document = view.findViewById(R.id.recycler_view_document);
         mLayoutManager = new GridLayoutManager(getContext(), 2);
         recycler_view_document.setLayoutManager(mLayoutManager);
-        recycler_view_document.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(30), true));
+        recycler_view_document.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(60), true));
         recycler_view_document.setItemAnimator(new DefaultItemAnimator());
         pitchServices = RetrofitClient.getInstance().getApi();
 
@@ -159,7 +159,6 @@ public class DocumentFragment extends Fragment {
                     }
 
 
-
                 }
 
             }
@@ -224,14 +223,14 @@ public class DocumentFragment extends Fragment {
                 outRect.right = (column + 1) * spacing / spanCount - 20; // (column + 1) * ((1f / spanCount) * spacing)
 
                 if (position < spanCount) { // top edge
-                    outRect.top = spacing - 10;
+                    // outRect.top = spacing;
                 }
-                outRect.bottom = spacing + 20; // item bottom
+                outRect.bottom = spacing - 40; // item bottom
             } else {
                 outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
-                outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
+                outRect.right = spacing - (column + 1) * spacing / spanCount - 60; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
                 if (position >= spanCount) {
-                    outRect.top = spacing; // item top
+                    //outRect.top = spacing; // item top
                 }
             }
         }

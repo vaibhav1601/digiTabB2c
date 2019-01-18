@@ -25,6 +25,8 @@ import android.support.v4.view.ViewPager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.AppCompatImageView;
+import android.text.TextUtils;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -94,7 +96,11 @@ public class MainActivity extends AppCompatActivity
     public static List<ShareRequest> shareList;
     public static FeedBackRequest feedBackRequest;
     public static PitchServices pitchServices;
-    static TextView tv_check_connection;
+    static TextView tv_check_connection1;
+    private static TextView tv_check_connection;
+    private static TextView niftyValue, niftyup, tv_sunsex, sensexValue, sunsexyup, tv_gold, goldValue, goldyup, tv_Usder, usdrValue, usdrup;
+    private static Boolean isSms, isWhatsApp, isEmil;
+    Toast mToast;
     private TabLayout tabLayout;
     private ViewPagerNoSwipe viewPager;
     private BroadcastReceiver mReceiver;
@@ -102,103 +108,18 @@ public class MainActivity extends AppCompatActivity
     private TextView tabOne, tabTwo, tabThree, tabFour, tabFive, tabSix, tabSeven;
     private AppCompatImageView btn_goal;
     private BroadcastReceiver mNetworkReceiver;
-    private TextView niftyValue, niftyup, tv_sunsex, sensexValue, sunsexyup, tv_gold, goldValue, goldyup, tv_Usder, usdrValue, usdrup;
-    private static Boolean isSms, isWhatsApp, isEmil;
     private PowerManager.WakeLock wl;
     private LinearLayout linearLayout;
 
-
-    @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.app_bar_main);
-        CleverTapUtils.getInstance(this).logCustomEvent("Main Activity Launched");
-
-        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-
-        getSupportActionBar().setTitle("pitch application");
-        // actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
-        drawer.addDrawerListener(toggle);
-        toggle.syncState();
-        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
-        navigationView.setNavigationItemSelectedListener(this);*/
-
-        this.context = this;
-        questionStatusList = new ArrayList<>();
-        feedbackList = new ArrayList<>();
-        shareList = new ArrayList<>();
-        Intent alarm = new Intent(this.context, AlarmReceiver.class);
-        boolean alarmRunning = (PendingIntent.getBroadcast(this.context, 0, alarm, PendingIntent.FLAG_NO_CREATE) != null);
-        if (alarmRunning == false) {
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(this.context, 0, alarm, 0);
-            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
-            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), 1800000, pendingIntent);
-        }
-        btn_goal = (AppCompatImageView) findViewById(R.id.btn_goal);
-        viewPager = (ViewPagerNoSwipe) findViewById(R.id.viewpager);
-        tv_check_connection = (TextView) findViewById(R.id.tv_check_connection);
-        niftyValue = (TextView) findViewById(R.id.niftyValue);
-        niftyup = (TextView) findViewById(R.id.niftyup);
-        tv_sunsex = (TextView) findViewById(R.id.tv_sunsex);
-        sensexValue = (TextView) findViewById(R.id.sensexValue);
-        sunsexyup = (TextView) findViewById(R.id.sunsexyup);
-        tv_gold = (TextView) findViewById(R.id.tv_gold);
-        goldValue = (TextView) findViewById(R.id.goldValue);
-        goldyup = (TextView) findViewById(R.id.goldyup);
-        tv_Usder = (TextView) findViewById(R.id.tv_Usder);
-        usdrValue = (TextView) findViewById(R.id.usdrValue);
-        usdrup = (TextView) findViewById(R.id.usdrup);
-        linearLayout = (LinearLayout) findViewById(R.id.ll_main_Share);
-        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
-        wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Wake lock");
-        wl.acquire();
-        setupViewPager(viewPager);
-        tabLayout = (TabLayout) findViewById(R.id.tabs);
-        tabLayout.setupWithViewPager(viewPager);
-        pitchServices = RetrofitClient.getInstance().getApi();
-        setupTabIcons();
-
-
-        if (AngelPitchUtil.checkConnection(getApplicationContext())) {
-
-            callServicesShareMarket();
-
-        } else {
-            Toast.makeText(getApplicationContext(), "please connect the internet", Toast.LENGTH_LONG).show();
-        }
-
-
-        btn_goal.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                GoalFragment goalFragment = new GoalFragment();
-                goalFragment.show(getSupportFragmentManager(), "goal");
-
-            }
-        });
-
-        mNetworkReceiver = new NetworkChangeReceiver();
-        registerNetworkBroadcastForNougat();
-
-
-    }
-
-    private void callServicesShareMarket() {
+    public static void callServicesShareMarket() {
 
         OkHttpClient okHttpClient = UnsafeOkHttpClient.getUnsafeOkHttpClient();
-
         Retrofit.Builder builder = new Retrofit.Builder()
                 .baseUrl("https://compliance.angelbroking.com/")
                 .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create());
-
         Retrofit retrofit = builder.build();
         PitchServices restAPI = retrofit.create(PitchServices.class);
-
         Call<ShareMarketResponse> call = restAPI.getShareMarket();
         call.enqueue(new Callback<ShareMarketResponse>() {
             @Override
@@ -220,46 +141,153 @@ public class MainActivity extends AppCompatActivity
 
     }
 
-    private void setData(ArrayList<ShareMarketResponse.ExchangeData> exchangeData) {
+    private static void setData(ArrayList<ShareMarketResponse.ExchangeData> exchangeData) {
 
         if (!ObjectUtils.isEmpty(exchangeData)) {
 
-            tv_Usder.setText(exchangeData.get(0).getSymbol());
-            usdrValue.setText(exchangeData.get(0).getCurrValue());
-            tv_sunsex.setText(exchangeData.get(1).getSymbol());
-            sensexValue.setText(exchangeData.get(1).getCurrValue());
-            tv_check_connection.setText(exchangeData.get(2).getSymbol());
-            niftyValue.setText(exchangeData.get(2).getCurrValue());
-            tv_gold.setText(exchangeData.get(3).getSymbol());
-            goldValue.setText(exchangeData.get(3).getCurrValue());
+            try {
+
+                if (!TextUtils.isEmpty(exchangeData.get(0).getSymbol())) {
+                    tv_Usder.setText(exchangeData.get(0).getSymbol().toString());
+                    usdrValue.setText(exchangeData.get(0).getCurrValue().toString());
+                }
+
+            } catch (Exception e) {
+
+            }
+            try {
+                if (!TextUtils.isEmpty(exchangeData.get(1).getSymbol())) {
+                    tv_sunsex.setText(exchangeData.get(1).getSymbol());
+                    sensexValue.setText(exchangeData.get(1).getCurrValue());
+
+
+                }
+
+            } catch (Exception e) {
+
+            }
+
+            try {
+                if (!TextUtils.isEmpty(exchangeData.get(2).getSymbol())) {
+                    tv_check_connection.setText(exchangeData.get(2).getSymbol());
+                    niftyValue.setText(exchangeData.get(2).getCurrValue());
+
+                }
+
+            } catch (Exception e) {
+
+            }
+
+            try {
+
+                if (!TextUtils.isEmpty(exchangeData.get(3).getSymbol())) {
+                    tv_gold.setText(exchangeData.get(3).getSymbol());
+                    goldValue.setText(exchangeData.get(3).getCurrValue());
+
+                }
+
+
+            } catch (Exception e) {
+
+            }
+
+
+            try {
+                if (exchangeData.get(0).getAbsolutechange().equalsIgnoreCase("")) {
+                    usdrup.setText("");
+                    usdrup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                } else if (exchangeData.get(0).getAbsolutechange().startsWith("+")) {
+                    usdrup.setText(exchangeData.get(0).getAbsolutechange().toString());
+                    usdrup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_up_green_24dp, 0);
+                    usdrup.setTextColor(App.getContext().getResources().getColor(R.color.green_color));
+
+                } else if (exchangeData.get(0).getAbsolutechange().startsWith("-")) {
+                    usdrup.setText(exchangeData.get(0).getAbsolutechange().toString());
+                    usdrup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_red_24dp, 0);
+                    usdrup.setTextColor(App.getContext().getResources().getColor(R.color.red_900));
+
+                } else {
+                    usdrup.setText("");
+                    usdrup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+
+                }
+
+
+            } catch (Exception e) {
+
+            }
+
+            try {
+
+                if (exchangeData.get(1).getAbsolutechange().equalsIgnoreCase("")) {
+                    sunsexyup.setText("");
+                    sunsexyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                } else if (exchangeData.get(1).getAbsolutechange().startsWith("+")) {
+                    sunsexyup.setText(exchangeData.get(1).getAbsolutechange().toString());
+                    sunsexyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_up_green_24dp, 0);
+                    sunsexyup.setTextColor(App.getContext().getResources().getColor(R.color.green_color));
+                } else if (exchangeData.get(1).getAbsolutechange().startsWith("-")) {
+                    sunsexyup.setText(exchangeData.get(1).getAbsolutechange().toString());
+                    sunsexyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_red_24dp, 0);
+                    sunsexyup.setTextColor(App.getContext().getResources().getColor(R.color.red_900));
+                } else {
+                    sunsexyup.setText("");
+                    sunsexyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                }
+
+            } catch (Exception e) {
+
+            }
+
+            try {
+
+                if (exchangeData.get(2).getAbsolutechange().equalsIgnoreCase("")) {
+                    niftyup.setText("");
+                    niftyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                } else if (exchangeData.get(2).getAbsolutechange().startsWith("+")) {
+                    niftyup.setText(exchangeData.get(2).getAbsolutechange().toString());
+                    niftyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_up_green_24dp, 0);
+                    niftyup.setTextColor(App.getContext().getResources().getColor(R.color.green_color));
+                } else if (exchangeData.get(2).getAbsolutechange().startsWith("-")) {
+                    niftyup.setText(exchangeData.get(2).getAbsolutechange().toString());
+                    niftyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_red_24dp, 0);
+                    niftyup.setTextColor(App.getContext().getResources().getColor(R.color.red_900));
+                } else {
+                    niftyup.setText("");
+                    niftyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                }
+
+
+            } catch (Exception e) {
+
+            }
+
+            try {
+                if (exchangeData.get(3).getAbsolutechange().equalsIgnoreCase("")) {
+                    goldyup.setText("");
+                    goldyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                } else if (exchangeData.get(3).getAbsolutechange().startsWith("+")) {
+                    goldyup.setText(exchangeData.get(3).getAbsolutechange().toString());
+                    goldyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_up_green_24dp, 0);
+                    goldyup.setTextColor(App.getContext().getResources().getColor(R.color.green_color));
+                } else if (exchangeData.get(3).getAbsolutechange().startsWith("-")) {
+
+                    goldyup.setText(exchangeData.get(3).getAbsolutechange().toString());
+                    goldyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_arrow_drop_down_red_24dp, 0);
+                    goldyup.setTextColor(App.getContext().getResources().getColor(R.color.red_900));
+
+
+                } else {
+                    goldyup.setText("");
+                    goldyup.setCompoundDrawablesWithIntrinsicBounds(0, 0, 0, 0);
+                }
+
+            } catch (Exception e) {
+
+            }
+
 
         }
-    }
-
-    @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-
-       /* if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
-             super.onBackPressed();
-           // finish();
-        }else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
-
-            Log.d("Count","Count"+getSupportFragmentManager().getBackStackEntryCount());
-
-        }else{
-            getSupportFragmentManager().popBackStack();
-
-        }
-*/
-
-
-       /* DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }*/
     }
 
     /**
@@ -270,9 +298,9 @@ public class MainActivity extends AppCompatActivity
     public static void dialog(boolean value) {
 
         if (value) {
-            tv_check_connection.setText("We are back !!!");
-            tv_check_connection.setBackgroundColor(Color.GREEN);
-            tv_check_connection.setTextColor(Color.WHITE);
+            tv_check_connection1.setText("We are back !!!");
+            tv_check_connection1.setBackgroundColor(Color.GREEN);
+            tv_check_connection1.setTextColor(Color.WHITE);
 
             new AsyncTaskQuestionResult(App.getContext()).execute();
 
@@ -281,10 +309,10 @@ public class MainActivity extends AppCompatActivity
             new AsyncShareResult(App.getContext()).execute();
 
         } else {
-            tv_check_connection.setVisibility(View.VISIBLE);
-            tv_check_connection.setText("Could not Connect to internet");
-            tv_check_connection.setBackgroundColor(Color.RED);
-            tv_check_connection.setTextColor(Color.WHITE);
+            tv_check_connection1.setVisibility(View.VISIBLE);
+            tv_check_connection1.setText("Could not Connect to internet");
+            tv_check_connection1.setBackgroundColor(Color.RED);
+            tv_check_connection1.setTextColor(Color.WHITE);
         }
     }
 
@@ -312,7 +340,7 @@ public class MainActivity extends AppCompatActivity
                 public void onResponse(Call<FeedBackResponse> call, Response<FeedBackResponse> response) {
 
                     if (response.isSuccessful()) {
-                        Toast.makeText(getContext(), "sucessfeedback>>>>>>>>>>" + response.message(), Toast.LENGTH_LONG).show();
+                        // Toast.makeText(getContext(), "sucessfeedback>>>>>>>>>>" + response.message(), Toast.LENGTH_LONG).show();
 
                         new AsyncTaskFeedBackDelete(getContext()).execute();
 
@@ -376,7 +404,7 @@ public class MainActivity extends AppCompatActivity
 
 
         } else {
-            tv_check_connection.setVisibility(View.GONE);
+            tv_check_connection1.setVisibility(View.GONE);
         }
 
 
@@ -412,16 +440,128 @@ public class MainActivity extends AppCompatActivity
 
     }
 
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.app_bar_main);
+        CleverTapUtils.getInstance(this).logCustomEvent("Main Activity Launched");
+
+        /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        getSupportActionBar().setTitle("pitch application");
+        // actionBar.setHomeAsUpIndicator(R.drawable.ic_drawer);
+        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
+                this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
+        drawer.addDrawerListener(toggle);
+        toggle.syncState();
+        NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
+        navigationView.setNavigationItemSelectedListener(this);*/
+
+        this.context = this;
+        questionStatusList = new ArrayList<>();
+        feedbackList = new ArrayList<>();
+        shareList = new ArrayList<>();
+        Intent alarm = new Intent(this.context, AlarmReceiver.class);
+
+        boolean alarmRunning = (PendingIntent.getBroadcast(this.context, 0, alarm, PendingIntent.FLAG_NO_CREATE) != null);
+        if (alarmRunning == false) {
+
+            Log.d("alarmRunning>>>", "alarmRunning>>>");
+            PendingIntent pendingIntent = PendingIntent.getBroadcast(this.context, 0, alarm, 0);
+            AlarmManager alarmManager = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+            alarmManager.setRepeating(AlarmManager.ELAPSED_REALTIME_WAKEUP, SystemClock.elapsedRealtime(), 30 * 1000, pendingIntent);
+        }
+
+
+        btn_goal = (AppCompatImageView) findViewById(R.id.btn_goal);
+        viewPager = (ViewPagerNoSwipe) findViewById(R.id.viewpager);
+        tv_check_connection = (TextView) findViewById(R.id.tv_check_connection);
+        tv_check_connection1 = (TextView) findViewById(R.id.tv_check_connection1);
+        niftyValue = (TextView) findViewById(R.id.niftyValue);
+        niftyup = (TextView) findViewById(R.id.niftyup);
+        tv_sunsex = (TextView) findViewById(R.id.tv_sunsex);
+        sensexValue = (TextView) findViewById(R.id.sensexValue);
+        sunsexyup = (TextView) findViewById(R.id.sunsexyup);
+        tv_gold = (TextView) findViewById(R.id.tv_gold);
+        goldValue = (TextView) findViewById(R.id.goldValue);
+        goldyup = (TextView) findViewById(R.id.goldyup);
+        tv_Usder = (TextView) findViewById(R.id.tv_Usder);
+        usdrValue = (TextView) findViewById(R.id.usdrValue);
+        usdrup = (TextView) findViewById(R.id.usdrup);
+        linearLayout = (LinearLayout) findViewById(R.id.ll_main_Share);
+        PowerManager pm = (PowerManager) getSystemService(Context.POWER_SERVICE);
+        wl = pm.newWakeLock(PowerManager.PARTIAL_WAKE_LOCK, "Wake lock");
+        wl.acquire();
+        setupViewPager(viewPager);
+        tabLayout = (TabLayout) findViewById(R.id.tabs);
+        tabLayout.setupWithViewPager(viewPager);
+        pitchServices = RetrofitClient.getInstance().getApi();
+        setupTabIcons();
+
+
+        if (AngelPitchUtil.checkConnection(getApplicationContext())) {
+
+            callServicesShareMarket();
+
+        } else {
+            Toast.makeText(getApplicationContext(), "please connect the internet", Toast.LENGTH_LONG).show();
+        }
+
+
+        btn_goal.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                GoalFragment goalFragment = new GoalFragment();
+                goalFragment.show(getSupportFragmentManager(), "goal");
+
+            }
+        });
+
+        mNetworkReceiver = new NetworkChangeReceiver();
+        registerNetworkBroadcastForNougat();
+
+
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+
+       /* if (getSupportFragmentManager().getBackStackEntryCount() == 0) {
+             super.onBackPressed();
+           // finish();
+        }else if (getSupportFragmentManager().getBackStackEntryCount() > 0) {
+
+            Log.d("Count","Count"+getSupportFragmentManager().getBackStackEntryCount());
+
+        }else{
+            getSupportFragmentManager().popBackStack();
+
+        }
+*/
+
+
+       /* DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
+        if (drawer.isDrawerOpen(GravityCompat.START)) {
+            drawer.closeDrawer(GravityCompat.START);
+        } else {
+            super.onBackPressed();
+        }*/
+    }
 
     private void setupTabIcons() {
 
         tabOne = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
         tabOne.setText("News");
+        tabOne.setPadding(0, 10, 0, 10);
         tabOne.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.tab1, 0, 0);
         tabLayout.getTabAt(0).setCustomView(tabOne);
         //tabLayout.getTabAt(0).setIcon(R.drawable.ic_news_f);
 
         tabTwo = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabTwo.setPadding(0, 10, 0, 10);
         tabTwo.setText("Pitch");
         tabTwo.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.tab2, 0, 0);
         tabLayout.getTabAt(1).setCustomView(tabTwo);
@@ -432,17 +572,20 @@ public class MainActivity extends AppCompatActivity
         tabLayout.getTabAt(2).setCustomView(tabCalc);
 */
         tabThree = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabThree.setPadding(0, 10, 0, 10);
         tabThree.setText("Share");
         tabThree.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.tab3, 0, 0);
         tabLayout.getTabAt(2).setCustomView(tabThree);
 
         tabFour = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabFour.setPadding(0, 10, 0, 10);
         tabFour.setText("Learn");
         tabFour.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.tab4, 0, 0);
         tabLayout.getTabAt(3).setCustomView(tabFour);
 
 
         tabFive = (TextView) LayoutInflater.from(this).inflate(R.layout.custom_tab, null);
+        tabFive.setPadding(0, 10, 0, 10);
         tabFive.setText("FAQs");
         tabFive.setCompoundDrawablesWithIntrinsicBounds(0, R.drawable.tab5, 0, 0);
         tabLayout.getTabAt(4).setCustomView(tabFive);
@@ -581,6 +724,15 @@ public class MainActivity extends AppCompatActivity
 
     @Override
     protected void onResume() {
+        if (AngelPitchUtil.checkConnection(getApplicationContext())) {
+
+            callServicesShareMarket();
+
+        } else {
+            Toast.makeText(getApplicationContext(), "please connect the internet", Toast.LENGTH_LONG).show();
+        }
+
+        // Toast.makeText(getApplicationContext(),"resume",Toast.LENGTH_LONG).show();
         // ONLY WHEN SCREEN TURNS ON
         if (!ScreenReceiver.isScreen) {
             // THIS IS WHEN ONRESUME() IS CALLED DUE TO A SCREEN STATE CHANGE
@@ -669,7 +821,7 @@ public class MainActivity extends AppCompatActivity
             //  callAdaptor();
 
             callServices(questionStatusList);
-            tv_check_connection.setVisibility(View.GONE);
+            tv_check_connection1.setVisibility(View.GONE);
         }
 
 
@@ -773,7 +925,7 @@ public class MainActivity extends AppCompatActivity
         protected void onPostExecute(Boolean result) {
             // execution of result of Long time consuming operation
             //  callAdaptor();
-            tv_check_connection.setVisibility(View.GONE);
+            tv_check_connection1.setVisibility(View.GONE);
         }
 
 
@@ -823,7 +975,7 @@ public class MainActivity extends AppCompatActivity
         protected void onPostExecute(Boolean result) {
             // execution of result of Long time consuming operation
             //  callAdaptor();
-            tv_check_connection.setVisibility(View.GONE);
+            tv_check_connection1.setVisibility(View.GONE);
         }
 
 
@@ -926,7 +1078,7 @@ public class MainActivity extends AppCompatActivity
         protected void onPostExecute(Boolean result) {
             // execution of result of Long time consuming operation
             //  callAdaptor();
-            tv_check_connection.setVisibility(View.GONE);
+            tv_check_connection1.setVisibility(View.GONE);
         }
 
 

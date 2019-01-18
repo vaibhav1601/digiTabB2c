@@ -50,6 +50,7 @@ import static z_aksys.solutions.digiappequitybb.utils.Constants.user;
 
 public class FaqListFragment extends Fragment implements OnClicklistener, SearchView.OnQueryTextListener {
 
+    private static final int RECOGNIZER_REQ_CODE = 1234;
     RecyclerView.LayoutManager mLayoutManager;
     PitchServices pitchServices;
     private RecyclerView recyclerView;
@@ -68,7 +69,6 @@ public class FaqListFragment extends Fragment implements OnClicklistener, Search
     private FaqFragment faqFragment;
     private AngelSharedPrefance sharedPrefance;
     private ImageView imgvoice;
-    private static final int RECOGNIZER_REQ_CODE = 1234;
 
     public FaqListFragment() {
         // Required empty public constructor
@@ -88,18 +88,18 @@ public class FaqListFragment extends Fragment implements OnClicklistener, Search
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.faq_list_frgament, container, false);
 
-        recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_faq);
+        recyclerView = view.findViewById(R.id.recycler_view_faq);
         mLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(mLayoutManager);
         recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(60), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
-        simpleSearchView = (SearchView) view.findViewById(R.id.simpleSearchView); // inititate a search view
+        simpleSearchView = view.findViewById(R.id.simpleSearchView); // inititate a search view
         simpleSearchView.setQueryHint("Search "); // set the hint text to display in the query text field
 
-        imgvoice=(ImageView)view.findViewById(R.id.imgvoice) ;
+        imgvoice = view.findViewById(R.id.imgvoice);
 
-        simpleSearchView.setOnQueryTextListener((SearchView.OnQueryTextListener) this);
+        simpleSearchView.setOnQueryTextListener(this);
         pitchServices = RetrofitClient.getInstance().getApi();
         sharedPrefance = new AngelSharedPrefance(App.getContext());
 
@@ -119,7 +119,7 @@ public class FaqListFragment extends Fragment implements OnClicklistener, Search
                 try {
                     startActivityForResult(intent, 1);
                 } catch (ActivityNotFoundException a) {
-                    Toast.makeText(getContext(), "Oops! Your device doesn't support Speech to Text",Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getContext(), "Oops! Your device doesn't support Speech to Text", Toast.LENGTH_SHORT).show();
                 }
 
             }
@@ -426,9 +426,9 @@ public class FaqListFragment extends Fragment implements OnClicklistener, Search
                 outRect.right = (column + 1) * spacing / spanCount - 20; // (column + 1) * ((1f / spanCount) * spacing)
 
                 if (position < spanCount) { // top edge
-                    outRect.top = spacing - 10;
+                    outRect.top = spacing - 45;
                 }
-                outRect.bottom = spacing - 10; // item bottom
+                outRect.bottom = spacing - 40; // item bottom
             } else {
                 outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
                 outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)

@@ -3,11 +3,11 @@ package z_aksys.solutions.digiappequitybb.Adapter;
 import android.content.Context;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageView;
-import android.support.v7.widget.LinearLayoutCompat;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.bumptech.glide.Glide;
@@ -17,9 +17,9 @@ import java.util.List;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Response.FaqResponse;
 import z_aksys.solutions.digiappequitybb.listener.OnClicklistener;
+import z_aksys.solutions.digiappequitybb.utils.ObjectUtils;
 
-public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.MyViewHolder>  {
-
+public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.MyViewHolder> {
 
     private Context mContext;
     private List<FaqResponse.faq> faqList;
@@ -47,17 +47,20 @@ public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.MyViewHolder>  {
 
         final FaqResponse.faq object = faqList.get(position);
 
+        if (ObjectUtils.isNotNull(object)) {
 
-        holder.textView.setText(object.getName());
-        Glide.with(mContext).load(object.getImage()).into(holder.imageView);
+            holder.textView.setText(object.getName());
+            Glide.with(mContext).load(object.getImage()).into(holder.imageView);
 
 
-        holder.llFaq.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onClicklistener.lessonId(object.getTopic_id());
-            }
-        });
+            holder.imageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    onClicklistener.lessonId(object.getTopic_id());
+                }
+            });
+
+        }
 
 
     }
@@ -72,7 +75,7 @@ public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.MyViewHolder>  {
 
         AppCompatImageView imageView;
         TextView textView;
-        LinearLayoutCompat llFaq;
+        RelativeLayout rl_faq;
 
 
         public MyViewHolder(View view) {
@@ -81,7 +84,7 @@ public class FaqAdapter extends RecyclerView.Adapter<FaqAdapter.MyViewHolder>  {
 
             this.imageView = view.findViewById(R.id.img_faq);
             this.textView = view.findViewById(R.id.txt_faqname);
-            this.llFaq = view.findViewById(R.id.ll_faqview);
+            this.rl_faq = view.findViewById(R.id.rl_faq);
 
         }
     }

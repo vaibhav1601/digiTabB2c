@@ -14,10 +14,9 @@
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:layout_gravity="bottom|clip_vertical"
+        android:background="#4D4D4F"
         android:elevation="6dp"
-        android:theme="@style/AppTheme.ActionBar"
         app:layout_anchorGravity="bottom"
-        app:tabBackground="@color/black"
         app:tabGravity="fill"
         app:tabIndicatorGravity="bottom"
         app:tabMode="fixed" />

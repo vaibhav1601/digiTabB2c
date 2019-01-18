@@ -27,7 +27,7 @@ public class YoutubePlayerActivity extends YouTubeBaseActivity {
         setContentView(R.layout.youtube_player_activity);
         //get the video id
         videoID = getIntent().getStringExtra("video_id");
-        newsId= getIntent().getStringExtra("newsId");
+        newsId = getIntent().getStringExtra("newsId");
         youTubePlayerView = findViewById(R.id.youtube_player_view);
         initializeYoutubePlayer();
 

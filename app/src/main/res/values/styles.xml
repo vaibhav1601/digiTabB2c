@@ -5,7 +5,7 @@
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
-        <item name="colorAccent">@color/colorAccent</item>
+        <item name="colorAccent">#004270</item>
 
     </style>
 
@@ -51,23 +51,27 @@
     </style>
 
     <style name="custom_font_roboto_regular">
-        <item name="android:fontFamily">fonts/Lato-Regular.ttf</item>
+        <item name="android:fontFamily">fonts/Roboto-Regular.ttf</item>
     </style>
 
     <style name="custom_font_roboto_medium">
-        <item name="android:fontFamily">fonts/Lato-Regular.ttf</item>
+        <item name="android:fontFamily">fonts/Roboto-Medium.ttf</item>
     </style>
 
     <style name="custom_font_roboto_italic">
-        <item name="android:fontFamily">fonts/Lato-Italic.ttf</item>
+        <item name="android:fontFamily">fonts/Roboto-Italic.ttf</item>
     </style>
 
     <style name="custom_font_montserrat_black">
-        <item name="android:fontFamily">fonts/Montserrat-Black.ttf</item>
+        <item name="android:fontFamily">@font/montserrat_black</item>
+    </style>
+
+    <style name="custom_font_montserrat_bold">
+        <item name="android:fontFamily">@font/montserrat_bold</item>
     </style>
 
     <style name="custom_font_montserrat_Extrablack">
-        <item name="android:fontFamily">fonts/ Montserrat-ExtraBold.ttf</item>
+        <item name="android:fontFamily">@font/montserrat_extra_bold</item>
     </style>
 
 

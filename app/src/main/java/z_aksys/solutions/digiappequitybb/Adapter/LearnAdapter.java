@@ -14,16 +14,18 @@ import com.bumptech.glide.Glide;
 
 import java.util.List;
 
+import z_aksys.solutions.digiappequitybb.App;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Response.LearnResponse;
 import z_aksys.solutions.digiappequitybb.listener.OnClickLessons;
+import z_aksys.solutions.digiappequitybb.utils.AngelSharedPrefance;
 import z_aksys.solutions.digiappequitybb.utils.ObjectUtils;
 
 
 public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.MyViewHolder> {
 
-
     public List<LearnResponse.topics> topicsArrayList;
+    AngelSharedPrefance sharedPrefance;
     private Context mContext;
     private OnClickLessons onClickLessons;
 
@@ -32,6 +34,7 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.MyViewHolder
         this.mContext = mContext;
         this.topicsArrayList = topicsArrayList;
         this.onClickLessons = ((OnClickLessons) fragment);
+        sharedPrefance = new AngelSharedPrefance(App.getContext());
     }
 
     @Override
@@ -57,10 +60,10 @@ public class LearnAdapter extends RecyclerView.Adapter<LearnAdapter.MyViewHolder
             holder.txt_mark.setText(object.getCompleted_lessons() + "/" + object.getTotal_lessons());
 
 
-            holder.rl.setOnClickListener(new View.OnClickListener() {
+            holder.thumbnail_learn.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    onClickLessons.lessonId(object.getTopic_id(), position);
+                    onClickLessons.lessonId(object.getTopic_id(), position, object.getCompleted_lessons(), object.getTotal_lessons());
                 }
             });
 

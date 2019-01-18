@@ -3,43 +3,161 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:layout_marginTop="@dimen/nav_header_vertical_spacing"
-    android:background="#FAFAFA"
+    android:background="#fafafa"
     app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
 
-    <LinearLayout
-        android:id="@+id/ll_header"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/ll_main_"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:orientation="horizontal">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/txtDate"
-            style="@style/custom_font_roboto_bold"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/_19sdp"
-            android:layout_marginRight="@dimen/_150sdp"
-            android:text="Monday 10th Septemeber 2018"
-            android:textSize="@dimen/_8sdp"
-            android:textStyle="bold" />
-
-    </LinearLayout>
+            android:orientation="vertical">
 
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/recycler_view"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_below="@+id/ll_header"
-        android:layout_marginLeft="@dimen/_19sdp"
-        android:layout_marginTop="@dimen/_8sdp"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
-        android:clipToPadding="true"
-        android:scrollbars="vertical" />
+            <TextView
+                android:id="@+id/txtDate"
+                style="@style/custom_font_roboto_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginBottom="16dp"
+                android:text="Monday 10th Septemeber 2018"
+                android:textColor="#de000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/txtDate"
+                android:layout_marginBottom="40dp"
+                android:clipToPadding="true"
+                android:scrollbars="vertical" />
+
+
+            <TextView
+                android:id="@+id/txtDate2"
+                style="@style/custom_font_roboto_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:text="Monday 10th Septemeber 2018"
+                android:textColor="#de000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_dummy"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_view"
+                android:layout_marginBottom="42dp"
+                android:clipToPadding="true"
+                android:scrollbars="vertical" />
+
+
+            <TextView
+                android:id="@+id/txtDate3"
+                style="@style/custom_font_roboto_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:text="Monday 10th Septemeber 2018"
+                android:textColor="#de000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_dummy1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_view"
+                android:layout_marginBottom="42dp"
+                android:clipToPadding="true"
+                android:scrollbars="vertical" />
+
+
+            <TextView
+                android:id="@+id/txtDate4"
+                style="@style/custom_font_roboto_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:text="Monday 10th Septemeber 2018"
+                android:textColor="#de000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_dummy4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_view"
+                android:layout_marginBottom="42dp"
+                android:clipToPadding="true"
+                android:scrollbars="vertical" />
+
+
+            <TextView
+                android:id="@+id/txtDate5"
+                style="@style/custom_font_roboto_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:text="Monday 10th Septemeber 2018"
+                android:textColor="#de000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_dummy5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_view"
+                android:layout_marginBottom="42dp"
+                android:clipToPadding="true"
+                android:scrollbars="vertical" />
+
+
+            <TextView
+                android:id="@+id/txtDate6"
+                style="@style/custom_font_roboto_regular"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="50dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="16dp"
+                android:text="Monday 10th Septemeber 2018"
+                android:textColor="#de000000"
+                android:textSize="16sp"
+                android:visibility="gone" />
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/recycler_view_dummy6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_below="@+id/recycler_view"
+                android:layout_marginBottom="42dp"
+                android:clipToPadding="true"
+                android:scrollbars="vertical" />
+
+
+        </LinearLayout>
+
+    </ScrollView>
+
 
 </RelativeLayout>

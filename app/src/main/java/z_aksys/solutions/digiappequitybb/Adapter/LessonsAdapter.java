@@ -16,16 +16,16 @@ import z_aksys.solutions.digiappequitybb.App;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Response.LearnResponse;
 import z_aksys.solutions.digiappequitybb.listener.OnClickLessons;
+import z_aksys.solutions.digiappequitybb.utils.AngelSharedPrefance;
 import z_aksys.solutions.digiappequitybb.utils.ObjectUtils;
 
 
 public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.MyViewHolder> {
 
-
+    AngelSharedPrefance angelSharedPrefance;
     private Context mContext;
     private List<LearnResponse.lessons> lessonsArrayList;
     private OnClickLessons onClickLessons;
-
     private String id;
 
 
@@ -34,6 +34,7 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.MyViewHo
         this.lessonsArrayList = lessonsArrayList;
         this.id = id;
         this.onClickLessons = ((OnClickLessons) fragment);
+        angelSharedPrefance = new AngelSharedPrefance(App.getContext());
     }
 
     @Override
@@ -56,6 +57,7 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.MyViewHo
         if (ObjectUtils.isNotNull(object)) {
 
             holder.title.setText(object.getName());
+
 
             if (!TextUtils.isEmpty(object.getIs_completed())) {
                 if (object.getIs_completed().equalsIgnoreCase("1")) {
@@ -89,7 +91,7 @@ public class LessonsAdapter extends RecyclerView.Adapter<LessonsAdapter.MyViewHo
                 @Override
                 public void onClick(View view) {
 
-                    onClickLessons.lessonId(object.getLesson_id(), position);
+                    onClickLessons.lessonId(object.getLesson_id(), position, object.getName(), "");
                 }
             });
 

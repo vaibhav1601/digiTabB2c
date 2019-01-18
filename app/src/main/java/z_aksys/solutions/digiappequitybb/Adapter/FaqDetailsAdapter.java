@@ -22,6 +22,7 @@ import z_aksys.solutions.digiappequitybb.App;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Response.FaqDetailsResponse;
 import z_aksys.solutions.digiappequitybb.utils.CTEventLog;
+import z_aksys.solutions.digiappequitybb.utils.ObjectUtils;
 
 public class FaqDetailsAdapter extends RecyclerView.Adapter<FaqDetailsAdapter.MyViewHolder> {
 
@@ -51,54 +52,58 @@ public class FaqDetailsAdapter extends RecyclerView.Adapter<FaqDetailsAdapter.My
 
         final FaqDetailsResponse.faq_detail object = faqDetailList.get(position);
 
+        if (ObjectUtils.isNotNull(object)) {
+            holder.textViewName.setText(Html.fromHtml(object.getQuestion()));
 
-        holder.textViewName.setText(Html.fromHtml(object.getQuestion()));
 
+            holder.txtAns.setText(Html.fromHtml(object.getAnswer()));
 
-        holder.txtAns.setText(Html.fromHtml(object.getAnswer()));
+            holder.textViewName.setBackgroundColor(Color.WHITE);
+            holder.textViewName.setTextColor(App.getContext().getResources().getColor(R.color.black));
+            holder.textViewName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_black_24dp, 0);
 
-        holder.textViewName.setBackgroundColor(Color.WHITE);
-        holder.textViewName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_black_24dp, 0);
+            Glide.with(mContext).load(object.getImage()).into(holder.imageView);
 
-        Glide.with(mContext).load(object.getImage()).into(holder.imageView);
+            Glide.with(mContext)
+                    .load(object.getImage())
+                    .error(R.drawable.angel_logo)
+                    .override(100, 100)
+                    .into(holder.imageView);
 
-        Glide.with(mContext)
-                .load(object.getImage())
-                .error(R.drawable.angel_logo)
-                .override(100, 100)
-                .into(holder.imageView);
+            holder.linearLayout.setVisibility(View.GONE);
 
-        holder.linearLayout.setVisibility(View.GONE);
+            //if the position is equals to the item position which is to be expanded
+            if (currentPosition == position) {
+                //creating an animation
+                Animation slideDown = AnimationUtils.loadAnimation(mContext, R.anim.slide_up);
 
-        //if the position is equals to the item position which is to be expanded
-        if (currentPosition == position) {
-            //creating an animation
-            Animation slideDown = AnimationUtils.loadAnimation(mContext, R.anim.slide_up);
+                //toggling visibility
+                holder.linearLayout.setVisibility(View.VISIBLE);
+                holder.textViewName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_black_24dp, 0);
+                holder.textViewName.setTextColor(App.getContext().getResources().getColor(R.color.white));
 
-            //toggling visibility
-            holder.linearLayout.setVisibility(View.VISIBLE);
-            holder.textViewName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_black_24dp, 0);
+                holder.textViewName.setBackgroundColor(App.getContext().getResources().getColor(R.color.blue_bestpolicy));
 
-            holder.textViewName.setBackgroundColor(App.getContext().getResources().getColor(R.color.button_color));
-
-            //adding sliding effect
-            holder.linearLayout.startAnimation(slideDown);
-        }
-
-        holder.textViewName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //getting the position of the item to expand it
-                currentPosition = position;
-
-                if (faqDetailList.get(position)!=null) {
-                    CTEventLog.getInstance(mContext).logFaqViewed(faqDetailList.get(position).getFaq_id(), faqDetailList.get(position).getTopic_id());
-                }
-                //reloding the list
-                notifyDataSetChanged();
+                //adding sliding effect
+                holder.linearLayout.startAnimation(slideDown);
             }
-        });
+
+            holder.textViewName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    //getting the position of the item to expand it
+                    currentPosition = position;
+
+                    if (faqDetailList.get(position) != null) {
+                        CTEventLog.getInstance(mContext).logFaqViewed(faqDetailList.get(position).getFaq_id(), faqDetailList.get(position).getTopic_id());
+                    }
+                    //reloding the list
+                    notifyDataSetChanged();
+                }
+            });
+
+        }
 
 
     }
