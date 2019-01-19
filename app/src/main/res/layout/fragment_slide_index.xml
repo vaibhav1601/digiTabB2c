@@ -2,28 +2,31 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@android:color/white"
     android:orientation="horizontal">
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/rv_slide_categories"
         android:layout_width="0dp"
         android:layout_height="match_parent"
-        android:layout_marginBottom="50dp"
-        android:layout_weight="3"
-        android:background="@android:color/white" />
+        android:layout_marginTop="40dp"
+        android:layout_weight="3" />
 
     <RelativeLayout
         android:layout_width="0dp"
         android:layout_height="match_parent"
         android:layout_weight="7"
-        android:background="@android:color/darker_gray"
+        android:background="@color/light_gray_background"
+        android:padding="7dp"
         android:orientation="vertical">
 
         <TextView
             android:id="@+id/tv_number_of_slides"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="5dp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
             android:textColor="@color/black" />
 
         <android.support.v7.widget.RecyclerView

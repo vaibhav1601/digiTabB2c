@@ -14,12 +14,11 @@ import z_aksys.solutions.digiappequitybb.R;
 
 ;
 
-public class PitchOneFragment extends Fragment {
+public class PitchHomeFragment extends Fragment {
 
     TextView btnNewPartner, btnExpirencePartner;
-    private PitchDemoFragment pitchDemoFragment;
 
-    public PitchOneFragment() {
+    public PitchHomeFragment() {
         // Required empty public constructor
     }
 
@@ -32,11 +31,11 @@ public class PitchOneFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        final View view = inflater.inflate(R.layout.pitch_first_fragment_, container, false);
+        final View view = inflater.inflate(R.layout.fragment_pitch_home, container, false);
 
         getActivity().setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
         View decorView = getActivity().getWindow().getDecorView(); // Hide the status bar.
-        int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_STABLE;
+        int uiOptions = View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN;
         decorView.setSystemUiVisibility(uiOptions);
         btnNewPartner = (TextView) view.findViewById(R.id.btnnew);
         btnExpirencePartner = (TextView) view.findViewById(R.id.btn_Expirence);
@@ -60,9 +59,5 @@ public class PitchOneFragment extends Fragment {
         });
 
         return view;
-    }
-
-    public void setParentFragment(PitchDemoFragment pitchOneFragment) {
-        this.pitchDemoFragment = pitchOneFragment;
     }
 }

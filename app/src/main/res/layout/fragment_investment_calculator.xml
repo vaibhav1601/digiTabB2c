@@ -7,87 +7,92 @@
     android:orientation="vertical">
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <z_aksys.solutions.digiappequitybb.CustomWidgets.InvestmentCheckbox
             android:id="@+id/icb_bse_cash"
+            android:layout_width="250dp"
+            android:layout_height="120dp"
+            android:layout_marginRight="10dp"
             app:label="BSE CASH"
-            app:value="2360"
-            android:layout_margin="10dp"
-            android:layout_width="200dp"
-            android:layout_height="100dp"/>
+            app:value="2360" />
+
         <z_aksys.solutions.digiappequitybb.CustomWidgets.InvestmentCheckbox
             android:id="@+id/icb_nse_cash"
-            android:layout_margin="10dp"
+            android:layout_width="250dp"
+            android:layout_height="120dp"
+            android:layout_marginRight="10dp"
             app:label="NSE CASH"
-            app:value="2360"
-            android:layout_width="200dp"
-            android:layout_height="100dp"/>
+            app:value="2360" />
+
         <z_aksys.solutions.digiappequitybb.CustomWidgets.InvestmentCheckbox
             android:id="@+id/icb_nse_fno_cash"
+            android:layout_width="250dp"
+            android:layout_height="120dp"
             app:label="NSE F&amp;O CASH"
-            android:layout_margin="10dp"
-            app:value="2360"
-            android:layout_width="200dp"
-            android:layout_height="100dp"/>
+            app:value="2360" />
     </LinearLayout>
 
     <LinearLayout
-        android:orientation="horizontal"
-        android:gravity="center"
-        android:layout_marginTop="20dp"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
         <z_aksys.solutions.digiappequitybb.CustomWidgets.InvestmentCheckbox
             android:id="@+id/icb_currency"
+            android:layout_width="250dp"
+            android:layout_height="120dp"
+            android:layout_marginRight="10dp"
             app:label="Currency"
-            app:value="2360"
-            android:layout_margin="10dp"
-            android:layout_width="200dp"
-            android:layout_height="100dp"/>
+            app:value="2360" />
+
         <z_aksys.solutions.digiappequitybb.CustomWidgets.InvestmentCheckbox
             android:id="@+id/icb_mcx_ncdex"
+            android:layout_width="250dp"
+            android:layout_height="120dp"
             app:label="MCX/Ncdex"
-            app:value="2360"
-            android:layout_margin="10dp"
-            android:layout_width="200dp"
-            android:layout_height="100dp"/>
+            app:value="2360" />
     </LinearLayout>
 
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:background="@color/green_400"
-        android:orientation="vertical"
-        android:layout_gravity="center"
-        android:padding="15dp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:minWidth="250dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/rounded_bluish_green_box"
+        android:orientation="vertical"
+        android:padding="15dp">
 
         <TextView
-            android:textSize="14sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:text="Total SEBI Fees:"
             android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="14sp" />
 
         <TextView
             android:id="@+id/tv_total_investment"
-            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_marginBottom="5dp"
             android:textColor="@color/white"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:textSize="20sp" />
 
         <TextView
-            android:text="One-time fee for life"
-            android:textSize="12sp"
-            android:textColor="@color/white"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content"
+            android:text="One-time fee for life"
+            android:textColor="@color/white"
+            android:textSize="12sp" />
 
     </LinearLayout>
 
@@ -95,9 +100,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="10dp"
         android:drawableLeft="@drawable/ic_bulb"
         android:gravity="center_vertical"
         android:text="Pay refundable deposit of 50,000 (or above). Higher refundable deposit means more earning for you!"
-        android:textSize="14sp" />
+        android:textSize="12sp" />
 </LinearLayout>

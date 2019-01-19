@@ -55,7 +55,7 @@ import z_aksys.solutions.digiappequitybb.Fragment.FaqFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.GoalFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.LearnFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.NewsFragment;
-import z_aksys.solutions.digiappequitybb.Fragment.PitchOneFragment;
+import z_aksys.solutions.digiappequitybb.Fragment.PitchHomeFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.ShareFragment;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Receiver.AlarmReceiver;
@@ -73,7 +73,6 @@ import z_aksys.solutions.digiappequitybb.custom.ViewPagerNoSwipe;
 import z_aksys.solutions.digiappequitybb.model.Feedback;
 import z_aksys.solutions.digiappequitybb.model.QuestionStatus;
 import z_aksys.solutions.digiappequitybb.utils.AngelPitchUtil;
-import z_aksys.solutions.digiappequitybb.utils.CleverTapUtils;
 import z_aksys.solutions.digiappequitybb.utils.ObjectUtils;
 
 import static z_aksys.solutions.digiappequitybb.App.getContext;
@@ -112,7 +111,6 @@ public class MainActivity extends AppCompatActivity
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.app_bar_main);
-        CleverTapUtils.getInstance(this).logCustomEvent("Main Activity Launched");
 
         /*Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -478,7 +476,7 @@ public class MainActivity extends AppCompatActivity
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 4);
         adapter.addFrag(new NewsFragment(), "News");
-        adapter.addFrag(new PitchOneFragment(), "Pitch");
+        adapter.addFrag(new PitchHomeFragment(), "Pitch");
         adapter.addFrag(new ShareFragment(), "Share");
         adapter.addFrag(new LearnFragment(), "Learn");
         adapter.addFrag(new FaqFragment(), "FAQs");

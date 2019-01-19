@@ -165,7 +165,7 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
         pitchServices = RetrofitClient.getInstance().getApi();
 
         if (getIntent().getBooleanExtra("isExperiencedInvestor", false)){
-            mCurrentlySelectedSlideIndex= 7;
+            mCurrentlySelectedSlideIndex= 11;
         }
 
         loadCurrentSlide(SLIDETRANSITION.LEFTSLIDE);
@@ -227,8 +227,14 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
     private void showMenu(ACTION action) {
 
         if (mCurrentlySelectedPopup != null) {
+            if (mCurrentlySelectedPopup == action){
+                removeSelection(mCurrentlySelectedPopup);
+                return;
+            }
             removeSelection(mCurrentlySelectedPopup);
         }
+
+
 
         switch (action) {
             case SLIDEINDEX:
@@ -490,7 +496,13 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void updateSlideTitle(int selectedLanguage) {
-        tvSlideTitle.setText(slides.get(mCurrentlySelectedSlideIndex).title.get(selectedLanguage));
+
+        if (slides.get(mCurrentlySelectedSlideIndex).isSectionalHeader){
+            tvSlideTitle.setText("");
+        } else {
+            tvSlideTitle.setText(slides.get(mCurrentlySelectedSlideIndex).title.get(selectedLanguage));
+        }
+
     }
 
     private void loadSlideOnIndex(int index) {

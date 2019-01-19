@@ -48,9 +48,11 @@ public class SlideCategoryAdapter extends RecyclerView.Adapter<SlideCategoryAdap
         holder.tvCategoryName.setText(mSlideCategories.get(position));
 
         if (position == currentlySelectedCategory) {
-            holder.tvCategoryName.setBackgroundColor(mContext.getResources().getColor(R.color.yellow_800));
+            holder.tvCategoryName.setBackgroundColor(mContext.getResources().getColor(R.color.blue_800));
+            holder.tvCategoryName.setTextColor(mContext.getResources().getColor(R.color.white));
         } else {
             holder.tvCategoryName.setBackgroundColor(mContext.getResources().getColor(android.R.color.transparent));
+            holder.tvCategoryName.setTextColor(mContext.getResources().getColor(R.color.black));
         }
 
         holder.container.setOnClickListener(new View.OnClickListener() {
