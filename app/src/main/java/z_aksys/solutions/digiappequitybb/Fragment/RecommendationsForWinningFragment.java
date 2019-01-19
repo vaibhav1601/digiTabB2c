@@ -2,6 +2,8 @@ package z_aksys.solutions.digiappequitybb.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -51,6 +53,7 @@ public class RecommendationsForWinningFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 final Dialog recommendationsDialog = new Dialog(getActivity());
+                recommendationsDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View topPerformerView = inflater.inflate(R.layout.dialog_recommendations, null);
                 recommendationsDialog.setContentView(topPerformerView);
@@ -95,10 +98,12 @@ public class RecommendationsForWinningFragment extends Fragment {
         });
 
         btnResearchTeam= view.findViewById(R.id.btn_researcher);
+
         btnResearchTeam.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 final Dialog researchTeamDailog = new Dialog(getActivity());
+                researchTeamDailog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View topPerformerView = inflater.inflate(R.layout.dialog_research_team, null);
                 researchTeamDailog.setContentView(topPerformerView);
