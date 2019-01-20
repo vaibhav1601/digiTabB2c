@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -83,7 +84,7 @@ public class WeGotYourBackFragment extends Fragment implements View.OnClickListe
         tvUnmatchedSupport.setOnClickListener(this);
 
         rvFeatureList= view.findViewById(R.id.rv_feature_list);
-        rvFeatureList.setLayoutManager(new GridLayoutManager(getActivity(), 4));
+        rvFeatureList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
 
         navigationPanel= view.findViewById(R.id.navigation_panel);
         vDot1= view.findViewById(R.id.nav_dot1);
@@ -113,22 +114,26 @@ public class WeGotYourBackFragment extends Fragment implements View.OnClickListe
                 break;
             case R.id.tb_training_assistance:
                 mWeHaveGotYourBackFeatureListAdapter.updateSelection(2,0);
+                vDot1.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot_selected));
+                vDot2.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot));
                 mSelectedCategory=2;
                 navigationPanel.setVisibility(View.VISIBLE);
                 break;
             case R.id.tb_unmatched_support:
                 mWeHaveGotYourBackFeatureListAdapter.updateSelection(3,0);
+                vDot1.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot_selected));
+                vDot2.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot));
                 mSelectedCategory= 3;
                 navigationPanel.setVisibility(View.VISIBLE);
                 break;
             case R.id.nav_dot1:
                 mWeHaveGotYourBackFeatureListAdapter.updateSelection(mSelectedCategory,0);
-                vDot1.setBackgroundColor(getActivity().getResources().getColor(R.color.blue_800));
-                vDot2.setBackgroundColor(getActivity().getResources().getColor(R.color.blue_200));
+                vDot1.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot_selected));
+                vDot2.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot));
                 break;
             case R.id.nav_dot2:
-                vDot1.setBackgroundColor(getActivity().getResources().getColor(R.color.blue_200));
-                vDot2.setBackgroundColor(getActivity().getResources().getColor(R.color.blue_800));
+                vDot1.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot));
+                vDot2.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot_selected));
                 mWeHaveGotYourBackFeatureListAdapter.updateSelection(mSelectedCategory,1);
                 break;
                 default:

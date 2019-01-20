@@ -222,14 +222,18 @@ public class MainActivity extends AppCompatActivity
 
         if (!ObjectUtils.isEmpty(exchangeData)) {
 
-            tv_Usder.setText(exchangeData.get(0).getSymbol());
-            usdrValue.setText(exchangeData.get(0).getCurrValue());
-            tv_sunsex.setText(exchangeData.get(1).getSymbol());
-            sensexValue.setText(exchangeData.get(1).getCurrValue());
-            tv_check_connection.setText(exchangeData.get(2).getSymbol());
-            niftyValue.setText(exchangeData.get(2).getCurrValue());
-            tv_gold.setText(exchangeData.get(3).getSymbol());
-            goldValue.setText(exchangeData.get(3).getCurrValue());
+            try {
+                tv_Usder.setText(exchangeData.get(0).getSymbol());
+                usdrValue.setText(exchangeData.get(0).getCurrValue());
+                tv_sunsex.setText(exchangeData.get(1).getSymbol());
+                sensexValue.setText(exchangeData.get(1).getCurrValue());
+                tv_check_connection.setText(exchangeData.get(2).getSymbol());
+                niftyValue.setText(exchangeData.get(2).getCurrValue());
+                tv_gold.setText(exchangeData.get(3).getSymbol());
+                goldValue.setText(exchangeData.get(3).getCurrValue());
+            }catch (Exception e){
+
+            }
 
         }
     }
