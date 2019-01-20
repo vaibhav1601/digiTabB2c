@@ -513,14 +513,14 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
         loadCurrentSlide(SLIDETRANSITION.LEFTSLIDE);
     }
 
-    private void slideLeft() {
+    public void slideLeft() {
         if (mCurrentlySelectedSlideIndex < slides.size() - 1) {
             mCurrentlySelectedSlideIndex++;
             loadCurrentSlide(SLIDETRANSITION.LEFTSLIDE);
         }
     }
 
-    private void slideRight() {
+    public void slideRight() {
         if (mCurrentlySelectedSlideIndex > 0) {
             mCurrentlySelectedSlideIndex--;
             loadCurrentSlide(SLIDETRANSITION.RIGHTSLIDE);
