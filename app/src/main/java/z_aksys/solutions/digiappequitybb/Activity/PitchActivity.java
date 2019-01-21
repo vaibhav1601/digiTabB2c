@@ -361,7 +361,7 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
                 vPopupOverlay.setVisibility(View.GONE);
                 break;
             case CALCULATOR:
-                mnCalNavigation.setImageResource(R.drawable.ic_calc_o);
+                mnCalNavigation.setImageResource(R.drawable.ic_calc);
                 frgCalculator.setVisibility(View.GONE);
                 break;
             default:

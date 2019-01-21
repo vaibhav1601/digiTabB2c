@@ -3,74 +3,70 @@
     android:id="@+id/container"
     android:layout_width="wrap_content"
     android:layout_height="wrap_content"
-    android:gravity="center"
     android:background="@drawable/dialog_bg"
+    android:gravity="center"
     android:orientation="vertical">
 
-
-
-
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:background="@drawable/dialog_bg_header"
-            android:padding="5dp">
-
-            <TextView
-                android:id="@+id/tv_dialog_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:textSize="18sp"
-                android:textStyle="bold" />
-
-            <ImageView
-                android:id="@+id/ic_remove_icon"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:src="@drawable/baseline_cancel_black_18dp" />
-        </RelativeLayout>
-
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="15dp">
-
-            <z_aksys.solutions.digiappequitybb.CustomWidgets.RangeEditText
-                android:id="@+id/ret_numbers"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <z_aksys.solutions.digiappequitybb.CustomWidgets.RangeEditText
-                android:id="@+id/ret_investment"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-
-            <z_aksys.solutions.digiappequitybb.CustomWidgets.RangeEditText
-                android:id="@+id/ret_tenure"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/dialog_bg_header"
+        android:padding="5dp">
 
         <TextView
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginBottom="5dp"
-            android:background="@color/color_light_gray" />
-
-        <TextView
-            android:id="@+id/tv_total_earning"
-            android:layout_width="match_parent"
+            android:id="@+id/tv_dialog_title"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:padding="10dp"
-            android:textSize="24sp" />
+            android:layout_centerVertical="true"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
+        <ImageView
+            android:id="@+id/ic_remove_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginRight="5dp"
+            android:padding="5dp"
+            android:src="@drawable/ic_close_white_24dp" />
+    </RelativeLayout>
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="15dp">
 
+        <z_aksys.solutions.digiappequitybb.CustomWidgets.RangeEditText
+            android:id="@+id/ret_numbers"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
+        <z_aksys.solutions.digiappequitybb.CustomWidgets.RangeEditText
+            android:id="@+id/ret_investment"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <z_aksys.solutions.digiappequitybb.CustomWidgets.RangeEditText
+            android:id="@+id/ret_tenure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </LinearLayout>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
+        android:background="@color/color_light_gray" />
+
+    <TextView
+        android:id="@+id/tv_total_earning"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="10dp"
+        android:textSize="24sp" />
 
 </LinearLayout>

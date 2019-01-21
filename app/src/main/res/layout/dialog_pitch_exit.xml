@@ -22,7 +22,7 @@
             android:layout_margin="@dimen/_10sdp"
             android:textColor="@color/white"
             android:text="Customer Feedback "
-            android:textSize="@dimen/_10sdp"
+            android:textSize="18sp"
             android:textStyle="bold" />
 
 

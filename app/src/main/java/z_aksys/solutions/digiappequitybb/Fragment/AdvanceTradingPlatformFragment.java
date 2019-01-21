@@ -2,6 +2,8 @@ package z_aksys.solutions.digiappequitybb.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -24,7 +26,7 @@ public class AdvanceTradingPlatformFragment extends Fragment implements View.OnC
     private String slideUrl;
     private WebView wvSlide;
     private Button btnTradePlatform, btnMobileApp, btnSpeedPro;
-    private String[] advanceTradingPlatformImages = {"file:///android_asset/slides/p1.svg", "file:///android_asset/slides/p2.svg", "file:///android_asset/slides/p3.svg"};
+    private String[] advanceTradingPlatformImages = {"file:///android_asset/slides/p1.html", "file:///android_asset/slides/p2.html", "file:///android_asset/slides/p3.html"};
     private String[] advanceTradingPlatformTitle = {"Angle Broking Trade Features", "Angle Broking Mobile App", "Angle Speed Pro Features"};
 
     public AdvanceTradingPlatformFragment() {
@@ -61,6 +63,7 @@ public class AdvanceTradingPlatformFragment extends Fragment implements View.OnC
 
     private void showFeaturesDialog(int selectedSlideIndex) {
         final Dialog advanceTradingPlatform = new Dialog(getActivity());
+        advanceTradingPlatform.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View advanceTradingPlatformView = inflater.inflate(R.layout.dialog_advance_trading_platform, null);
         advanceTradingPlatform.setContentView(advanceTradingPlatformView);
@@ -84,8 +87,6 @@ public class AdvanceTradingPlatformFragment extends Fragment implements View.OnC
             @Override
             public Object instantiateItem(@NonNull ViewGroup container, int position) {
                 WebView wvPerformer= new WebView(getContext());
-                wvPerformer.getSettings().setLoadWithOverviewMode(true);
-                wvPerformer.getSettings().setUseWideViewPort(true);
                 wvPerformer.loadUrl(advanceTradingPlatformImages[position]);
                 container.addView(wvPerformer);
                 return wvPerformer;
