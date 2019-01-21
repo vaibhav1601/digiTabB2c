@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import java.text.NumberFormat;
@@ -45,6 +46,18 @@ public class RevenueModelFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         final View view = inflater.inflate(R.layout.fragment_revenue_model, container, false);
+
+        try {
+            boolean isSlide = getArguments().getBoolean("isSlide", false);
+
+            if (isSlide){
+                LinearLayout.LayoutParams layoutParams= (LinearLayout.LayoutParams) view.findViewById(R.id.container).getLayoutParams();
+                layoutParams.setMargins(0, 100, 0, 0);
+            }
+
+        }catch(Exception e){
+
+        }
 
         cwSIP = view.findViewById(R.id.cw_sip);
         cwLumpsum = view.findViewById(R.id.cw_lumpsum);

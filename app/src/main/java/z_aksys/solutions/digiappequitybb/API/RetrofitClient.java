@@ -12,7 +12,8 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-    private static final String BASE_URL = "http://leometric.in:80/";
+    //private static final String BASE_URL = "http://leometric.in:80/";
+    private static final String BASE_URL = "http://35.154.60.244/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;
 
@@ -27,10 +28,10 @@ public class RetrofitClient {
         HttpLoggingInterceptor interceptor = new HttpLoggingInterceptor();
         interceptor.setLevel(HttpLoggingInterceptor.Level.BODY);
         OkHttpClient okHttpClient = new OkHttpClient().newBuilder()
-                .connectTimeout(40, TimeUnit.SECONDS)
-                .readTimeout(60, TimeUnit.SECONDS)
+                .connectTimeout(5, TimeUnit.SECONDS)
+                .readTimeout(5, TimeUnit.SECONDS)
                 .addInterceptor(interceptor)
-                .writeTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(5, TimeUnit.SECONDS)
                 .build();
 
         retrofit = new Retrofit.Builder()

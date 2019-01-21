@@ -339,7 +339,12 @@ public class PitchData {
         pitchSlide17.id = 16;
         pitchSlide17.category = 4;
         pitchSlide17.isNative= true;
-        pitchSlide17.nativeSlide= new RevenueModelFragment();
+
+        Fragment revenueModelFragment= new RevenueModelFragment();
+        Bundle bundle4= new Bundle();
+        bundle4.putBoolean("isSlide", true);
+        revenueModelFragment.setArguments(bundle4);
+        pitchSlide17.nativeSlide= revenueModelFragment;
         pitchSlide17.slideThumbnailPath="slides/thumbnails/revenue-model.png";
         //pitchSlide17.path = "file:///android_asset/slides/13-ONE-APP-MULTIPLE-FEATURES.html";
         pitchSlide17.title.put(LANG_ENG, "Revenue Model");
