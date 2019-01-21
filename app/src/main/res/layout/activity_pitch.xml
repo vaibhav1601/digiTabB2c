@@ -30,7 +30,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:textAllCaps="true"
-        android:textColor="@color/black"
+        android:textColor="@color/slide_title_color"
         style="@style/custom_font_montserrat_black"
         android:textSize="26sp"
         android:textStyle="bold" />

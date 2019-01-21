@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import org.w3c.dom.Text;
@@ -24,6 +25,7 @@ import z_aksys.solutions.digiappequitybb.model.WeHaveGotYourBackFeature;
 public class WeGotYourBackFragment extends Fragment implements View.OnClickListener {
 
     private RecyclerView rvFeatureList;
+    private ImageView tabIcon24x7Services, tabIconExtensiveOffering, tabIconTrainingAssistance, tabIconUnmatchedSupport;
     private int mSelectedCategory;
 
     private ArrayList<WeHaveGotYourBackFeature> features;
@@ -78,13 +80,26 @@ public class WeGotYourBackFragment extends Fragment implements View.OnClickListe
         tvTrainingAssistance= view.findViewById(R.id.tb_training_assistance);
         tvUnmatchedSupport= view.findViewById(R.id.tb_unmatched_support);
 
+        tabIcon24x7Services= view.findViewById(R.id.tabIcon_24x7_services);
+        tabIconExtensiveOffering= view.findViewById(R.id.tabIcon_extensive_offerings);
+        tabIconTrainingAssistance= view.findViewById(R.id.tabIcon_training_assistance);
+        tabIconUnmatchedSupport= view.findViewById(R.id.tabIcon_unmatched_support);
+
         tv24x7Services.setOnClickListener(this);
         tvExtensiveOffering.setOnClickListener(this);
         tvTrainingAssistance.setOnClickListener(this);
         tvUnmatchedSupport.setOnClickListener(this);
 
         rvFeatureList= view.findViewById(R.id.rv_feature_list);
-        rvFeatureList.setLayoutManager(new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false));
+
+        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false) {
+            @Override
+            public boolean canScrollHorizontally() {
+                return false;
+            }
+        };
+
+        rvFeatureList.setLayoutManager(linearLayoutManager);
 
         navigationPanel= view.findViewById(R.id.navigation_panel);
         vDot1= view.findViewById(R.id.nav_dot1);
@@ -96,24 +111,33 @@ public class WeGotYourBackFragment extends Fragment implements View.OnClickListe
         mWeHaveGotYourBackFeatureListAdapter= new WeHaveGotYourBackFeatureListAdapter(getActivity(), features, 0, 0);
         rvFeatureList.setAdapter(mWeHaveGotYourBackFeatureListAdapter);
 
+        tv24x7Services.performLongClick();
+
         return view;
     }
 
     @Override
     public void onClick(View v) {
+
         switch (v.getId()){
             case R.id.tb_24x7_services:
                 mWeHaveGotYourBackFeatureListAdapter.updateSelection(0,0);
+                markAllTabUnSelectedOnUI();
+                tabIcon24x7Services.setVisibility(View.VISIBLE);
                 mSelectedCategory=0;
                 navigationPanel.setVisibility(View.GONE);
                 break;
             case R.id.tb_extensive_offerings:
                 mWeHaveGotYourBackFeatureListAdapter.updateSelection(1,0);
+                markAllTabUnSelectedOnUI();
+                tabIconExtensiveOffering.setVisibility(View.VISIBLE);
                 mSelectedCategory=1;
                 navigationPanel.setVisibility(View.GONE);
                 break;
             case R.id.tb_training_assistance:
                 mWeHaveGotYourBackFeatureListAdapter.updateSelection(2,0);
+                markAllTabUnSelectedOnUI();
+                tabIconTrainingAssistance.setVisibility(View.VISIBLE);
                 vDot1.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot_selected));
                 vDot2.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot));
                 mSelectedCategory=2;
@@ -121,6 +145,8 @@ public class WeGotYourBackFragment extends Fragment implements View.OnClickListe
                 break;
             case R.id.tb_unmatched_support:
                 mWeHaveGotYourBackFeatureListAdapter.updateSelection(3,0);
+                markAllTabUnSelectedOnUI();
+                tabIconUnmatchedSupport.setVisibility(View.VISIBLE);
                 vDot1.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot_selected));
                 vDot2.setBackground(getActivity().getResources().getDrawable(R.drawable.navigation_dot));
                 mSelectedCategory= 3;
@@ -139,5 +165,12 @@ public class WeGotYourBackFragment extends Fragment implements View.OnClickListe
                 default:
                     break;
         }
+    }
+
+    private void markAllTabUnSelectedOnUI(){
+        tabIcon24x7Services.setVisibility(View.GONE);
+        tabIconExtensiveOffering.setVisibility(View.GONE);
+        tabIconTrainingAssistance.setVisibility(View.GONE);
+        tabIconUnmatchedSupport.setVisibility(View.GONE);
     }
 }
