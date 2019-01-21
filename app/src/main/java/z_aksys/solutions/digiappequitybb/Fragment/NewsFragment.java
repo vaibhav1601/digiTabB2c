@@ -35,6 +35,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
@@ -63,15 +64,30 @@ import static z_aksys.solutions.digiappequitybb.utils.Constants.appSec;
 import static z_aksys.solutions.digiappequitybb.utils.Constants.user;
 
 public class NewsFragment extends Fragment implements OnClickVideo {
-
+    private static final String CURRENT_DATE_FORMAT = "yyyy-MM-dd";
     public List<NewsResponse.News> newsResponseList;
     LayoutInflater layoutInflater;
     int orientation;
     boolean potrate;
     PitchServices pitchServices;
-    private RecyclerView recyclerView;
-    private TextView txt_date;
-    private MultiViewTypeAdapter adapter;
+    private RecyclerView recyclerView1;
+    private RecyclerView recyclerView2;
+    private RecyclerView recyclerView3;
+    private RecyclerView recyclerView4;
+    private RecyclerView recyclerView5;
+    private RecyclerView recyclerView6;
+    private TextView txt_date1;
+    private TextView txt_date2;
+    private TextView txt_date3;
+    private TextView txt_date4;
+    private TextView txt_date5;
+    private TextView txt_date6;
+    private MultiViewTypeAdapter adapter1;
+    private MultiViewTypeAdapter adapter2;
+    private MultiViewTypeAdapter adapter3;
+    private MultiViewTypeAdapter adapter4;
+    private MultiViewTypeAdapter adapter5;
+    private MultiViewTypeAdapter adapter6;
     private List<News> albumList;
     private AppCompatImageView btn_goal;
     private String VideoId, newsUrl;
@@ -84,14 +100,42 @@ public class NewsFragment extends Fragment implements OnClickVideo {
     private int pastVisibleitem, visibleItemCount, totalItemCount, previousTotal = 0;
     private int viewtueshole = 100;
     private int hasNext;
-    private RecyclerView.LayoutManager mLayoutManager;
-
+    private RecyclerView.LayoutManager mLayoutManager1;
+    private RecyclerView.LayoutManager mLayoutManager2;
+    private RecyclerView.LayoutManager mLayoutManager3;
+    private RecyclerView.LayoutManager mLayoutManager4;
+    private RecyclerView.LayoutManager mLayoutManager5;
+    private RecyclerView.LayoutManager mLayoutManager6;
     private int span;
     private LinearLayout linearLayout;
 
-
     public NewsFragment() {
         // Required empty public constructor
+    }
+
+    public final static String format(Date date) {
+        DateFormat dateFormat = new SimpleDateFormat(CURRENT_DATE_FORMAT);
+        return dateFormat.format(date);
+    }
+
+    public final static String formatToday() {
+        return format(new Date());
+    }
+
+    public final static String formatYesterday() {
+        return format(new Date(new Date().getTime() - 24 * 3600 * 1000));
+    }
+
+    public final static String formatdayBeforeYesterday() {
+        return format(new Date(new Date().getTime() - 48 * 3600 * 1000));
+    }
+
+    public final static String formatdayBeforeBeforeYesterday() {
+        return format(new Date(new Date().getTime() - 72 * 3600 * 1000));
+    }
+
+    public final static String formatdayBeforeBeforeBeforYesterday() {
+        return format(new Date(new Date().getTime() - 96 * 28800 * 4000));
     }
 
     @Override
@@ -112,8 +156,12 @@ public class NewsFragment extends Fragment implements OnClickVideo {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
 
-        recyclerView = (RecyclerView) getView().findViewById(R.id.recycler_view);
-
+        recyclerView1 = (RecyclerView) getView().findViewById(R.id.recycler_view);
+        recyclerView2 = (RecyclerView) getView().findViewById(R.id.recycler_view_dummy);
+        recyclerView3 = (RecyclerView) getView().findViewById(R.id.recycler_view_dummy1);
+        recyclerView4 = (RecyclerView) getView().findViewById(R.id.recycler_view_dummy4);
+        recyclerView5 = (RecyclerView) getView().findViewById(R.id.recycler_view_dummy5);
+        recyclerView6 = (RecyclerView) getView().findViewById(R.id.recycler_view_dummy6);
 
         if (AngelPitchUtil.getScreenOrientation(getActivity()) == 1) {
             orientation = Configuration.ORIENTATION_PORTRAIT;
@@ -131,20 +179,60 @@ public class NewsFragment extends Fragment implements OnClickVideo {
 
     }
 
-
     private void setValue() {
-        mLayoutManager = new GridLayoutManager(getContext(), span);
-        recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(span, dpToPx(60), true));
-        recyclerView.setItemAnimator(new DefaultItemAnimator());
-        txt_date = (TextView) getView().findViewById(R.id.txtDate);
+        mLayoutManager1 = new GridLayoutManager(getContext(), span);
+        recyclerView1.setLayoutManager(mLayoutManager1);
+        recyclerView1.addItemDecoration(new GridSpacingItemDecoration(span, dpToPx(60), true));
+        recyclerView1.setItemAnimator(new DefaultItemAnimator());
+        txt_date1 = (TextView) getView().findViewById(R.id.txtDate);
 
-       // linearLayout.setVisibility(View.VISIBLE);
+
+        mLayoutManager2 = new GridLayoutManager(getContext(), span);
+        recyclerView2.setLayoutManager(mLayoutManager2);
+        recyclerView2.addItemDecoration(new GridSpacingItemDecoration(span, dpToPx(60), true));
+        recyclerView2.setItemAnimator(new DefaultItemAnimator());
+        txt_date2 = (TextView) getView().findViewById(R.id.txtDate2);
+
+
+        mLayoutManager3 = new GridLayoutManager(getContext(), span);
+        recyclerView3.setLayoutManager(mLayoutManager3);
+        recyclerView3.addItemDecoration(new GridSpacingItemDecoration(span, dpToPx(60), true));
+        recyclerView3.setItemAnimator(new DefaultItemAnimator());
+        txt_date3 = (TextView) getView().findViewById(R.id.txtDate3);
+
+
+        mLayoutManager4 = new GridLayoutManager(getContext(), span);
+        recyclerView4.setLayoutManager(mLayoutManager4);
+        recyclerView4.addItemDecoration(new GridSpacingItemDecoration(span, dpToPx(60), true));
+        recyclerView4.setItemAnimator(new DefaultItemAnimator());
+        txt_date4 = (TextView) getView().findViewById(R.id.txtDate4);
+
+
+        mLayoutManager5 = new GridLayoutManager(getContext(), span);
+        recyclerView5.setLayoutManager(mLayoutManager5);
+        recyclerView5.addItemDecoration(new GridSpacingItemDecoration(span, dpToPx(60), true));
+        recyclerView5.setItemAnimator(new DefaultItemAnimator());
+        txt_date5 = (TextView) getView().findViewById(R.id.txtDate5);
+
+
+        mLayoutManager6 = new GridLayoutManager(getContext(), span);
+        recyclerView6.setLayoutManager(mLayoutManager6);
+        recyclerView6.addItemDecoration(new GridSpacingItemDecoration(span, dpToPx(60), true));
+        recyclerView6.setItemAnimator(new DefaultItemAnimator());
+        txt_date6 = (TextView) getView().findViewById(R.id.txtDate6);
+
+
+        // linearLayout.setVisibility(View.VISIBLE);
         Calendar c = new GregorianCalendar();
         Date dt = new Date(c.getTimeInMillis());
         DateFormat dtformat;
         dtformat = DateFormat.getDateInstance(DateFormat.FULL);
-        txt_date.setText(dtformat.format(dt));
+        //  txt_date.setText(dtformat.format(dt));
+        //  txt_date2.setText(dtformat.format(dt));
+        // txt_date3.setText(dtformat.format(dt));
+        // txt_date4.setText(dtformat.format(dt));
+        //  txt_date5.setText(dtformat.format(dt));
+
 
         if (AngelPitchUtil.checkConnection(getActivity())) {
             showNewsDetails();
@@ -154,7 +242,6 @@ public class NewsFragment extends Fragment implements OnClickVideo {
             Toast.makeText(getActivity(), "please connect the internet", Toast.LENGTH_LONG).show();
         }
     }
-
 
     protected void replaceFragment(Fragment fragmentName, boolean isAddToBackStack) {
         FragmentTransaction fragmentTransaction = getActivity().getSupportFragmentManager().beginTransaction();
@@ -199,18 +286,22 @@ public class NewsFragment extends Fragment implements OnClickVideo {
         }
     }
 
-
     private void callAdapter() {
-
+/*
         if (!ObjectUtils.isEmpty(newsResponseList)) {
             adapter = new MultiViewTypeAdapter(newsResponseList, getContext(), this, potrate);
             adapter.notifyDataSetChanged();
             recyclerView.setAdapter(adapter);
-        }
+            recycler_view_dummy.setAdapter(adapter);
+            recycler_view_dummy1.setAdapter(adapter);
+            recycler_view_dummy2.setAdapter(adapter);
+            recycler_view_dummy3.setAdapter(adapter);
+            recycler_view_dummy4.setAdapter(adapter);
+
+        }*/
 
 
     }
-
 
     private void showNewsDetails() {
         showProgress();
@@ -239,14 +330,14 @@ public class NewsFragment extends Fragment implements OnClickVideo {
             }
         });
 
-        recyclerView.addOnScrollListener(new RecyclerView.OnScrollListener() {
+        recyclerView1.addOnScrollListener(new RecyclerView.OnScrollListener() {
             @Override
             public void onScrolled(@NonNull RecyclerView recyclerView, int dx, int dy) {
                 super.onScrolled(recyclerView, dx, dy);
 
-                visibleItemCount = mLayoutManager.getChildCount();
-                totalItemCount = mLayoutManager.getItemCount();
-                pastVisibleitem = ((GridLayoutManager) mLayoutManager).findFirstVisibleItemPosition();
+                visibleItemCount = mLayoutManager1.getChildCount();
+                totalItemCount = mLayoutManager1.getItemCount();
+                pastVisibleitem = ((GridLayoutManager) mLayoutManager1).findFirstVisibleItemPosition();
 
                 if (dy > 0) {
                     if (isLoading) {
@@ -268,7 +359,6 @@ public class NewsFragment extends Fragment implements OnClickVideo {
         });
 
     }
-
 
     private void callPagination() {
         showProgress();
@@ -301,7 +391,6 @@ public class NewsFragment extends Fragment implements OnClickVideo {
 
     }
 
-
     @Override
     public void VideoId(String videoId, String newsId) {
 
@@ -309,7 +398,7 @@ public class NewsFragment extends Fragment implements OnClickVideo {
         //start youtube player activity by passing selected video id via intent
         startActivity(new Intent(getActivity(), YoutubePlayerActivity.class)
                 .putExtra("video_id", VideoId)
-        .putExtra("newsId", newsId));
+                .putExtra("newsId", newsId));
 
     }
 
@@ -326,7 +415,6 @@ public class NewsFragment extends Fragment implements OnClickVideo {
 
 
     }
-
 
     public void newsView(Context context) {
 
@@ -414,6 +502,205 @@ public class NewsFragment extends Fragment implements OnClickVideo {
         }
     }
 
+    private void dateSorting() {
+
+        List<NewsResponse.News> formatToday = new ArrayList<>();
+        List<NewsResponse.News> formatYesterday = new ArrayList<>();
+        List<NewsResponse.News> formatdayBeforeYesterday = new ArrayList<>();
+        List<NewsResponse.News> formatdayBBYesterday = new ArrayList<>();
+        List<NewsResponse.News> formatdayBBBYesterday = new ArrayList<>();
+        List<NewsResponse.News> previousNews = new ArrayList<>();
+        String todaysDate = null;
+        String yesterday = null;
+        String dayBeforeyesterday = null;
+        String dayBBYesterday = null;
+        String dayBBBYesterday = null;
+        String pattern = "yyyy-MM-dd";
+        SimpleDateFormat simpleDateFormat = new SimpleDateFormat(pattern);
+        String date = simpleDateFormat.format(new Date());
+        System.out.println("date>>>>>>" + date);
+
+
+        if (!ObjectUtils.isEmpty(newsResponseList)) {
+            for (NewsResponse.News news : newsResponseList) {
+                String publishDate = news.getPublish_date();
+                String[] todayDate = publishDate.split(" ");
+                SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+                todaysDate = formatToday();
+                yesterday = formatYesterday();
+                dayBeforeyesterday = formatdayBeforeYesterday();
+                dayBBYesterday = formatdayBeforeBeforeYesterday();
+                dayBBBYesterday = formatdayBeforeBeforeBeforYesterday();
+
+                if (todayDate[0].equalsIgnoreCase(todaysDate)) {
+                    formatToday.add(news);
+
+                }
+                if (todayDate[0].equalsIgnoreCase(yesterday)) {
+                    formatYesterday.add(news);
+
+                }
+                if (todayDate[0].equalsIgnoreCase(dayBeforeyesterday)) {
+                    formatdayBeforeYesterday.add(news);
+
+                }
+                if (todayDate[0].equalsIgnoreCase(dayBBYesterday)) {
+                    formatdayBBYesterday.add(news);
+
+                }
+                if (todayDate[0].equalsIgnoreCase(dayBBBYesterday)) {
+                    formatdayBBBYesterday.add(news);
+
+                } else {
+                    // previousNews.add(news);
+                }
+
+
+
+               /* Date date1 = null;
+                try {
+                    date1 = sdf.parse(date);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+                Date date2 = null;
+                try {
+                    date2 = sdf.parse(todayDate[0]);
+                } catch (ParseException e) {
+                    e.printStackTrace();
+                }
+
+                if (date1.compareTo(date2) > 0) {
+                    System.out.println("Date1 is after Date2");
+                    previousNews.add(news);
+
+
+                } else if (date1.compareTo(date2) < 0) {
+                    System.out.println("Date1 is before Date2");
+                } else if (date1.compareTo(date2) == 0) {
+                    System.out.println("Date1 is equal to Date2");
+
+                    todaysNews.add(news);
+
+                } else {
+
+                    System.out.println("How to get here?");
+
+                }*/
+
+            }
+
+            callAdapterTodays(formatToday, todaysDate);
+            calAdapteryesterday(formatYesterday, yesterday);
+            calAdapterDayByesterday(formatdayBeforeYesterday, dayBeforeyesterday);
+            calAdapterDayBByesterday(formatdayBBYesterday, dayBBYesterday);
+            calAdapterDayBBByesterday(formatdayBBBYesterday, dayBBBYesterday);
+            callAdapterPrevious(previousNews);
+
+
+        }
+
+    }
+
+
+    private void callAdapterTodays(List<NewsResponse.News> todaysNews, String todaysDate) {
+
+        if (!ObjectUtils.isEmpty(todaysNews)) {
+
+            txt_date1.setVisibility(View.VISIBLE);
+            txt_date1.setText(todaysDate);
+            adapter1 = new MultiViewTypeAdapter(todaysNews, getContext(), this, potrate);
+            adapter1.notifyDataSetChanged();
+            recyclerView1.setAdapter(adapter1);
+
+
+        } else {
+            txt_date1.setVisibility(View.GONE);
+            recyclerView1.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void calAdapteryesterday(List<NewsResponse.News> formatYesterday, String yesterday) {
+
+        if (!ObjectUtils.isEmpty(formatYesterday)) {
+            txt_date2.setVisibility(View.VISIBLE);
+            txt_date2.setText(yesterday);
+            adapter2 = new MultiViewTypeAdapter(formatYesterday, getContext(), this, potrate);
+            adapter2.notifyDataSetChanged();
+            recyclerView2.setAdapter(adapter2);
+
+
+        } else {
+            recyclerView2.setVisibility(View.GONE);
+            txt_date2.setVisibility(View.GONE);
+        }
+
+    }
+
+    private void calAdapterDayByesterday(List<NewsResponse.News> formatdayBeforeYesterday, String dayBeforeyesterday) {
+
+        if (!ObjectUtils.isEmpty(formatdayBeforeYesterday)) {
+            txt_date3.setVisibility(View.VISIBLE);
+            txt_date3.setText(dayBeforeyesterday);
+            adapter3 = new MultiViewTypeAdapter(formatdayBeforeYesterday, getContext(), this, potrate);
+            adapter3.notifyDataSetChanged();
+            recyclerView3.setAdapter(adapter3);
+
+
+        } else {
+            txt_date3.setVisibility(View.GONE);
+            recyclerView3.setVisibility(View.GONE);
+        }
+    }
+
+    private void calAdapterDayBByesterday(List<NewsResponse.News> formatdayBBYesterday, String dayBBYesterday) {
+
+        if (!ObjectUtils.isEmpty(formatdayBBYesterday)) {
+            txt_date4.setVisibility(View.VISIBLE);
+            txt_date4.setText(dayBBYesterday);
+            adapter4 = new MultiViewTypeAdapter(formatdayBBYesterday, getContext(), this, potrate);
+            adapter4.notifyDataSetChanged();
+            recyclerView4.setAdapter(adapter4);
+
+
+        } else {
+            txt_date4.setVisibility(View.GONE);
+            recyclerView4.setVisibility(View.GONE);
+        }
+    }
+
+    private void calAdapterDayBBByesterday(List<NewsResponse.News> formatdayBBBYesterday, String dayBBBYesterday) {
+        if (!ObjectUtils.isEmpty(formatdayBBBYesterday)) {
+            txt_date5.setVisibility(View.VISIBLE);
+            txt_date5.setText(dayBBBYesterday);
+            adapter5 = new MultiViewTypeAdapter(formatdayBBBYesterday, getContext(), this, potrate);
+            adapter5.notifyDataSetChanged();
+            recyclerView5.setAdapter(adapter4);
+
+
+        } else {
+            txt_date5.setVisibility(View.GONE);
+            recyclerView5.setVisibility(View.GONE);
+        }
+    }
+
+    private void callAdapterPrevious(List<NewsResponse.News> previousNews) {
+
+        if (!ObjectUtils.isEmpty(previousNews)) {
+            txt_date6.setVisibility(View.VISIBLE);
+            txt_date6.setText("Previous news");
+            adapter6 = new MultiViewTypeAdapter(previousNews, getContext(), this, potrate);
+            adapter6.notifyDataSetChanged();
+            recyclerView6.setAdapter(adapter6);
+
+
+        } else {
+            recyclerView6.setVisibility(View.GONE);
+        }
+
+    }
+
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
         private int spanCount;
@@ -436,14 +723,14 @@ public class NewsFragment extends Fragment implements OnClickVideo {
                 outRect.right = (column + 1) * spacing / spanCount - 20; // (column + 1) * ((1f / spanCount) * spacing)
 
                 if (position < spanCount) { // top edge
-                    outRect.top = spacing - 10;
+                    //outRect.top = spacing - 10;
                 }
-                outRect.bottom = spacing - 10; // item bottom
+                outRect.bottom = spacing - 40; // item bottom
             } else {
                 outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
                 outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
                 if (position >= spanCount) {
-                    outRect.top = spacing; // item top
+                    //outRect.top = spacing; // item top
                 }
             }
         }
@@ -499,7 +786,6 @@ public class NewsFragment extends Fragment implements OnClickVideo {
         }
     }
 
-
     private class GetNewsTask extends AsyncTask<String, String, Boolean> {
 
 
@@ -539,7 +825,8 @@ public class NewsFragment extends Fragment implements OnClickVideo {
             // Toast.makeText(getContext(), "on post news", Toast.LENGTH_LONG).show();
 
             // execution of result of Long time consuming operation
-            callAdapter();
+            // callAdapter();
+            dateSorting();
             //hideProgress();
 
 
@@ -557,6 +844,7 @@ public class NewsFragment extends Fragment implements OnClickVideo {
 
         }
     }
+
 
 
 }

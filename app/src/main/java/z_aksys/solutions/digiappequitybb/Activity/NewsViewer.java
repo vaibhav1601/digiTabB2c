@@ -4,19 +4,16 @@ import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.webkit.WebChromeClient;
 import android.webkit.WebResourceError;
 import android.webkit.WebResourceRequest;
 import android.webkit.WebView;
 import android.webkit.WebViewClient;
 
-import java.util.HashMap;
-
 import z_aksys.solutions.digiappequitybb.R;
-import z_aksys.solutions.digiappequitybb.utils.CleverTapUtils;
 
 public class NewsViewer extends AppCompatActivity {
+
 
     protected WebView webView;
     private String newsurl;
@@ -27,16 +24,16 @@ public class NewsViewer extends AppCompatActivity {
         setContentView(R.layout.newsviewer);
         webView = (WebView) findViewById(R.id.webview);
 
-        newsurl = getIntent().getStringExtra("newsUrl");
+        //newsurl = getIntent().getStringExtra("newsUrl");
 
-        Log.d("url", newsurl);
+        //Log.d("url", newsurl);
 
-        HashMap<String, Object> newsViewedEventProperties = new HashMap<>();
+        /*HashMap<String, Object> newsViewedEventProperties = new HashMap<>();
         newsViewedEventProperties.put("url", newsurl);
         CleverTapUtils.getInstance(this).logCustomEvent("News Viewed", newsViewedEventProperties);
-
+*/
         initWebView();
-        webView.loadUrl(newsurl);
+        webView.loadUrl("https://ncdexmandi.com/home/kheti_ke_sikander");
 
     }
 

@@ -19,6 +19,7 @@ import java.util.List;
 import z_aksys.solutions.digiappequitybb.App;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Response.FaqSearchResponse;
+import z_aksys.solutions.digiappequitybb.utils.ObjectUtils;
 
 public class FaqSearchAdapter extends RecyclerView.Adapter<FaqSearchAdapter.MyViewHolder> {
 
@@ -49,44 +50,49 @@ public class FaqSearchAdapter extends RecyclerView.Adapter<FaqSearchAdapter.MyVi
         final FaqSearchResponse.faq_search object = faq_searchList.get(position);
 
 
-        holder.textViewName.setText(Html.fromHtml(object.getQuestion()));
+        if (ObjectUtils.isNotNull(object)) {
+
+            holder.textViewName.setText(Html.fromHtml(object.getQuestion()));
 
 
-        holder.txtAns.setText(Html.fromHtml(object.getAnswer()));
+            holder.txtAns.setText(Html.fromHtml(object.getAnswer()));
 
-        holder.textViewName.setBackgroundColor(Color.WHITE);
-        holder.textViewName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_black_24dp, 0);
+            holder.textViewName.setBackgroundColor(Color.WHITE);
+            holder.textViewName.setTextColor(App.getContext().getResources().getColor(R.color.black));
+            holder.textViewName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_down_black_24dp, 0);
 
 
+            holder.linearLayout.setVisibility(View.GONE);
 
-        holder.linearLayout.setVisibility(View.GONE);
+            //if the position is equals to the item position which is to be expanded
+            if (currentPosition == position) {
+                //creating an animation
+                Animation slideDown = AnimationUtils.loadAnimation(mContext, R.anim.slide_up);
 
-        //if the position is equals to the item position which is to be expanded
-        if (currentPosition == position) {
-            //creating an animation
-            Animation slideDown = AnimationUtils.loadAnimation(mContext, R.anim.slide_up);
+                //toggling visibility
+                holder.linearLayout.setVisibility(View.VISIBLE);
+                holder.textViewName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_black_24dp, 0);
 
-            //toggling visibility
-            holder.linearLayout.setVisibility(View.VISIBLE);
-            holder.textViewName.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_keyboard_arrow_up_black_24dp, 0);
+                holder.textViewName.setBackgroundColor(App.getContext().getResources().getColor(R.color.blue_bestpolicy));
+                holder.textViewName.setTextColor(App.getContext().getResources().getColor(R.color.white));
 
-            holder.textViewName.setBackgroundColor(App.getContext().getResources().getColor(R.color.button_color));
-
-            //adding sliding effect
-            holder.linearLayout.startAnimation(slideDown);
-        }
-
-        holder.textViewName.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-                //getting the position of the item to expand it
-                currentPosition = position;
-
-                //reloding the list
-                notifyDataSetChanged();
+                //adding sliding effect
+                holder.linearLayout.startAnimation(slideDown);
             }
-        });
+
+            holder.textViewName.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+
+                    //getting the position of the item to expand it
+                    currentPosition = position;
+
+                    //reloding the list
+                    notifyDataSetChanged();
+                }
+            });
+
+        }
 
 
     }

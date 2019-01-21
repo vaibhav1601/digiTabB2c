@@ -11,10 +11,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/ll_header"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/dimen_8_dp"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
         android:clipToPadding="true"
         android:scrollbars="vertical" />
 

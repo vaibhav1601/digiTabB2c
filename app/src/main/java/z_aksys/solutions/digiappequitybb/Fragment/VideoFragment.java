@@ -86,7 +86,7 @@ public class VideoFragment extends Fragment implements OnClickVideo {
 
     private void getShareVideo() {
         showProgress();
-        Call<ShareVideoResponse> myResponsecall = pitchServices.getShareVideo("application/json", appKey, appSec, user, firstPage, pageLimit,1);
+        Call<ShareVideoResponse> myResponsecall = pitchServices.getShareVideo("application/json", appKey, appSec, user, firstPage, pageLimit, 1);
         myResponsecall.enqueue(new Callback<ShareVideoResponse>() {
             @Override
             public void onResponse(Call<ShareVideoResponse> call, Response<ShareVideoResponse> response) {
@@ -151,7 +151,7 @@ public class VideoFragment extends Fragment implements OnClickVideo {
 
         showProgress();
 
-        Call<ShareVideoResponse> myResponsecall = pitchServices.getShareVideo("application/json", appKey, appSec, user, firstPage, pageLimit,1);
+        Call<ShareVideoResponse> myResponsecall = pitchServices.getShareVideo("application/json", appKey, appSec, user, firstPage, pageLimit, 1);
 
         myResponsecall.enqueue(new Callback<ShareVideoResponse>() {
             @Override
@@ -249,14 +249,14 @@ public class VideoFragment extends Fragment implements OnClickVideo {
                 outRect.right = (column + 1) * spacing / spanCount - 20; // (column + 1) * ((1f / spanCount) * spacing)
 
                 if (position < spanCount) { // top edge
-                    outRect.top = spacing - 10;
+                    //outRect.top = spacing - 10;
                 }
-                outRect.bottom = spacing - 10; // item bottom
+                outRect.bottom = spacing - 40; // item bottom
             } else {
                 outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
                 outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
                 if (position >= spanCount) {
-                    outRect.top = spacing; // item top
+                    //outRect.top = spacing; // item top
                 }
             }
         }

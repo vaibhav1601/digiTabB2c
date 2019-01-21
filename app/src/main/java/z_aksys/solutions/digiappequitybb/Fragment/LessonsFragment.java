@@ -12,6 +12,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.text.TextUtils;
 import android.util.TypedValue;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
@@ -29,13 +30,18 @@ import z_aksys.solutions.digiappequitybb.Database.PitchRoomDatabase;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Response.LearnResponse;
 import z_aksys.solutions.digiappequitybb.listener.OnClickLessons;
+import z_aksys.solutions.digiappequitybb.utils.AngelSharedPrefance;
 import z_aksys.solutions.digiappequitybb.utils.ObjectUtils;
 
 
 public class LessonsFragment extends Fragment implements OnClickLessons {
 
 
+
     RecyclerView.LayoutManager mLayoutManager;
+    AngelSharedPrefance sharedPrefance;
+    String totalLesstion;
+    String completedLesstion;
     private RecyclerView recycler_view_lessons;
     private LessonsAdapter lessonsAdapter;
     private ProgressDialog progressDialog;
@@ -79,6 +85,8 @@ public class LessonsFragment extends Fragment implements OnClickLessons {
         recycler_view_lessons.setLayoutManager(mLayoutManager);
         recycler_view_lessons.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(60), true));
         recycler_view_lessons.setItemAnimator(new DefaultItemAnimator());
+        sharedPrefance = new AngelSharedPrefance(getContext());
+
 
         txtlearn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -114,6 +122,27 @@ public class LessonsFragment extends Fragment implements OnClickLessons {
                 topicId = bundle.getString("ID");
 
             }
+            if (bundle.containsKey("total_lessons")) {
+                totalLesstion = bundle.getString("total_lessons");
+
+            }
+
+            if (bundle.containsKey("completed_lessons")) {
+                completedLesstion = bundle.getString("completed_lessons");
+
+            }
+
+            if (!TextUtils.isEmpty(totalLesstion) && (!TextUtils.isEmpty(completedLesstion))) {
+
+                txt_score_card.setText(completedLesstion + "/" + totalLesstion);
+
+                if (seekBar2 != null) {
+                    seekBar2.setMax(0);
+                    seekBar2.setMax(ObjectUtils.getIntFromString(totalLesstion));
+                    seekBar2.setProgress(ObjectUtils.getIntFromString(completedLesstion));
+                }
+
+            }
 
 
         }
@@ -125,10 +154,9 @@ public class LessonsFragment extends Fragment implements OnClickLessons {
     }
 
     @Override
-    public void lessonId(String Id, int position) {
+    public void lessonId(String Id, int position, String completed_lessons, String total_lessons) {
+        sharedPrefance.setHelathAPI("topicName",completed_lessons);
         Bundle bundle = new Bundle();
-        // bundle.putSerializable(Constants.lESSIONS, new ArrayList<LearnResponse.lessons>(lessonsArrayList));
-        // bundle.putSerializable(Constants.QUESTIONS, new ArrayList<LearnResponse.questions>(questionsArrayList));
         bundle.putString("lessionID", Id);
         bundle.putString("topicID", topicId);
         bundle.putInt("position", position);
@@ -212,14 +240,14 @@ public class LessonsFragment extends Fragment implements OnClickLessons {
                 outRect.right = (column + 1) * spacing / spanCount - 20; // (column + 1) * ((1f / spanCount) * spacing)
 
                 if (position < spanCount) { // top edge
-                    outRect.top = spacing - 10;
+                    //outRect.top = spacing - 10;
                 }
-                outRect.bottom = spacing - 10; // item bottom
+                outRect.bottom = spacing - 40; // item bottom
             } else {
                 outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
                 outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
                 if (position >= spanCount) {
-                    outRect.top = spacing; // item top
+                    //outRect.top = spacing; // item top
                 }
             }
         }
@@ -245,7 +273,7 @@ public class LessonsFragment extends Fragment implements OnClickLessons {
         @Override
         protected Boolean doInBackground(String... strings) {
 
-            lessonsArrayList= new ArrayList<>();
+            lessonsArrayList = new ArrayList<>();
             pitchRoomDatabase = PitchRoomDatabase.getDatabase(getContext());
             learnDao = pitchRoomDatabase.learnDao();
             //  lessonsArrayList = learnDao.getlessonsWithId(ObjectUtils.getStringFromInt(id));
@@ -274,6 +302,7 @@ public class LessonsFragment extends Fragment implements OnClickLessons {
         }
 
     }
+
 
 
 }

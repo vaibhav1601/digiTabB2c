@@ -11,6 +11,7 @@ import java.util.ArrayList;
 
 public class NewsResponse {
 
+
     @SerializedName("status")
     private String status;
     @SerializedName("message")
@@ -92,6 +93,8 @@ public class NewsResponse {
         private String image;
         @SerializedName("youtube_id")
         private String youtube_id;
+        @SerializedName("source")
+        private String source;
         @SerializedName("source_link")
         private String source_link;
 
@@ -170,7 +173,13 @@ public class NewsResponse {
         }
 
 
-    }
+        public String getSource() {
+            return source;
+        }
 
+        public void setSource(String source) {
+            this.source = source;
+        }
+    }
 
 }

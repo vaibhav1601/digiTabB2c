@@ -16,6 +16,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.Window;
+import android.webkit.WebView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
@@ -60,7 +61,7 @@ public class LessonsViewer extends Fragment {
     private List<LearnResponse.questions> questionsArrayList;
     private String lessionName;
     private ImageView img_lessions_view;
-    private TextView txt_discription;
+    private WebView webView;
     private TextView btn_master_topic;
     private TextView txtlearnview, topic;
     private TextView btn_next;
@@ -89,7 +90,7 @@ public class LessonsViewer extends Fragment {
         final View view = inflater.inflate(R.layout.lessions_viewer, container, false);
 
         img_lessions_view = (ImageView) view.findViewById(R.id.img_lessions_view);
-        txt_discription = (TextView) view.findViewById(R.id.txt_lessionsviewer);
+        webView = (WebView) view.findViewById(R.id.webViewlession);
         topic = (TextView) view.findViewById(R.id.topic);
         btn_master_topic = (TextView) view.findViewById(R.id.btn_master);
         btn_next = (TextView) view.findViewById(R.id.btn_after);
@@ -99,6 +100,7 @@ public class LessonsViewer extends Fragment {
         setData();
         sharedPrefManager = new AngelSharedPrefance(App.getContext());
         myServerData = new MyServerData();
+
 
         txtlearnview.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -195,7 +197,11 @@ public class LessonsViewer extends Fragment {
 
             topic.setText(lessonsArrayList.get(0).getName());
             Glide.with(getActivity()).load(lessonsArrayList.get(0).getImage()).into(img_lessions_view);
-            txt_discription.setText(Html.fromHtml(lessonsArrayList.get(0).getDescription()));
+            //txt_discription.setText(Html.fromHtml(lessonsArrayList.get(0).getDescription()));
+
+            String htmlAsString = lessonsArrayList.get(0).getDescription();
+
+            webView.loadDataWithBaseURL(null, htmlAsString, "text/html", "utf-8", null);
 
 
         }
@@ -719,8 +725,6 @@ public class LessonsViewer extends Fragment {
             }
 
 
-
-
             return true;
         }
 
@@ -769,8 +773,7 @@ public class LessonsViewer extends Fragment {
             questionsArrayList = learnDao.getPreviousquestion(nextlessionId);
             lessionName = learnDao.lessionName(topicId);
 
-            if(!ObjectUtils.isEmpty(lessonsArrayList))
-            {
+            if (!ObjectUtils.isEmpty(lessonsArrayList)) {
                 nextlessionId = lessonsArrayList.get(0).getLesson_id();
                 Log.d("prID", "" + nextlessionId);
 

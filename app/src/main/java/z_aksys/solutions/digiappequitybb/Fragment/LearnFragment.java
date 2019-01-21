@@ -170,12 +170,14 @@ public class LearnFragment extends Fragment implements OnClickLessons {
 
 
     @Override
-    public void lessonId(String Id, int postion) {
+    public void lessonId(String Id, int postion, String completed_lessons, String total_lessons) {
 
         Bundle bundle = new Bundle();
         //  bundle.putSerializable(Constants.lESSIONS, new ArrayList<LearnResponse.lessons>(lessonsArrayList));
         // bundle.putSerializable(Constants.QUESTIONS, new ArrayList<LearnResponse.questions>(questionsArrayList));
         bundle.putString("ID", Id);
+        bundle.putString("completed_lessons", completed_lessons);
+        bundle.putString("total_lessons", total_lessons);
         LessonsFragment fragment2 = new LessonsFragment();
         fragment2.setArguments(bundle);
         replaceFragment(fragment2, true);
@@ -272,14 +274,14 @@ public class LearnFragment extends Fragment implements OnClickLessons {
                 outRect.right = (column + 1) * spacing / spanCount - 20; // (column + 1) * ((1f / spanCount) * spacing)
 
                 if (position < spanCount) { // top edge
-                    outRect.top = spacing - 10;
+                    //outRect.top = spacing - 10;
                 }
-                outRect.bottom = spacing - 10; // item bottom
+                outRect.bottom = spacing - 40; // item bottom
             } else {
                 outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
                 outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
                 if (position >= spanCount) {
-                    outRect.top = spacing; // item top
+                    //outRect.top = spacing; // item top
                 }
             }
         }
@@ -430,6 +432,5 @@ public class LearnFragment extends Fragment implements OnClickLessons {
 
         }
     }
-
 
 }

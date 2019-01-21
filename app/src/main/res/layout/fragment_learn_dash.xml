@@ -10,56 +10,56 @@
         android:id="@+id/img_scoredboard"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_score_board_large" />
-
-    <TextView
-        android:id="@+id/txt_score"
-        style="@style/custom_font_roboto_regular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/img_scoredboard"
-        android:layout_alignTop="@id/img_scoredboard"
-        android:layout_alignRight="@id/img_scoredboard"
-        android:layout_alignBottom="@id/img_scoredboard"
-        android:gravity="center"
-        android:text="Your score "
-        android:textColor="@color/white"
-        android:textSize="@dimen/_8sdp"
-        android:textStyle="bold" />
-
-
-    <TextView
-        android:id="@+id/txt_score_card"
-        style="@style/custom_font_roboto_regular"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/txt_score"
-        android:layout_alignLeft="@id/img_scoredboard"
-        android:layout_alignTop="@id/img_scoredboard"
-        android:layout_alignRight="@id/txt_score"
-        android:layout_alignBottom="@id/txt_score"
-        android:layout_margin="1dp"
-        android:gravity="center"
-        android:paddingTop="@dimen/_25sdp"
-        android:text="60/100 % "
-        android:textColor="@color/white"
-        android:textSize="@dimen/_8sdp"
-        android:textStyle="bold" />
+        android:layout_marginBottom="8dp"
+        android:visibility="gone"
+        app:srcCompat="@drawable/ic_score_board_large" />
 
 
     <SeekBar
         android:id="@+id/seekBar1"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_20sdp"
+        android:layout_height="30dp"
         android:layout_below="@+id/img_scoredboard"
-        android:layout_marginStart="8dp"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginEnd="8sp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:thumb="@drawable/ic_seekbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="30sp"
+        android:thumb="@drawable/ic_seekbar_" />
+
+    <LinearLayout
+        android:id="@+id/ll_score"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/seekBar1"
+        android:layout_marginTop="5dp"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+
+        <TextView
+            android:id="@+id/txt_score_card"
+            style="@style/custom_font_roboto_bold"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="1dp"
+            android:gravity="center"
+            android:text="60/100 % "
+            android:textColor="@color/black"
+            android:textSize="22sp" />
+
+
+        <TextView
+            android:id="@+id/txt_score"
+            style="@style/custom_font_roboto_medium"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:gravity="center"
+            android:text="(Your score)"
+            android:textColor="#61000000"
+            android:textSize="18sp" />
+
+
+    </LinearLayout>
 
 
     <android.support.v7.widget.RecyclerView
@@ -67,11 +67,9 @@
         android:id="@+id/recycler_view_learn"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_below="@+id/seekBar1"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginRight="@dimen/_8sdp"
-        android:layout_marginBottom="@dimen/_8sdp"
+        android:layout_below="@+id/ll_score"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="40dp"
         android:clipToPadding="true"
         android:scrollbars="vertical" />
 

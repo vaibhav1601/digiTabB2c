@@ -6,7 +6,7 @@
     style="@style/AppTheme.NoActionBar"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/blue_500"
+    android:background="@color/blue_bestpolicy"
     android:orientation="vertical">
 
 
@@ -14,10 +14,10 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/_98sdp"
-        android:layout_marginTop="@dimen/_31sdp"
-        android:layout_marginRight="@dimen/_97sdp"
-        android:layout_marginBottom="@dimen/_32sdp"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="100dp"
+        android:layout_marginRight="100dp"
+        android:layout_marginBottom="37dp"
         android:foregroundGravity="center_horizontal"
         card_view:cardBackgroundColor="@color/white"
         card_view:cardCornerRadius="@dimen/_5sdp"
@@ -26,8 +26,8 @@
 
 
         <LinearLayout
-            android:layout_width="@dimen/_197sdp"
-            android:layout_height="@dimen/_190sdp"
+            android:layout_width="300dp"
+            android:layout_height="500dp"
             android:layout_centerInParent="true"
             android:background="@drawable/custom_drawable_light_gray_border_with_white_fill"
             android:orientation="vertical">

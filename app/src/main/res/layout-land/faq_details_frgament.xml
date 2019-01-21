@@ -8,28 +8,26 @@
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
     tools:ignore="MissingDefaultResource">
 
+
     <android.support.v7.widget.AppCompatTextView
         android:id="@+id/txtfaqdetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginBottom="@dimen/_5sdp"
         android:drawableLeft="@drawable/ic_keyboard_arrow_left_black_24dp"
         android:gravity="center"
         android:paddingLeft="@dimen/_10sdp"
         android:paddingRight="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:layout_marginBottom="@dimen/_5sdp"
         android:text="FAQ"
         android:textColor="@color/black"
         android:textSize="@dimen/_10sdp" />
-
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycler_view_faq_details"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@+id/txtfaqdetails"
-        android:layout_marginLeft="@dimen/_8sdp"
-        android:layout_marginRight="@dimen/_8sdp"
         android:layout_marginBottom="@dimen/_8sdp"
         android:clipToPadding="false"
         android:scrollbars="vertical" />

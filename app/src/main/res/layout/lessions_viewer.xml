@@ -1,6 +1,7 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="match_parent"
     android:background="#FAFAFA"
     android:orientation="vertical">
 
@@ -20,118 +21,131 @@
         android:textSize="@dimen/_10sdp" />
 
 
-    <TextView
-        android:id="@+id/topic"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_5sdp"
-        android:gravity="center"
-        android:text="Topic"
-        style="@style/custom_font_roboto_bold"
-        android:textColor="@color/black"
-        android:textSize="@dimen/_15sdp" />
-
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_marginLeft="@dimen/_15sdp">
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginRight="28dp">
 
         <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="@dimen/_45sdp">
+            android:layout_height="match_parent">
 
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="match_parent"
                 android:orientation="vertical">
+
+
+                <TextView
+                    android:id="@+id/topic"
+                    style="@style/custom_font_roboto_bold"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="20dp"
+                    android:gravity="center"
+                    android:text="Topic"
+                    android:textColor="@color/black"
+                    android:textSize="20sp" />
 
 
                 <android.support.v7.widget.AppCompatImageView
                     android:id="@+id/img_lessions_view"
+                    android:layout_marginTop="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="250dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/bg" />
+
+                <!-- <TextView
+                     android:id="@+id/txt_lessionsviewer"
+                     style="@style/custom_font_roboto_regular"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:layout_marginLeft="@dimen/_10sdp"
+                     android:layout_marginTop="@dimen/_10sdp"
+                     android:layout_marginRight="@dimen/_10sdp"
+                     android:layout_marginBottom="@dimen/_10sdp"
+                     android:padding="@dimen/_5sdp"
+                     android:text="Declaration warranty"
+                     android:textColor="@color/text_color"
+                     android:textSize="@dimen/_6sdp" />
+ -->
+
+                <WebView
+                    android:id="@+id/webViewlession"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/_5sdp"
-                    android:layout_marginBottom="@dimen/_10sdp" />
+                    android:layout_below="@+id/helloWorld"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignParentLeft="true"
+                    tools:ignore="WebViewLayout" />
 
-                <TextView
-                    android:id="@+id/txt_lessionsviewer"
-                    style="@style/custom_font_roboto_regular"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:layout_marginRight="@dimen/_10sdp"
-                    android:layout_marginBottom="@dimen/_10sdp"
+
+                <LinearLayout
+                    android:id="@+id/ll_bottom"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_alignParentBottom="true"
+                    android:gravity="center"
                     android:padding="@dimen/_5sdp"
-                    android:text="Declaration warranty"
-                    android:textColor="@color/text_color"
-                    android:textSize="@dimen/_6sdp" />
+                    android:weightSum="3">
+
+
+                    <TextView
+                        android:id="@+id/btn_before"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginRight="@dimen/_10sdp"
+                        android:layout_weight="1"
+                        android:drawableLeft="@drawable/ic_navigate_before_black_24dp"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:text="PREVIOUS TOPIC"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/_8sdp" />
+
+                    <TextView
+                        android:id="@+id/btn_master"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center"
+                        android:layout_weight="1"
+                        android:background="@drawable/rounded_yellow_button"
+                        android:gravity="center"
+                        android:paddingLeft="@dimen/_8sdp"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:paddingRight="@dimen/_8sdp"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:text="MASTER THIS TOPIC"
+                        android:textColor="@color/text_color"
+                        android:textSize="@dimen/_8sdp" />
+
+
+                    <TextView
+                        android:id="@+id/btn_after"
+                        android:layout_width="0dp"
+                        android:layout_height="@dimen/_30sdp"
+                        android:layout_gravity="center"
+                        android:layout_marginLeft="@dimen/_20sdp"
+                        android:layout_weight="1"
+                        android:drawableRight="@drawable/ic_navigate_next_black_24dp"
+                        android:gravity="center"
+                        android:paddingTop="@dimen/_3sdp"
+                        android:paddingBottom="@dimen/_3sdp"
+                        android:text="NEXT TOPIC"
+                        android:textColor="@color/blue_color"
+                        android:textSize="@dimen/_8sdp" />
+
+                </LinearLayout>
 
 
             </LinearLayout>
 
         </ScrollView>
-
-
-        <LinearLayout
-            android:id="@+id/ll_bottom"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:weightSum="3">
-
-
-            <TextView
-                android:id="@+id/btn_before"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_gravity="center"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_weight="1"
-                android:drawableLeft="@drawable/ic_navigate_before_black_24dp"
-                android:gravity="center"
-                android:paddingTop="@dimen/_3sdp"
-                android:paddingBottom="@dimen/_3sdp"
-                android:text="PREVIOUS TOPIC"
-                android:textColor="@color/blue_color"
-                android:textSize="@dimen/_8sdp" />
-
-            <TextView
-                android:id="@+id/btn_master"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_gravity="center"
-                android:layout_weight="1"
-                android:background="@drawable/rounded_yellow_button"
-                android:gravity="center"
-                android:paddingLeft="@dimen/_8sdp"
-                android:paddingTop="@dimen/_3sdp"
-                android:paddingRight="@dimen/_8sdp"
-                android:paddingBottom="@dimen/_3sdp"
-                android:text="MASTER THIS TOPIC"
-                android:textColor="@color/text_color"
-                android:textSize="@dimen/_8sdp" />
-
-
-            <TextView
-                android:id="@+id/btn_after"
-                android:layout_width="0dp"
-                android:layout_height="@dimen/_30sdp"
-                android:layout_gravity="center"
-                android:layout_marginLeft="@dimen/_20sdp"
-                android:layout_weight="1"
-                android:drawableRight="@drawable/ic_navigate_next_black_24dp"
-                android:gravity="center"
-                android:paddingTop="@dimen/_3sdp"
-                android:paddingBottom="@dimen/_3sdp"
-                android:text="NEXT TOPIC"
-                android:textColor="@color/blue_color"
-                android:textSize="@dimen/_8sdp" />
-
-        </LinearLayout>
 
 
     </RelativeLayout>

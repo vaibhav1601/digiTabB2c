@@ -3,7 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FAFAFA"
+    android:background="#fafafa"
     android:orientation="vertical">
 
 
@@ -12,7 +12,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="left"
-        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginStart="314dp"
+        android:layout_marginEnd="294dp"
         app:layout_scrollFlags="scroll|enterAlways"
         app:tabGravity="fill"
         app:tabMode="scrollable" />
@@ -22,9 +23,9 @@
         android:id="@+id/viewpager_doc"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
         app:layout_behavior="@string/appbar_scrolling_view_behavior">
 
     </z_aksys.solutions.digiappequitybb.custom.ViewPagerNoSwipe>
-
 
 </LinearLayout>

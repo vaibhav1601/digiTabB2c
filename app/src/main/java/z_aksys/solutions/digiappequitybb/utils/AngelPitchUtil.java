@@ -7,6 +7,7 @@ import android.content.res.Configuration;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
+import android.support.v7.widget.AppCompatImageView;
 import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.util.Log;
@@ -51,7 +52,6 @@ import static z_aksys.solutions.digiappequitybb.utils.Constants.appKey;
 import static z_aksys.solutions.digiappequitybb.utils.Constants.appSec;
 
 public class AngelPitchUtil {
-
 
     public static String answer = "";
     public static String organswer = "";
@@ -102,9 +102,9 @@ public class AngelPitchUtil {
         final Dialog alert = new Dialog(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View alertDlgView = inflater.inflate(R.layout.pitchalert, null);
-        AppCompatTextView txt_heading = (AppCompatTextView) (alertDlgView).findViewById(R.id.txt_heading);
-        final TextView btn_later = (TextView) (alertDlgView).findViewById(R.id.btn_yes);
-        final TextView btn_retry = (TextView) (alertDlgView).findViewById(R.id.btn_no);
+        AppCompatTextView txt_heading = (alertDlgView).findViewById(R.id.txt_heading);
+        final TextView btn_later = (alertDlgView).findViewById(R.id.btn_yes);
+        final TextView btn_retry = (alertDlgView).findViewById(R.id.btn_no);
         alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
         alert.setContentView(alertDlgView);
         alert.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -136,10 +136,10 @@ public class AngelPitchUtil {
         final Dialog alert = new Dialog(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View alertDlgView = inflater.inflate(R.layout.question_score, null);
-        AppCompatTextView txt_heading = (AppCompatTextView) (alertDlgView).findViewById(R.id.txt_heading);
-        final TextView txtScore = (TextView) (alertDlgView).findViewById(R.id.txtScore);
-        final TextView btn_later = (TextView) (alertDlgView).findViewById(R.id.btn_later);
-        final TextView btn_retry = (TextView) (alertDlgView).findViewById(R.id.btn_retry);
+        AppCompatTextView txt_heading = (alertDlgView).findViewById(R.id.txt_heading);
+        final TextView txtScore = (alertDlgView).findViewById(R.id.txtScore);
+        final TextView btn_later = (alertDlgView).findViewById(R.id.btn_later);
+        final TextView btn_retry = (alertDlgView).findViewById(R.id.btn_retry);
         alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
         alert.setContentView(alertDlgView);
         alert.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
@@ -189,27 +189,23 @@ public class AngelPitchUtil {
 
         }
 
-        if (name != null && count == 0) {
-            return true;
-        } else {
-            return false;
-        }
+        return name != null && count == 0;
     }
 
     public final static boolean isValidMobile(CharSequence target) {
         boolean check = false;
         if (!Pattern.matches("[a-zA-Z]+", target)) {
-            if (target.length() < 6 || target.length() > 13) {
-                // if(phone.length() != 10) {
-                check = false;
-
-            } else {
-                check = true;
-            }
+            check = target.length() >= 6 && target.length() <= 13;
         } else {
             check = false;
         }
         return check;
+    }
+
+
+    public final static boolean ismobilenumberValid(String number) {
+        return !TextUtils.isEmpty(number) && number.matches("\\d{10}");
+
     }
 
 
@@ -221,27 +217,28 @@ public class AngelPitchUtil {
         final Dialog alert = new Dialog(context);
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View alertDlgView = inflater.inflate(R.layout.showdialogs, null);
-        AppCompatTextView txt_heading = (AppCompatTextView) (alertDlgView).findViewById(R.id.txt_heading);
-        final EditText et_emailid = (EditText) (alertDlgView).findViewById(R.id.et_emailid);
-        final EditText et_whatsApp = (EditText) (alertDlgView).findViewById(R.id.et_sms);
-        final EditText et_sms = (EditText) (alertDlgView).findViewById(R.id.et_whatsApp);
-        final Button btn_email = (Button) (alertDlgView).findViewById(R.id.btn_email_send);
-        final Button btn_sms = (Button) (alertDlgView).findViewById(R.id.btn_sms_send);
-        final Button btn_whatsapp = (Button) (alertDlgView).findViewById(R.id.btn_whatsAppsned);
+        AppCompatTextView txt_heading = (alertDlgView).findViewById(R.id.txt_heading);
+        final EditText et_emailid = (alertDlgView).findViewById(R.id.et_emailid);
+        final EditText et_whatsApp = (alertDlgView).findViewById(R.id.et_whatsApp);
+        final EditText et_sms = (alertDlgView).findViewById(R.id.et_sms);
+        final Button btn_email = (alertDlgView).findViewById(R.id.btn_email_send);
+        final Button btn_sms = (alertDlgView).findViewById(R.id.btn_sms_send);
+        final Button btn_whatsapp = (alertDlgView).findViewById(R.id.btn_whatsAppsned);
+        final AppCompatImageView close = (alertDlgView).findViewById(R.id.ic_remove_icon);
         alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
         alert.setContentView(alertDlgView);
         alert.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         alert.setCanceledOnTouchOutside(true);
         alert.show();
 
-        if (AngelPitchUtil.checkConnection(App.getContext())) {
-            isConnected = true;
+        isConnected = AngelPitchUtil.checkConnection(App.getContext());
 
-
-        } else {
-            isConnected = false;
-
-        }
+        close.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                alert.dismiss();
+            }
+        });
 
 
         btn_email.setOnClickListener(new View.OnClickListener() {
@@ -253,14 +250,16 @@ public class AngelPitchUtil {
                         Toast.makeText(App.getContext(), "Please Enter Valid emailId", Toast.LENGTH_LONG).show();
                     } else {
                         callWebServices(news_id, type, source_link, et_emailid.getText().toString(), "", "");
-                        alert.dismiss();
+
+                        et_emailid.setText("");
+                        // alert.dismiss();
                     }
 
                 } else {
 
                     new InsertShareTask(App.getContext(), news_id, type, source_link, et_emailid.getText().toString(), "", "").execute();
-                    alert.dismiss();
-
+                    // alert.dismiss();
+                    et_emailid.setText("");
                 }
 
 
@@ -273,19 +272,22 @@ public class AngelPitchUtil {
             public void onClick(View view) {
                 if (isConnected) {
 
-                    if (!AngelPitchUtil.isValidMobile(et_sms.getText())) {
+                    if (!AngelPitchUtil.ismobilenumberValid(et_sms.getText().toString())) {
 
                         Toast.makeText(App.getContext(), "Please Enter Valid mobile ", Toast.LENGTH_LONG).show();
 
+                        et_sms.setText("");
+
                     } else {
                         callWebServices(news_id, type, source_link, "", et_sms.getText().toString(), "");
-                        alert.dismiss();
+                        //alert.dismiss();
 
                     }
 
                 } else {
-                    new InsertShareTask(App.getContext(), news_id, type, source_link, " ", et_emailid.getText().toString(), "").execute();
-                    alert.dismiss();
+                    new InsertShareTask(App.getContext(), news_id, type, source_link, " ", et_sms.getText().toString(), "").execute();
+                    //alert.dismiss();
+                    et_sms.setText("");
 
                 }
 
@@ -341,7 +343,6 @@ public class AngelPitchUtil {
             public void onResponse(Call<ShareResponse> call, Response<ShareResponse> response) {
                 if (response.isSuccessful()) {
                     Toast.makeText(getContext(), " " + response.message(), Toast.LENGTH_LONG).show();
-
                 }
 
             }
@@ -367,13 +368,11 @@ public class AngelPitchUtil {
         if (activeNetworkInfo != null) { // connected to the internet
             // Toast.makeText(context, activeNetworkInfo.getTypeName(), Toast.LENGTH_SHORT).show();
 
+            // connected to the mobile provider's data plan
             if (activeNetworkInfo.getType() == ConnectivityManager.TYPE_WIFI) {
                 // connected to wifi
                 return true;
-            } else if (activeNetworkInfo.getType() == ConnectivityManager.TYPE_MOBILE) {
-                // connected to the mobile provider's data plan
-                return true;
-            }
+            } else return activeNetworkInfo.getType() == ConnectivityManager.TYPE_MOBILE;
         }
         return false;
     }
@@ -414,16 +413,16 @@ public class AngelPitchUtil {
             final Dialog alert = new Dialog(context);
             LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
             View alertDlgView = inflater.inflate(R.layout.dialog_questions, null);
-            AppCompatTextView txt_heading = (AppCompatTextView) (alertDlgView).findViewById(R.id.txt_heading);
-            final AppCompatTextView option_1 = (AppCompatTextView) (alertDlgView).findViewById(R.id.option_1);
-            final AppCompatTextView option_2 = (AppCompatTextView) (alertDlgView).findViewById(R.id.option_2);
-            final AppCompatTextView option_3 = (AppCompatTextView) (alertDlgView).findViewById(R.id.option_3);
-            final AppCompatTextView option_4 = (AppCompatTextView) (alertDlgView).findViewById(R.id.option_4);
-            final LinearLayout ll_option_1 = (LinearLayout) (alertDlgView).findViewById(R.id.ll_option_1);
-            final LinearLayout lloption_2 = (LinearLayout) (alertDlgView).findViewById(R.id.lloption_2);
-            final LinearLayout lloption_3 = (LinearLayout) (alertDlgView).findViewById(R.id.lloption_3);
-            final LinearLayout lloption_4 = (LinearLayout) (alertDlgView).findViewById(R.id.lloption_4);
-            final ImageView img_close = (ImageView) (alertDlgView).findViewById(R.id.img_close);
+            AppCompatTextView txt_heading = (alertDlgView).findViewById(R.id.txt_heading);
+            final AppCompatTextView option_1 = (alertDlgView).findViewById(R.id.option_1);
+            final AppCompatTextView option_2 = (alertDlgView).findViewById(R.id.option_2);
+            final AppCompatTextView option_3 = (alertDlgView).findViewById(R.id.option_3);
+            final AppCompatTextView option_4 = (alertDlgView).findViewById(R.id.option_4);
+            final LinearLayout ll_option_1 = (alertDlgView).findViewById(R.id.ll_option_1);
+            final LinearLayout lloption_2 = (alertDlgView).findViewById(R.id.lloption_2);
+            final LinearLayout lloption_3 = (alertDlgView).findViewById(R.id.lloption_3);
+            final LinearLayout lloption_4 = (alertDlgView).findViewById(R.id.lloption_4);
+            final ImageView img_close = (alertDlgView).findViewById(R.id.img_close);
 
             alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
             alert.setContentView(alertDlgView);
@@ -437,7 +436,7 @@ public class AngelPitchUtil {
             option_4.setText(questions.option_d);
 
 
-            Button btn_GotIt = (Button) alert.findViewById(R.id.btn_submit);
+            Button btn_GotIt = alert.findViewById(R.id.btn_submit);
             alert.setCancelable(false);
             alert.setCanceledOnTouchOutside(false);
             alert.show();
@@ -614,6 +613,5 @@ public class AngelPitchUtil {
 
         }
     }
-
 
 }

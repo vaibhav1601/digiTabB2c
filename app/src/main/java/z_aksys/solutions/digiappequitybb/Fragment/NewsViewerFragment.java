@@ -3,6 +3,7 @@ package z_aksys.solutions.digiappequitybb.Fragment;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.os.Bundle;
+import android.support.v4.app.ActivityCompat;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.AppCompatImageView;
 import android.util.Log;
@@ -112,7 +113,7 @@ public class NewsViewerFragment extends Fragment {
             @Override
             public void onReceivedError(WebView view, WebResourceRequest request, WebResourceError error) {
                 super.onReceivedError(view, request, error);
-                invalidateOptionsMenu(getActivity());
+                ActivityCompat.invalidateOptionsMenu(getActivity());
             }
         });
         webView.clearCache(true);
@@ -129,5 +130,4 @@ public class NewsViewerFragment extends Fragment {
             this.context = context;
         }
     }
-
 }

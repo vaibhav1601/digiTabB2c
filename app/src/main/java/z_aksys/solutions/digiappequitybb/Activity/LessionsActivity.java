@@ -87,14 +87,15 @@ public class LessionsActivity extends AppCompatActivity implements OnClickLesson
     }
 
 
-    @Override
-    public void lessonId(String Id, int position) {
-
-    }
 
     private int dpToPx(int dp) {
         Resources r = getResources();
         return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    }
+
+    @Override
+    public void lessonId(String Id, int position, String completed_lessons, String total_lessons) {
+
     }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {

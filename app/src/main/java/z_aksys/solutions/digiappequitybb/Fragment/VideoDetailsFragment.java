@@ -82,9 +82,9 @@ public class VideoDetailsFragment extends Fragment implements OnClickVideo {
         txtName = (AppCompatTextView) view.findViewById(R.id.txtfaqdetails);
 
         recyclerView = (RecyclerView) view.findViewById(R.id.recycler_view_faq_details);
-        mLayoutManager = new GridLayoutManager(getContext(),2);
+        mLayoutManager = new GridLayoutManager(getContext(), 3);
         recyclerView.setLayoutManager(mLayoutManager);
-        recyclerView.addItemDecoration(new GridSpacingItemDecoration(2, dpToPx(60), true));
+        recyclerView.addItemDecoration(new GridSpacingItemDecoration(3, dpToPx(60), true));
         recyclerView.setItemAnimator(new DefaultItemAnimator());
 
         recyclerView.setItemAnimator(new DefaultItemAnimator());
@@ -247,7 +247,7 @@ public class VideoDetailsFragment extends Fragment implements OnClickVideo {
     public void VideoId(String url, String Id) {
 
         startActivity(new Intent(getActivity(), YoutubePlayerActivity.class)
-                .putExtra("video_id", Id));
+                .putExtra("video_id", url));
 
     }
 
@@ -256,6 +256,10 @@ public class VideoDetailsFragment extends Fragment implements OnClickVideo {
 
     }
 
+    private int dpToPx(int dp) {
+        Resources r = getResources();
+        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
+    }
 
     public class GridSpacingItemDecoration extends RecyclerView.ItemDecoration {
 
@@ -279,21 +283,16 @@ public class VideoDetailsFragment extends Fragment implements OnClickVideo {
                 outRect.right = (column + 1) * spacing / spanCount - 20; // (column + 1) * ((1f / spanCount) * spacing)
 
                 if (position < spanCount) { // top edge
-                    outRect.top = spacing - 10;
+                    //outRect.top = spacing - 10;
                 }
-                outRect.bottom = spacing - 10; // item bottom
+                outRect.bottom = spacing - 40; // item bottom
             } else {
                 outRect.left = column * spacing / spanCount; // column * ((1f / spanCount) * spacing)
                 outRect.right = spacing - (column + 1) * spacing / spanCount; // spacing - (column + 1) * ((1f /    spanCount) * spacing)
                 if (position >= spanCount) {
-                    outRect.top = spacing; // item top
+                    //outRect.top = spacing; // item top
                 }
             }
         }
-    }
-
-    private int dpToPx(int dp) {
-        Resources r = getResources();
-        return Math.round(TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, dp, r.getDisplayMetrics()));
     }
 }

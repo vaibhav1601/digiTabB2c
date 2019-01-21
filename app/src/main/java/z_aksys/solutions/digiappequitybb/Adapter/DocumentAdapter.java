@@ -17,7 +17,6 @@ import z_aksys.solutions.digiappequitybb.utils.AngelPitchUtil;
 
 public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.MyViewHolder> {
 
-
     private Context mContext;
     private ArrayList<ShareDocumentResponse.share_document> shareDocumentArrayList;
 

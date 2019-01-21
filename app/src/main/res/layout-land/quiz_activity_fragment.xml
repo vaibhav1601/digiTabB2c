@@ -4,153 +4,143 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
+
+    <TextView
+        android:id="@+id/questionText1"
+        style="@style/custom_font_roboto_regular"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="10dp"
+        android:enabled="true"
+        android:gravity="center"
+        android:maxLines="100"
+        android:text="What is mutual fund?"
+        android:textColor="#de000000"
+        android:textSize="20sp" />
+
+
     <RelativeLayout
         android:id="@+id/questionContainer"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_gravity="center"
-        android:layout_marginTop="@dimen/_10sdp">
+        android:layout_marginTop="20dp"
+        android:background="@drawable/custom_drawable_light_gray_border_with_white_fill">
+
 
         <TextView
             android:id="@+id/questionText"
+            style="@style/custom_font_roboto_regular"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_alignParentStart="false"
-            android:layout_alignParentEnd="false"
-            android:layout_alignParentRight="true"
-            android:layout_centerInParent="true"
-            android:layout_marginLeft="@dimen/_10sdp"
+            android:layout_marginTop="15dp"
+            android:layout_marginBottom="22dp"
             android:enabled="true"
             android:gravity="center"
             android:maxLines="100"
-            android:paddingLeft="10dp"
-            android:scrollbars="vertical"
             android:text="Text for the question"
-            android:textAppearance="?android:attr/textAppearanceLarge"
-            android:textIsSelectable="false" />
+            android:textColor="#de000000"
+            android:textSize="20sp" />
+
+        <LinearLayout
+            android:id="@+id/llansone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/questionText"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:weightSum="2">
+
+            <Button
+                android:id="@+id/answerA"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_drawable_light_gray_border_with_white_fill"
+                android:hint="0"
+                android:maxLines="100"
+                android:padding="10dp"
+                android:text="Varianta A" />
+
+            <Button
+                android:id="@+id/answerB"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="false"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_drawable_light_gray_border_with_white_fill"
+                android:hint="1"
+                android:maxLines="100"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:text="Varianta B" />
+
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:id="@+id/llansone2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/llansone"
+            android:layout_marginBottom="20dp"
+            android:gravity="center_horizontal"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+
+            <Button
+                android:id="@+id/answerC"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_drawable_light_gray_border_with_white_fill"
+                android:hint="2"
+                android:maxLines="100"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:text="Varianta C" />
+
+
+            <Button
+                android:id="@+id/answerD"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="100dp"
+                android:layout_weight="1"
+                android:background="@drawable/custom_drawable_light_gray_border_with_white_fill"
+                android:hint="3"
+                android:maxLines="100"
+                android:padding="10dp"
+                android:scrollbars="vertical"
+                android:text="Varianta D" />
+
+
+        </LinearLayout>
+
+
+        <TextView
+            android:id="@+id/txtansewe"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="300dp"
+            android:gravity="center"
+            android:text="Answer"
+            android:textSize="20dp" />
 
 
     </RelativeLayout>
 
-    <LinearLayout
-        android:id="@+id/answers_container"
-        android:layout_width="fill_parent"
-        android:layout_height="fill_parent"
-        android:layout_gravity="center"
-        android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_marginRight="@dimen/_10sdp"
-        android:layout_marginBottom="@dimen/_10sdp"
-        android:layout_weight="4"
-        android:orientation="vertical">
-
-        <RelativeLayout
-            android:id="@+id/answer_a_container"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_gravity="top"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_1sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_1sdp"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/answerA"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="0"
-                android:maxLines="100"
-                android:scrollbars="vertical"
-                android:text="Varianta A" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/answer_b_container"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_1sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_1sdp"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/answerB"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="false"
-                android:hint="1"
-                android:maxLines="100"
-                android:scrollbars="vertical"
-                android:text="Varianta B" />
-
-        </RelativeLayout>
-
-        <RelativeLayout
-            android:id="@+id/answer_c_container"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_1sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_1sdp"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/answerC"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:hint="2"
-                android:maxLines="100"
-                android:scrollbars="vertical"
-                android:text="Varianta C" />
-
-        </RelativeLayout>
-
-
-        <RelativeLayout
-            android:id="@+id/answer_d_container"
-            android:layout_width="fill_parent"
-            android:layout_height="match_parent"
-            android:layout_marginLeft="@dimen/_10sdp"
-            android:layout_marginTop="@dimen/_1sdp"
-            android:layout_marginRight="@dimen/_10sdp"
-            android:layout_marginBottom="@dimen/_1sdp"
-            android:layout_weight="1">
-
-            <Button
-                android:id="@+id/answerD"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="false"
-                android:hint="3"
-                android:maxLines="100"
-                android:scrollbars="vertical"
-                android:text="Varianta D" />
-
-        </RelativeLayout>
-    </LinearLayout>
-
-
-    <LinearLayout
-        android:id="@+id/footer"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_marginTop="@dimen/_10sdp"
-        android:layout_weight="4"
-        android:orientation="vertical">
-
-        <Button
-            android:id="@+id/button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:background="@color/button_color"
-            android:onClick="FinishTest"
-            android:visibility="gone"
-            android:text="SUBMIT" />
-    </LinearLayout>
 
 </LinearLayout>

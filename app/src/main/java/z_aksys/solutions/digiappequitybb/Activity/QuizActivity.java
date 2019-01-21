@@ -6,6 +6,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
@@ -22,9 +24,7 @@ import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -55,7 +55,7 @@ public class QuizActivity extends AppCompatActivity {
     public PitchRoomDatabase pitchRoomDatabase;
     public QuestionModelDao questionModelDao;
     Spinner spinCategory;
-   // TextView questionNr;
+    // TextView questionNr;
     ArrayList<String> allCategories;
     int totalQuestions;
     AlertDialog dialog;
@@ -71,6 +71,9 @@ public class QuizActivity extends AppCompatActivity {
     private AngelSharedPrefance sharedPrefManager;
     private List<LearnResponse.questions> questionsArrayList;
     private Button buttonsubmit;
+    private TextView txtquestions;
+    private String topicName;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -78,10 +81,9 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.quiz_activity_view_pager);
         angelSharedPrefance = new AngelSharedPrefance(getContext());
         pitchServices = RetrofitClient.getInstance().getApi();
-
-        sharedPrefManager = new AngelSharedPrefance(App.getContext());
+        sharedPrefManager = new AngelSharedPrefance(getContext());
+        topicName = sharedPrefManager.getHealthAPI("topicName");
         questionArray = sharedPrefManager.getHealthAPI("Questions");
-
         buttonsubmit = (Button) findViewById(R.id.buttonsubmit);
 
 
@@ -102,6 +104,7 @@ public class QuizActivity extends AppCompatActivity {
 
 
         }
+
 
         //initialize category spinner
 
@@ -178,13 +181,13 @@ public class QuizActivity extends AppCompatActivity {
                 if (currentQuestion <= totalQuestions) {
                     Integer page = currentQuestion + 1;
                     //questionNr.setText(page.toString());
-                   // questionNr.clearFocus();
+                    // questionNr.clearFocus();
                 } else {
                     //questionNr.setText("");
                 }
 
                 InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
-               // imm.hideSoftInputFromWindow(questionNr.getWindowToken(), 0);
+                // imm.hideSoftInputFromWindow(questionNr.getWindowToken(), 0);
 
                 if (totalQuestions == currentQuestion) {
                     buttonsubmit.setText("submit");
@@ -254,9 +257,22 @@ public class QuizActivity extends AppCompatActivity {
 
     }
 
+
+    private void loadFragment(Fragment fragment) {
+        FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
+        fragmentTransaction.replace(R.id.rl_lessionviewer,
+                fragment,
+                fragment.getClass().getSimpleName());
+
+        fragmentTransaction.commitAllowingStateLoss();
+    }
+
+
     public void FinishTest() {
 
-        //check if there are unanswered questions
+        showResults();
+
+        /*//check if there are unanswered questions
         if (myServerData.getTestState().equals("inProgress")) {
             ArrayList<String> UnansweredQuestions = new ArrayList<>();
             LinkedHashMap<String, Object> allQuestions = myServerData.getAllQuestions();
@@ -306,14 +322,15 @@ public class QuizActivity extends AppCompatActivity {
         } else {
             showResults();
         }
-
+*/
 
     }
 
     public void showResults() {
         int animationDuration;
         CircularSeekBar seekbar;
-        TextView txt_percent;
+        TextView txt_percent, textView1;
+        Button btn_retry, btnlater;
         if (myServerData.getTestState().equals("finished")) {
             animationDuration = 10;
         } else {
@@ -323,7 +340,18 @@ public class QuizActivity extends AppCompatActivity {
         LinearLayout mainContainer = (LinearLayout) mainView.findViewById(R.id.mainContainer);
         seekbar = (CircularSeekBar) mainView.findViewById(R.id.progress_circular_mark);
         txt_percent = (TextView) mainView.findViewById(R.id.txt_percent);
-        mainView.findViewById(R.id.btnMainMenu).setOnClickListener(new View.OnClickListener() {
+        textView1 = (TextView) mainView.findViewById(R.id.textView1);
+        btn_retry = (Button) mainView.findViewById(R.id.btnMainMenu);
+        btnlater = (Button) mainView.findViewById(R.id.check_results);
+
+        if (!TextUtils.isEmpty(topicName)) {
+            textView1.setText(topicName);
+        } else {
+            textView1.setText(" ");
+
+        }
+
+        btn_retry.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //finish the test and go to main menu
@@ -337,7 +365,7 @@ public class QuizActivity extends AppCompatActivity {
         });
 
 
-        mainView.findViewById(R.id.check_results).setOnClickListener(new View.OnClickListener() {
+        btnlater.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
@@ -393,6 +421,16 @@ public class QuizActivity extends AppCompatActivity {
 
             seekbar.setCircleColor(App.getContext().getResources().getColor(R.color.grey));
             seekbar.setCircleProgressColor(App.getContext().getResources().getColor(R.color.green_color));
+
+            if (String.valueOf(correctCategoryQuestions).equalsIgnoreCase(String.valueOf(totalCategoryQuestions))) {
+                btn_retry.setVisibility(View.GONE);
+                btnlater.setText("Ok");
+            } else {
+
+                btn_retry.setVisibility(View.VISIBLE);
+
+
+            }
 
             val.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
                 @Override
@@ -454,12 +492,13 @@ public class QuizActivity extends AppCompatActivity {
 
             questionRequest.setIs_completed(1);
             questionRequest.setScore(myResultText + "/" + s);
+
             System.out.println("states complete " + myResultText);
         } else {
 
             questionRequest.setIs_completed(2);
             System.out.println("states incomplete " + myResultText);
-            questionRequest.setScore(myResultText + "/" + myResultText);
+            questionRequest.setScore(myResultText + "/" + s);
 
         }
 
@@ -474,8 +513,10 @@ public class QuizActivity extends AppCompatActivity {
 
                 if (response.isSuccessful()) {
 
+
+                    Toast.makeText(getContext(), " Answer submitted successfully", Toast.LENGTH_LONG).show();
                     // hideProgress();
-                    Toast.makeText(getContext(), "Fail" + response.message(), Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getContext(), "Fail" + response.message(), Toast.LENGTH_LONG).show();
 
 
                 }
@@ -508,6 +549,14 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+    @Override
+    public void onBackPressed() {
+        if (getFragmentManager().getBackStackEntryCount() == 0) {
+            this.finish();
+        } else {
+            super.onBackPressed(); //replaced
+        }
+    }
 
     private class AsyncTaskRunnerResult extends AsyncTask<String, String, Boolean> {
 
@@ -575,6 +624,5 @@ public class QuizActivity extends AppCompatActivity {
 
 
     }
-
 }
 

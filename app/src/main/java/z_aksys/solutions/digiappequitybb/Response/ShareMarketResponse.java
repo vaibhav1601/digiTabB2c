@@ -5,7 +5,6 @@ import com.google.gson.annotations.SerializedName;
 import java.util.ArrayList;
 
 public class ShareMarketResponse {
-
     @SerializedName("message")
     private String message;
     @SerializedName("data")
@@ -57,6 +56,10 @@ public class ShareMarketResponse {
         private String symbol;
         @SerializedName("CurrValue")
         private String CurrValue;
+        @SerializedName("absolutechange")
+        private String absolutechange;
+        @SerializedName("NetChangeFromPrevClose")
+        private String NetChangeFromPrevClose;
 
         public String getSymbol() {
             return symbol;
@@ -72,6 +75,22 @@ public class ShareMarketResponse {
 
         public void setCurrValue(String currValue) {
             CurrValue = currValue;
+        }
+
+        public String getAbsolutechange() {
+            return absolutechange;
+        }
+
+        public void setAbsolutechange(String absolutechange) {
+            this.absolutechange = absolutechange;
+        }
+
+        public String getNetChangeFromPrevClose() {
+            return NetChangeFromPrevClose;
+        }
+
+        public void setNetChangeFromPrevClose(String netChangeFromPrevClose) {
+            NetChangeFromPrevClose = netChangeFromPrevClose;
         }
     }
 
