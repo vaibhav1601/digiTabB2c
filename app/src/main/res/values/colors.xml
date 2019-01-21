@@ -214,6 +214,8 @@
     <color name="color_email_status_icon_not_verified">#fa4444</color>
 
     <color name="color_email_status_verified">#65f08d</color>
+
+    <color name="color_bluish_green">#4CAF50</color>
     <color name="divider_color">#F0F0F0</color>
     <color name="pressed_color">#E7E7E7</color>
 
@@ -229,6 +231,7 @@
     <color name="color_scheme_Details_row">#949292</color>
     <color name="color_scheme_Details_line">#173344</color>
 
+    <color name="light_gray_background">#d4d4d4</color>
     <color name="color_a6a6a6">#a6a6a6</color>
     <color name="color_535353">#535353</color>
     <color name="color_b2303030">#b2303030</color>

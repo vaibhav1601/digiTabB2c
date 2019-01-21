@@ -2,6 +2,8 @@ package z_aksys.solutions.digiappequitybb.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -48,6 +50,7 @@ public class HighestReturnsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 final Dialog topPerformerDialog = new Dialog(getActivity());
+                topPerformerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
                 LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
                 View topPerformerView = inflater.inflate(R.layout.dialog_top_performers, null);
                 topPerformerDialog.setContentView(topPerformerView);

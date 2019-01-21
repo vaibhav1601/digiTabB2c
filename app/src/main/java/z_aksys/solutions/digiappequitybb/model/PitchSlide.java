@@ -8,6 +8,7 @@ public class PitchSlide {
 
     public int id;
     public boolean isNative= false;
+    public boolean isSectionalHeader= false;
     public Fragment nativeSlide;
     public String path = "";
     public int category = -1;

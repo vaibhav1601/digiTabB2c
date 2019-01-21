@@ -90,5 +90,14 @@
         <item name="android:windowExitAnimation">@anim/left_slide_out</item>
     </style>
 
+    <style name="we_have_got_your_back_tab">
+        <item name="android:gravity">center</item>
+        <item name="android:padding">10dp</item>
+        <item name="android:textColor">@color/black</item>
+        <item name="android:textStyle">bold</item>
+    </style>
 
+    <style name="navigation_dots">
+        <item name="android:padding">10dp</item>
+    </style>
 </resources>

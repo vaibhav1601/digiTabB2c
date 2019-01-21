@@ -75,9 +75,9 @@ public class SlideIndexAdapter extends RecyclerView.Adapter<SlideIndexAdapter.Vi
         holder.tvSlideTitle.setText(filteredSlides.get(position).title.get(currentlySelectedLanguage));
 
         if (filteredSlides.get(position).id == getSlideIdByPosition(currentlySelectedSlide)) {
-            holder.tvSlideTitle.setBackgroundColor(mContext.getResources().getColor(R.color.blue_color));
+            holder.container.setBackground(mContext.getResources().getDrawable(R.drawable.rounded_blue_card_border));
         } else {
-            holder.tvSlideTitle.setBackgroundColor(mContext.getResources().getColor(android.R.color.white));
+            holder.container.setBackground(mContext.getResources().getDrawable(R.drawable.rounded_gray_card_border));
         }
 
         if (filteredSlides.get(position).slideThumbnailPath != null

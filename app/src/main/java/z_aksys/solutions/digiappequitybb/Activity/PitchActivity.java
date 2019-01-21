@@ -4,6 +4,8 @@ import android.app.Dialog;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.pm.ActivityInfo;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
@@ -165,7 +167,7 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
         pitchServices = RetrofitClient.getInstance().getApi();
 
         if (getIntent().getBooleanExtra("isExperiencedInvestor", false)){
-            mCurrentlySelectedSlideIndex= 7;
+            mCurrentlySelectedSlideIndex= 11;
         }
 
         loadCurrentSlide(SLIDETRANSITION.LEFTSLIDE);
@@ -227,8 +229,14 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
     private void showMenu(ACTION action) {
 
         if (mCurrentlySelectedPopup != null) {
+            if (mCurrentlySelectedPopup == action){
+                removeSelection(mCurrentlySelectedPopup);
+                return;
+            }
             removeSelection(mCurrentlySelectedPopup);
         }
+
+
 
         switch (action) {
             case SLIDEINDEX:
@@ -256,6 +264,7 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
     private void showExitDialog() {
 
         final Dialog alert = new Dialog(this);
+        alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View alertDlgView = inflater.inflate(R.layout.dialog_pitch_exit, null);
 
@@ -490,7 +499,13 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
     }
 
     private void updateSlideTitle(int selectedLanguage) {
-        tvSlideTitle.setText(slides.get(mCurrentlySelectedSlideIndex).title.get(selectedLanguage));
+
+        if (slides.get(mCurrentlySelectedSlideIndex).isSectionalHeader){
+            tvSlideTitle.setText("");
+        } else {
+            tvSlideTitle.setText(slides.get(mCurrentlySelectedSlideIndex).title.get(selectedLanguage));
+        }
+
     }
 
     private void loadSlideOnIndex(int index) {

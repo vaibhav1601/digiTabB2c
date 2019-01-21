@@ -28,11 +28,11 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:text="Title"
+        android:layout_marginTop="10dp"
         android:textAllCaps="true"
         android:textColor="@color/black"
         style="@style/custom_font_montserrat_black"
-        android:textSize="30sp"
+        android:textSize="26sp"
         android:textStyle="bold" />
 
     <!-- Calculator -->
@@ -60,7 +60,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/mf_dia_txt"
+        android:background="@color/blue_800"
         android:padding="5dp">
 
         <ImageView

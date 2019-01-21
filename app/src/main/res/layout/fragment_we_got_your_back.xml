@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginTop="60dp"
         >
 
         <TextView
@@ -18,9 +18,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/nav_green_color"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="24X7 Services" />
+            style="@style/we_have_got_your_back_tab"
+            android:text="24X7 SERVICES" />
 
         <TextView
             android:id="@+id/tb_extensive_offerings"
@@ -28,9 +27,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/blue_200"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="Extensive Offerings" />
+            style="@style/we_have_got_your_back_tab"
+            android:text="EXTENSIVE OFFERINGS" />
 
         <TextView
             android:id="@+id/tb_training_assistance"
@@ -38,9 +36,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/blue_800"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="Training Assistance" />
+            style="@style/we_have_got_your_back_tab"
+            android:text="TRAINING ASSISTANCE" />
 
         <TextView
             android:id="@+id/tb_unmatched_support"
@@ -48,9 +45,8 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:background="@color/green_400"
-            android:gravity="center"
-            android:padding="@dimen/_5sdp"
-            android:text="Unmatched Support" />
+            style="@style/we_have_got_your_back_tab"
+            android:text="UNMATCHED SUPPORT" />
 
     </LinearLayout>
 
@@ -58,36 +54,39 @@
         android:background="@drawable/we_got_your_back_content_rouded_borders"
         android:layout_width="match_parent"
         android:padding="@dimen/_15sdp"
+        android:gravity="center"
         android:layout_height="wrap_content"
         >
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_feature_list"
-            android:layout_width="match_parent"
+            android:layout_centerHorizontal="true"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             />
 
         <LinearLayout
             android:visibility="gone"
-
+            android:layout_centerHorizontal="true"
             android:layout_below="@id/rv_feature_list"
-            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginTop="20dp"
             android:id="@+id/navigation_panel"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
 
             <View
+                android:background="@drawable/navigation_dot_selected"
                 android:id="@+id/nav_dot1"
-                android:layout_width="3dp"
-                android:layout_height="3dp"
-                android:layout_margin="1dp" />
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_marginRight="10dp" />
 
             <View
+                android:background="@drawable/navigation_dot"
                 android:id="@+id/nav_dot2"
-                android:layout_width="3dp"
-                android:layout_height="3dp"
-                android:layout_margin="1dp" />
+                android:layout_width="25dp"
+                android:layout_height="25dp" />
 
         </LinearLayout>
     </RelativeLayout>
