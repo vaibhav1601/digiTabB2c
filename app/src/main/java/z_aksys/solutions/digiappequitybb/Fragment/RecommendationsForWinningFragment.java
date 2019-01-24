@@ -16,7 +16,9 @@ import android.webkit.WebView;
 import android.widget.Button;
 import android.widget.ImageView;
 
+import z_aksys.solutions.digiappequitybb.Activity.PitchActivity;
 import z_aksys.solutions.digiappequitybb.R;
+import z_aksys.solutions.digiappequitybb.utils.OnSwipeTouchListener;
 
 public class RecommendationsForWinningFragment extends Fragment {
 
@@ -46,7 +48,7 @@ public class RecommendationsForWinningFragment extends Fragment {
         wvSlide.getSettings().setUseWideViewPort(true);
         wvSlide.loadUrl(slideUrl);
 
-
+        wvSlide.setOnTouchListener(new SwipeListener(getActivity()));
 
         btnRecommendations = view.findViewById(R.id.btn_recommendations);
         btnRecommendations.setOnClickListener(new View.OnClickListener() {
@@ -148,5 +150,24 @@ public class RecommendationsForWinningFragment extends Fragment {
         });
 
         return view;
+    }
+
+    private class SwipeListener extends OnSwipeTouchListener {
+
+        public SwipeListener(Context ctx) {
+            super(ctx);
+        }
+
+        @Override
+        public void onSwipeLeft() {
+            super.onSwipeLeft();
+            ((PitchActivity)getActivity()).slideLeft();
+        }
+
+        @Override
+        public void onSwipeRight() {
+            super.onSwipeRight();
+            ((PitchActivity)getActivity()).slideRight();
+        }
     }
 }

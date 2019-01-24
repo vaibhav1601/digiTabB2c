@@ -20,15 +20,15 @@
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_marginRight="20dp"
-        android:layout_marginBottom="80dp"
+        android:layout_marginBottom="85dp"
         android:gravity="center">
 
         <TextView
             android:id="@+id/btnnew"
-            android:layout_width="230dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:padding="14dp"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold"
             style="@style/custom_font_roboto_bold"
             android:background="@drawable/rounded_yellow_button"
@@ -37,11 +37,12 @@
 
         <TextView
             android:id="@+id/btn_Expirence"
-            android:layout_width="230dp"
+            android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:padding="14dp"
-            android:textSize="12sp"
+            android:textSize="13sp"
             android:textStyle="bold"
+
             style="@style/custom_font_roboto_bold"
             android:layout_marginLeft="10dp"
             android:layout_toRightOf="@+id/btnnew"

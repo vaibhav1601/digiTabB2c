@@ -30,7 +30,7 @@
         android:gravity="center"
         android:layout_marginTop="10dp"
         android:textAllCaps="true"
-        android:textColor="@color/black"
+        android:textColor="@color/slide_title_color"
         style="@style/custom_font_montserrat_black"
         android:textSize="26sp"
         android:textStyle="bold" />
@@ -71,7 +71,7 @@
             android:layout_marginTop="5dp"
             android:layout_marginRight="10dp"
             android:layout_marginBottom="5dp"
-            android:src="@drawable/ic_calc_o" />
+            android:src="@drawable/ic_calc" />
 
 
         <ImageView

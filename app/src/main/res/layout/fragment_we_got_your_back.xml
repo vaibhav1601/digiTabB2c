@@ -2,99 +2,162 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
     android:gravity="center_horizontal"
+    android:orientation="vertical"
     android:padding="@dimen/_10sdp">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
         android:layout_marginTop="60dp"
-        >
-
-        <TextView
-            android:id="@+id/tb_24x7_services"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/nav_green_color"
-            style="@style/we_have_got_your_back_tab"
-            android:text="24X7 SERVICES" />
-
-        <TextView
-            android:id="@+id/tb_extensive_offerings"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/blue_200"
-            style="@style/we_have_got_your_back_tab"
-            android:text="EXTENSIVE OFFERINGS" />
-
-        <TextView
-            android:id="@+id/tb_training_assistance"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/blue_800"
-            style="@style/we_have_got_your_back_tab"
-            android:text="TRAINING ASSISTANCE" />
-
-        <TextView
-            android:id="@+id/tb_unmatched_support"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:background="@color/green_400"
-            style="@style/we_have_got_your_back_tab"
-            android:text="UNMATCHED SUPPORT" />
-
-    </LinearLayout>
-
-    <RelativeLayout
-        android:background="@drawable/we_got_your_back_content_rouded_borders"
+        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:padding="@dimen/_15sdp"
-        android:gravity="center"
         android:layout_height="wrap_content"
-        >
-
-        <android.support.v7.widget.RecyclerView
-            android:id="@+id/rv_feature_list"
-            android:layout_centerHorizontal="true"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            />
+        android:background="@drawable/we_got_your_back_content_rouded_borders">
 
         <LinearLayout
-            android:visibility="gone"
-            android:layout_centerHorizontal="true"
-            android:layout_below="@id/rv_feature_list"
-            android:layout_marginTop="20dp"
-            android:id="@+id/navigation_panel"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal">
+            >
 
-            <View
-                android:background="@drawable/navigation_dot_selected"
-                android:id="@+id/nav_dot1"
-                android:layout_width="25dp"
-                android:layout_height="25dp"
-                android:layout_marginRight="10dp" />
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
 
-            <View
-                android:background="@drawable/navigation_dot"
-                android:id="@+id/nav_dot2"
-                android:layout_width="25dp"
-                android:layout_height="25dp" />
+                <TextView
+                    android:id="@+id/tb_24x7_services"
+                    style="@style/we_have_got_your_back_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#39bb9d "
+                    android:text="24X7 SERVICES" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/tabIcon_24x7_services"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_green_dropdown" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tb_extensive_offerings"
+                    style="@style/we_have_got_your_back_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#76ced9"
+                    android:text="EXTENSIVE OFFERINGS" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/tabIcon_extensive_offerings"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_green_dropdown" />
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tb_training_assistance"
+                    style="@style/we_have_got_your_back_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#47a5ae"
+                    android:text="TRAINING ASSISTANCE" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/tabIcon_training_assistance"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_green_dropdown" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tb_unmatched_support"
+                    style="@style/we_have_got_your_back_tab"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:background="#5bc4bf"
+                    android:text="UNMATCHED SUPPORT" />
+
+                <ImageView
+                    android:visibility="gone"
+                    android:id="@+id/tabIcon_unmatched_support"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_green_dropdown" />
+            </LinearLayout>
 
         </LinearLayout>
-    </RelativeLayout>
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+
+            android:gravity="center"
+            android:padding="@dimen/_15sdp">
+
+            <android.support.v7.widget.RecyclerView
+                android:id="@+id/rv_feature_list"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true" />
+
+            <LinearLayout
+                android:id="@+id/navigation_panel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_below="@id/rv_feature_list"
+                android:layout_centerHorizontal="true"
+                android:layout_marginTop="20dp"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <View
+                    android:id="@+id/nav_dot1"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/navigation_dot_selected" />
+
+                <View
+                    android:id="@+id/nav_dot2"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:background="@drawable/navigation_dot" />
+
+            </LinearLayout>
+        </RelativeLayout>
+    </LinearLayout>
 
     <TextView
-        android:text="*Intraday limit against security deposit of SB for clients"
-        android:layout_marginTop="@dimen/_10sdp"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:text="*Intraday limit against security deposit of SB for clients" />
 
 </LinearLayout>

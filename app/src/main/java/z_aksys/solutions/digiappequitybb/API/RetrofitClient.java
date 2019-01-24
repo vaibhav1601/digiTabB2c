@@ -12,8 +12,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RetrofitClient {
 
-   // private static final String BASE_URL = "http://leometric.in:80/";
-
+    //private static final String BASE_URL = "http://leometric.in:80/";
     private static final String BASE_URL = "http://35.154.60.244/";
     private static RetrofitClient mInstance;
     private Retrofit retrofit;

@@ -18,7 +18,7 @@ import z_aksys.solutions.digiappequitybb.model.QuestionStatus;
 import z_aksys.solutions.digiappequitybb.model.QuestionStatusModel;
 import z_aksys.solutions.digiappequitybb.model.Share;
 
-@Database(entities = {NewsResponse.News.class, LearnResponse.topics.class, LearnResponse.lessons.class, LearnResponse.questions.class, QuestionStatus.class, QuestionStatusModel.class, Feedback.class, Share.class}, version = 3, exportSchema = true)
+@Database(entities = {NewsResponse.News.class, LearnResponse.topics.class, LearnResponse.lessons.class, LearnResponse.questions.class, QuestionStatus.class, QuestionStatusModel.class, Feedback.class, Share.class}, version = 5, exportSchema = true)
 public abstract class PitchRoomDatabase extends RoomDatabase {
 
     private static volatile PitchRoomDatabase INSTANCE;

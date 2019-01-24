@@ -57,7 +57,6 @@ import z_aksys.solutions.digiappequitybb.Fragment.FaqFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.GoalFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.LearnFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.NewsFragment;
-
 import z_aksys.solutions.digiappequitybb.Fragment.PitchHomeFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.ShareFragment;
 import z_aksys.solutions.digiappequitybb.R;

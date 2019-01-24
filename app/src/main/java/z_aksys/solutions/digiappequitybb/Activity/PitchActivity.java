@@ -361,7 +361,7 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
                 vPopupOverlay.setVisibility(View.GONE);
                 break;
             case CALCULATOR:
-                mnCalNavigation.setImageResource(R.drawable.ic_calc_o);
+                mnCalNavigation.setImageResource(R.drawable.ic_calc);
                 frgCalculator.setVisibility(View.GONE);
                 break;
             default:
@@ -513,14 +513,14 @@ public class PitchActivity extends AppCompatActivity implements View.OnClickList
         loadCurrentSlide(SLIDETRANSITION.LEFTSLIDE);
     }
 
-    private void slideLeft() {
+    public void slideLeft() {
         if (mCurrentlySelectedSlideIndex < slides.size() - 1) {
             mCurrentlySelectedSlideIndex++;
             loadCurrentSlide(SLIDETRANSITION.LEFTSLIDE);
         }
     }
 
-    private void slideRight() {
+    public void slideRight() {
         if (mCurrentlySelectedSlideIndex > 0) {
             mCurrentlySelectedSlideIndex--;
             loadCurrentSlide(SLIDETRANSITION.RIGHTSLIDE);

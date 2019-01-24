@@ -2,6 +2,8 @@ package z_aksys.solutions.digiappequitybb.Fragment;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v4.app.Fragment;
@@ -15,14 +17,16 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import z_aksys.solutions.digiappequitybb.Activity.PitchActivity;
 import z_aksys.solutions.digiappequitybb.R;
+import z_aksys.solutions.digiappequitybb.utils.OnSwipeTouchListener;
 
 public class AdvanceTradingPlatformFragment extends Fragment implements View.OnClickListener {
 
     private String slideUrl;
     private WebView wvSlide;
     private Button btnTradePlatform, btnMobileApp, btnSpeedPro;
-    private String[] advanceTradingPlatformImages = {"file:///android_asset/slides/p1.svg", "file:///android_asset/slides/p2.svg", "file:///android_asset/slides/p3.svg"};
+    private String[] advanceTradingPlatformImages = {"file:///android_asset/slides/p1.html", "file:///android_asset/slides/p2.html", "file:///android_asset/slides/p3.html"};
     private String[] advanceTradingPlatformTitle = {"Angle Broking Trade Features", "Angle Broking Mobile App", "Angle Speed Pro Features"};
 
     public AdvanceTradingPlatformFragment() {
@@ -44,6 +48,7 @@ public class AdvanceTradingPlatformFragment extends Fragment implements View.OnC
         wvSlide.getSettings().setLoadWithOverviewMode(true);
         wvSlide.getSettings().setUseWideViewPort(true);
         wvSlide.loadUrl(slideUrl);
+        wvSlide.setOnTouchListener(new SwipeListener(getActivity()));
 
         btnTradePlatform= view.findViewById(R.id.btn_trade_platform);
         btnMobileApp= view.findViewById(R.id.btn_mobile_app);
@@ -58,6 +63,7 @@ public class AdvanceTradingPlatformFragment extends Fragment implements View.OnC
 
     private void showFeaturesDialog(int selectedSlideIndex) {
         final Dialog advanceTradingPlatform = new Dialog(getActivity());
+        advanceTradingPlatform.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         LayoutInflater inflater = (LayoutInflater) getActivity().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View advanceTradingPlatformView = inflater.inflate(R.layout.dialog_advance_trading_platform, null);
         advanceTradingPlatform.setContentView(advanceTradingPlatformView);
@@ -81,8 +87,6 @@ public class AdvanceTradingPlatformFragment extends Fragment implements View.OnC
             @Override
             public Object instantiateItem(@NonNull ViewGroup container, int position) {
                 WebView wvPerformer= new WebView(getContext());
-                wvPerformer.getSettings().setLoadWithOverviewMode(true);
-                wvPerformer.getSettings().setUseWideViewPort(true);
                 wvPerformer.loadUrl(advanceTradingPlatformImages[position]);
                 container.addView(wvPerformer);
                 return wvPerformer;
@@ -138,6 +142,25 @@ public class AdvanceTradingPlatformFragment extends Fragment implements View.OnC
                 break;
                 default:
                     break;
+        }
+    }
+
+    private class SwipeListener extends OnSwipeTouchListener {
+
+        public SwipeListener(Context ctx) {
+            super(ctx);
+        }
+
+        @Override
+        public void onSwipeLeft() {
+            super.onSwipeLeft();
+            ((PitchActivity)getActivity()).slideLeft();
+        }
+
+        @Override
+        public void onSwipeRight() {
+            super.onSwipeRight();
+            ((PitchActivity)getActivity()).slideRight();
         }
     }
 }
