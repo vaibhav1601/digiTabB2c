@@ -7,14 +7,16 @@ public class Question {
     private String question;
     private String[] answerText;
     private Boolean[] correctAnswer;
+    private String answer;
 
 
     private Boolean[] checked = new Boolean[4];
 
-    public Question(String question, String[] answerText, Boolean[] correctAnswer) {
+    public Question(String question, String[] answerText, Boolean[] correctAnswer, String answer) {
         this.question = question;
         this.answerText = answerText.clone();
         this.correctAnswer = correctAnswer.clone();
+        this.answer = answer;
         this.resetChecked();
     }
 
@@ -53,6 +55,11 @@ public class Question {
 
     public String getQuestionText() {
         return question;
+    }
+
+    public String getCorrectAnsweer() {
+
+        return answer;
     }
 
 }

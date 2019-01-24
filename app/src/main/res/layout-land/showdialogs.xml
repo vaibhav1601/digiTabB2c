@@ -3,127 +3,181 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    android:background="@drawable/dialog_bg"
     tools:ignore="MissingDefaultResource">
 
-    <LinearLayout
+    <RelativeLayout
         android:id="@+id/ll_header"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/button_color">
+        android:background="@drawable/dialog_bg_header">
+
 
         <TextView
             android:id="@+id/txtScore"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="@dimen/_10sdp"
-            android:background="@color/button_color"
+
             android:text="Enter your Details "
+            android:textColor="@color/white"
             android:textSize="@dimen/_10sdp"
             android:textStyle="bold" />
 
-    </LinearLayout>
+        <android.support.v7.widget.AppCompatImageView
+            android:id="@+id/ic_remove_icon"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginLeft="@dimen/_10sdp"
+            android:padding="@dimen/_10sdp"
+            android:src="@drawable/ic_close_black_24dp" />
+
+
+    </RelativeLayout>
 
 
     <android.support.v7.widget.LinearLayoutCompat
         android:id="@+id/ll_main"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/ll_header"
         android:layout_centerHorizontal="true"
-        android:orientation="vertical">
+        android:orientation="vertical"
+        android:padding="10dp">
 
 
         <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/ll_emailId"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtScore"
-            android:orientation="horizontal">
+            android:layout_marginTop="10dp"
+            android:orientation="horizontal"
+            android:weightSum="10">
 
-            <EditText
-                android:id="@+id/et_emailid"
-                style="@style/custom_font_roboto_regular"
-                android:layout_width="@dimen/_100sdp"
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:hint="Email Id"
-                android:inputType="text"
-                android:singleLine="true" />
+                android:layout_marginRight="5dp"
+                android:layout_weight="8">
 
+                <EditText
+                    android:id="@+id/et_emailid"
+                    style="@style/custom_font_roboto_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Email Id"
+                    android:inputType="textEmailAddress"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/iv_loader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone" />
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/btn_email_send"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_weight="2"
                 android:background="@drawable/rounded_yellow_button"
                 android:gravity="center"
                 android:text="send"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/_10sdp" />
+                android:textSize="12sp" />
 
 
         </android.support.v7.widget.LinearLayoutCompat>
+
+        <TextView
+            android:id="@+id/tv_email_send_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:textColor="@color/red_500"
+            android:textSize="12sp" />
 
         <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/ll_sms"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtScore"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:weightSum="10">
 
-            <EditText
-                android:id="@+id/et_sms"
-                style="@style/custom_font_roboto_regular"
-                android:layout_width="@dimen/_100sdp"
+
+            <RelativeLayout
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_20sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
-                android:hint="SMS"
-                android:inputType="text"
-                android:singleLine="true" />
+                android:layout_marginRight="5dp"
+                android:layout_weight="8">
 
+                <EditText
+                    android:id="@+id/et_sms"
+                    style="@style/custom_font_roboto_regular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="Mobile Number"
+                    android:inputType="phone"
+                    android:singleLine="true" />
+
+                <ImageView
+                    android:id="@+id/iv_sms_loader"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:adjustViewBounds="true"
+                    android:visibility="gone" />
+            </RelativeLayout>
 
             <Button
                 android:id="@+id/btn_sms_send"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_weight="2"
                 android:background="@drawable/rounded_yellow_button"
                 android:gravity="center"
                 android:text="send"
                 android:textColor="@color/text_color"
-                android:textSize="@dimen/_10sdp" />
+                android:textSize="12sp" />
 
 
         </android.support.v7.widget.LinearLayoutCompat>
 
+        <TextView
+            android:id="@+id/tv_sms_send_error"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="@color/red_500"
+            android:textSize="12sp" />
+
         <android.support.v7.widget.LinearLayoutCompat
             android:id="@+id/ll_whatsApp"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@+id/txtScore"
-            android:orientation="horizontal">
+            android:orientation="horizontal"
+            android:visibility="invisible"
+            android:weightSum="2">
 
             <EditText
                 android:id="@+id/et_whatsApp"
                 style="@style/custom_font_roboto_regular"
-                android:layout_width="@dimen/_100sdp"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="@dimen/_10sdp"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_20sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_weight="1"
                 android:digits="abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789"
                 android:hint="Whatsapp"
                 android:inputType="text"
@@ -132,11 +186,12 @@
 
             <Button
                 android:id="@+id/btn_whatsAppsned"
-                android:layout_width="wrap_content"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="@dimen/_10sdp"
                 android:layout_marginRight="@dimen/_10sdp"
                 android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_weight="1"
                 android:background="@drawable/rounded_yellow_button"
                 android:gravity="center"
                 android:text="send"

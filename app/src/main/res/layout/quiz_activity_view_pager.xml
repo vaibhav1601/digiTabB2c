@@ -1,38 +1,61 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white">
+    android:background="@color/white"
+    android:orientation="vertical">
 
-    <z_aksys.solutions.digiappequitybb.custom.ViewPagerNoSwipe
-        android:id="@+id/qPager"
-        android:layout_width="match_parent"
+    <android.support.v7.widget.AppCompatTextView
+        android:id="@+id/txtlearnquestion"
+        style="@style/custom_font_roboto_bold"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:background="@color/white" />
+        android:layout_marginBottom="20dp"
+        android:drawableLeft="@drawable/ic_keyboard_arrow_left_black_24dp"
+        android:drawablePadding="10dp"
+        android:gravity="center"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:text="Learn"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_10sdp" />
 
 
     <LinearLayout
-        android:id="@+id/ll_button_dsh"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentBottom="true"
-        android:layout_marginBottom="85dp"
+        android:layout_marginLeft="116dp"
+        android:layout_marginRight="116dp"
+        android:background="@drawable/custom_drawable_light_gray_border_with_white_fill">
+
+        <z_aksys.solutions.pitchapplication.custom.ViewPagerNoSwipe
+            android:id="@+id/qPager"
+            android:layout_width="wrap_content"
+            android:layout_height="300dp"
+            android:background="@color/white"
+            android:visibility="visible" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+
         android:gravity="center">
 
         <Button
             android:id="@+id/buttonsubmit"
-            android:layout_width="wrap_content"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
+            android:layout_gravity="center"
             android:background="@color/button_color"
+            android:gravity="center"
             android:text="NEXT " />
+
 
     </LinearLayout>
 
 
-
-
-
-</RelativeLayout>
+</LinearLayout>

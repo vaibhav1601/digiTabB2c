@@ -4,6 +4,8 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.res.Configuration;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.os.AsyncTask;
@@ -19,10 +21,11 @@ import android.view.Window;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.GlideDrawableImageViewTarget;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
@@ -43,7 +46,6 @@ import z_aksys.solutions.digiappequitybb.Dao.ShareDao;
 import z_aksys.solutions.digiappequitybb.Database.PitchRoomDatabase;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Request.ShareRequest;
-import z_aksys.solutions.digiappequitybb.Response.LearnResponse;
 import z_aksys.solutions.digiappequitybb.Response.ShareResponse;
 import z_aksys.solutions.digiappequitybb.model.Share;
 
@@ -53,10 +55,12 @@ import static z_aksys.solutions.digiappequitybb.utils.Constants.appSec;
 
 public class AngelPitchUtil {
 
+
     public static String answer = "";
     public static String organswer = "";
     public static PitchServices pitchServices;
     public static Boolean isConnected;
+    private static AngelSharedPrefance sharedPrefance;
 
 
     public static String getVideoId(String videoUrl) {
@@ -212,9 +216,11 @@ public class AngelPitchUtil {
     public static void ShowDialog(Context context, String news_id, String type, String source_link) {
 
         pitchServices = RetrofitClient.getInstance().getApi();
+        sharedPrefance = new AngelSharedPrefance(App.getContext());
         PitchRoomDatabase pitchRoomDatabase;
         ShareDao shareDao;
         final Dialog alert = new Dialog(context);
+        alert.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         View alertDlgView = inflater.inflate(R.layout.showdialogs, null);
         AppCompatTextView txt_heading = (alertDlgView).findViewById(R.id.txt_heading);
@@ -224,12 +230,31 @@ public class AngelPitchUtil {
         final Button btn_email = (alertDlgView).findViewById(R.id.btn_email_send);
         final Button btn_sms = (alertDlgView).findViewById(R.id.btn_sms_send);
         final Button btn_whatsapp = (alertDlgView).findViewById(R.id.btn_whatsAppsned);
+        final TextView tvEmailSendError = alertDlgView.findViewById(R.id.tv_email_send_error);
+        final TextView tvSmsSendError = alertDlgView.findViewById(R.id.tv_sms_send_error);
+        final ImageView ivLoader = alertDlgView.findViewById(R.id.iv_loader);
+        final ImageView ivSmsLoader = alertDlgView.findViewById(R.id.iv_sms_loader);
         final AppCompatImageView close = (alertDlgView).findViewById(R.id.ic_remove_icon);
         alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
         alert.setContentView(alertDlgView);
         alert.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
         alert.setCanceledOnTouchOutside(true);
         alert.show();
+        String email, mobile;
+        email = sharedPrefance.getHealthAPI("emailid");
+        mobile = sharedPrefance.getHealthAPI("mobilenumber");
+
+        if (!TextUtils.isEmpty(email)) {
+            et_emailid.setText(email);
+        } else {
+            et_emailid.setText("");
+        }
+
+        if (!TextUtils.isEmpty(mobile)) {
+            et_sms.setText(mobile);
+        } else {
+            et_sms.setText("");
+        }
 
         isConnected = AngelPitchUtil.checkConnection(App.getContext());
 
@@ -247,19 +272,52 @@ public class AngelPitchUtil {
                 if (isConnected) {
 
                     if (!AngelPitchUtil.isValidEmail(et_emailid.getText())) {
-                        Toast.makeText(App.getContext(), "Please Enter Valid emailId", Toast.LENGTH_LONG).show();
+                        //Toast.makeText(App.getContext(), "Please Enter Valid emailId", Toast.LENGTH_LONG).show();
+                        tvEmailSendError.setText("Invalid email id");
                     } else {
-                        callWebServices(news_id, type, source_link, et_emailid.getText().toString(), "", "");
 
-                        et_emailid.setText("");
+                        tvEmailSendError.setText("");
+                        et_emailid.setEnabled(false);
+                        btn_email.setEnabled(false);
+                        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(ivLoader);
+                        Glide.with(context).load(R.raw.loading).into(imageViewTarget);
+                        ivLoader.setVisibility(View.VISIBLE);
+                        callWebServices(news_id, type, source_link,
+                                et_emailid.getText().toString(), "",
+                                "", new Callback<ShareResponse>() {
+                                    @Override
+                                    public void onResponse(Call<ShareResponse> call, Response<ShareResponse> response) {
+                                        if (response.isSuccessful()) {
+                                            ivLoader.setImageResource(R.drawable.ic_done_green_24dp);
+                                        } else {
+                                            tvEmailSendError.setText("Sending failed!  Please try again...");
+                                            ivLoader.setVisibility(View.GONE);
+                                            et_emailid.setEnabled(true);
+                                            btn_email.setEnabled(true);
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ShareResponse> call, Throwable t) {
+                                        ivLoader.setVisibility(View.GONE);
+                                        et_emailid.setEnabled(true);
+                                        btn_email.setEnabled(true);
+                                        tvEmailSendError.setText("Sending failed!  Please try again...");
+                                    }
+                                });
+
+                        sharedPrefance.setHelathAPI("emailid", et_emailid.getText().toString());
+
                         // alert.dismiss();
                     }
 
                 } else {
 
                     new InsertShareTask(App.getContext(), news_id, type, source_link, et_emailid.getText().toString(), "", "").execute();
+
+                    sharedPrefance.setHelathAPI("emailid", et_emailid.getText().toString());
                     // alert.dismiss();
-                    et_emailid.setText("");
+
                 }
 
 
@@ -273,21 +331,49 @@ public class AngelPitchUtil {
                 if (isConnected) {
 
                     if (!AngelPitchUtil.ismobilenumberValid(et_sms.getText().toString())) {
-
-                        Toast.makeText(App.getContext(), "Please Enter Valid mobile ", Toast.LENGTH_LONG).show();
-
-                        et_sms.setText("");
+                        tvSmsSendError.setText("Invalid mobile number");
 
                     } else {
-                        callWebServices(news_id, type, source_link, "", et_sms.getText().toString(), "");
+
+                        tvSmsSendError.setText("");
+                        et_sms.setEnabled(false);
+                        btn_sms.setEnabled(false);
+                        GlideDrawableImageViewTarget imageViewTarget = new GlideDrawableImageViewTarget(ivSmsLoader);
+                        Glide.with(context).load(R.raw.loading).into(imageViewTarget);
+                        ivSmsLoader.setVisibility(View.VISIBLE);
+                        callWebServices(news_id, type, source_link, "",
+                                et_sms.getText().toString(), "", new Callback<ShareResponse>() {
+                                    @Override
+                                    public void onResponse(Call<ShareResponse> call, Response<ShareResponse> response) {
+                                        if (response.isSuccessful()) {
+                                            ivSmsLoader.setImageResource(R.drawable.ic_done_green_24dp);
+                                        } else {
+                                            tvSmsSendError.setText("Failed sending! Please try again...");
+                                            ivSmsLoader.setVisibility(View.GONE);
+                                            et_sms.setEnabled(true);
+                                            btn_sms.setEnabled(true);
+                                        }
+
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ShareResponse> call, Throwable t) {
+                                        tvSmsSendError.setText("Failed sending! Please try again...");
+                                        ivSmsLoader.setVisibility(View.GONE);
+                                        et_sms.setEnabled(true);
+                                        btn_sms.setEnabled(true);
+                                    }
+                                });
                         //alert.dismiss();
+                        sharedPrefance.setHelathAPI("mobilenumber", et_sms.getText().toString());
 
                     }
 
                 } else {
                     new InsertShareTask(App.getContext(), news_id, type, source_link, " ", et_sms.getText().toString(), "").execute();
                     //alert.dismiss();
-                    et_sms.setText("");
+                    sharedPrefance.setHelathAPI("mobilenumber", et_sms.getText().toString());
+
 
                 }
 
@@ -306,7 +392,23 @@ public class AngelPitchUtil {
                         Toast.makeText(App.getContext(), "Please Enter Valid mobile ", Toast.LENGTH_LONG).show();
 
                     } else {
-                        callWebServices(news_id, type, source_link, "", "", et_whatsApp.getText().toString());
+                        callWebServices(news_id, type, source_link,
+                                "", "",
+                                et_whatsApp.getText().toString(), new Callback<ShareResponse>() {
+                                    @Override
+                                    public void onResponse(Call<ShareResponse> call, Response<ShareResponse> response) {
+                                        if (response.isSuccessful()) {
+                                            Toast.makeText(getContext(), " " + response.message(), Toast.LENGTH_LONG).show();
+                                        }
+                                    }
+
+                                    @Override
+                                    public void onFailure(Call<ShareResponse> call, Throwable t) {
+                                        Toast.makeText(getContext(), "Fail" + t.getMessage(), Toast.LENGTH_LONG).show();
+
+
+                                    }
+                                });
                         alert.dismiss();
 
                     }
@@ -324,7 +426,7 @@ public class AngelPitchUtil {
 
     }
 
-    private static void callWebServices(String id, String type, String link, String email, String sms, String whatsApp) {
+    private static void callWebServices(String id, String type, String link, String email, String sms, String whatsApp, Callback<ShareResponse> callback) {
 
         ShareRequest shareRequest = new ShareRequest();
         List<ShareRequest> shareRequests = new ArrayList<>();
@@ -338,22 +440,7 @@ public class AngelPitchUtil {
         shareRequests.add(shareRequest);
 
         retrofit2.Call<ShareResponse> call = pitchServices.postShare("application/json", appKey, appSec, shareRequests);
-        call.enqueue(new Callback<ShareResponse>() {
-            @Override
-            public void onResponse(Call<ShareResponse> call, Response<ShareResponse> response) {
-                if (response.isSuccessful()) {
-                    Toast.makeText(getContext(), " " + response.message(), Toast.LENGTH_LONG).show();
-                }
-
-            }
-
-            @Override
-            public void onFailure(Call<ShareResponse> call, Throwable t) {
-                Toast.makeText(getContext(), "Fail" + t.getMessage(), Toast.LENGTH_LONG).show();
-
-
-            }
-        });
+        call.enqueue(callback);
 
     }
 
@@ -406,126 +493,6 @@ public class AngelPitchUtil {
                 .create();
     }
 
-    public static void showQuestionsDialog(final Context context, final LearnResponse.questions questions) {
-
-        if (ObjectUtils.isNotNull(questions)) {
-
-            final Dialog alert = new Dialog(context);
-            LayoutInflater inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            View alertDlgView = inflater.inflate(R.layout.dialog_questions, null);
-            AppCompatTextView txt_heading = (alertDlgView).findViewById(R.id.txt_heading);
-            final AppCompatTextView option_1 = (alertDlgView).findViewById(R.id.option_1);
-            final AppCompatTextView option_2 = (alertDlgView).findViewById(R.id.option_2);
-            final AppCompatTextView option_3 = (alertDlgView).findViewById(R.id.option_3);
-            final AppCompatTextView option_4 = (alertDlgView).findViewById(R.id.option_4);
-            final LinearLayout ll_option_1 = (alertDlgView).findViewById(R.id.ll_option_1);
-            final LinearLayout lloption_2 = (alertDlgView).findViewById(R.id.lloption_2);
-            final LinearLayout lloption_3 = (alertDlgView).findViewById(R.id.lloption_3);
-            final LinearLayout lloption_4 = (alertDlgView).findViewById(R.id.lloption_4);
-            final ImageView img_close = (alertDlgView).findViewById(R.id.img_close);
-
-            alert.requestWindowFeature(Window.FEATURE_NO_TITLE);
-            alert.setContentView(alertDlgView);
-            alert.getWindow().setLayout(ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            alert.setCanceledOnTouchOutside(true);
-
-            txt_heading.setText(questions.title);
-            option_1.setText(questions.option_a);
-            option_2.setText(questions.option_b);
-            option_3.setText(questions.option_c);
-            option_4.setText(questions.option_d);
-
-
-            Button btn_GotIt = alert.findViewById(R.id.btn_submit);
-            alert.setCancelable(false);
-            alert.setCanceledOnTouchOutside(false);
-            alert.show();
-
-
-            ll_option_1.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-                    option_1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_done_green_24dp, 0);
-                    option_2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_3.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_4.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    // answer=option_1.getText().toString();
-                    answer = "option_a";
-
-                }
-            });
-
-
-            lloption_2.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-                    option_1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_done_green_24dp, 0);
-                    option_3.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_4.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    // answer=option_2.getText().toString();
-
-                    answer = "option_b";
-                }
-            });
-
-
-            lloption_3.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-
-                    option_1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_3.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_done_green_24dp, 0);
-                    option_4.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    answer = "option_c";
-
-                }
-            });
-
-
-            lloption_4.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    option_1.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_2.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_3.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_close_close_24dp, 0);
-                    option_4.setCompoundDrawablesWithIntrinsicBounds(0, 0, R.drawable.ic_done_green_24dp, 0);
-                    //answer=option_4.getText().toString();
-
-                    answer = "option_d";
-
-
-                }
-            });
-
-
-            btn_GotIt.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-
-                    if (answer.equalsIgnoreCase(questions.getAnswer())) {
-                        alert.dismiss();
-                    }
-
-                }
-            });
-
-            img_close.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-
-                    alert.cancel();
-                }
-            });
-        }
-    }
 
     private static class ListWithElements<T> implements ParameterizedType {
 

@@ -48,6 +48,7 @@ public class MyServerData {
             String[] a = new String[4];
             String aa;
             Boolean[] r = new Boolean[4];
+            String  answer = null;
 
             for (int i = 0; i < questionsArrayList.size(); i++) {
                 q = questionsArrayList.get(i).getTitle();
@@ -59,6 +60,7 @@ public class MyServerData {
 
                 if (aa.equalsIgnoreCase("option_a")) {
                     r[0] = true;
+                    answer ="option_a";
                 } else {
                     r[0] = false;
 
@@ -66,6 +68,7 @@ public class MyServerData {
 
                 if (aa.equalsIgnoreCase("option_b")) {
                     r[1] = true;
+                    answer="option_b";
 
                 } else {
                     r[1] = false;
@@ -73,6 +76,7 @@ public class MyServerData {
 
                 if (aa.equalsIgnoreCase("option_c")) {
                     r[2] = true;
+                    answer="option_c";
 
                 } else {
                     r[2] = false;
@@ -80,12 +84,13 @@ public class MyServerData {
 
                 if (aa.equalsIgnoreCase("option_d")) {
                     r[3] = true;
+                    answer="option_d";
 
                 } else {
                     r[3] = false;
                 }
 
-                Question question = new Question(q, a, r);
+                Question question = new Question(q, a, r,answer);
                 FirstCategory[i] = question;
             }
 
@@ -118,9 +123,9 @@ public class MyServerData {
     public ArrayList<String> getCategoryList() {
 
 
-            ArrayList<String> myList = new ArrayList<String>();
-            myList.addAll(myCategories.keySet());
-            return myList;
+        ArrayList<String> myList = new ArrayList<String>();
+        myList.addAll(myCategories.keySet());
+        return myList;
     }
 
     public Question[] getCategory(String category) {
@@ -225,6 +230,4 @@ public class MyServerData {
             }
         }
     }
-
-
 }

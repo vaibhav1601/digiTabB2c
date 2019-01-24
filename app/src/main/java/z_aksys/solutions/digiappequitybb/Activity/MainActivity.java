@@ -57,7 +57,8 @@ import z_aksys.solutions.digiappequitybb.Fragment.FaqFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.GoalFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.LearnFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.NewsFragment;
-import z_aksys.solutions.digiappequitybb.Fragment.PitchOneFragment;
+
+import z_aksys.solutions.digiappequitybb.Fragment.PitchHomeFragment;
 import z_aksys.solutions.digiappequitybb.Fragment.ShareFragment;
 import z_aksys.solutions.digiappequitybb.R;
 import z_aksys.solutions.digiappequitybb.Receiver.AlarmReceiver;
@@ -621,7 +622,7 @@ public class MainActivity extends AppCompatActivity
     private void setupViewPager(ViewPager viewPager) {
         ViewPagerAdapter adapter = new ViewPagerAdapter(getSupportFragmentManager(), 4);
         adapter.addFrag(new NewsFragment(), "News");
-        adapter.addFrag(new PitchOneFragment(), "Pitch");
+        adapter.addFrag(new PitchHomeFragment(), "Pitch");
         adapter.addFrag(new ShareFragment(), "Share");
         adapter.addFrag(new LearnFragment(), "Learn");
         adapter.addFrag(new FaqFragment(), "FAQs");

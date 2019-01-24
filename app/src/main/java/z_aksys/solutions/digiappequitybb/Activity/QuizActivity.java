@@ -11,6 +11,7 @@ import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatTextView;
 import android.text.TextUtils;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -85,6 +86,7 @@ public class QuizActivity extends AppCompatActivity {
         topicName = sharedPrefManager.getHealthAPI("topicName");
         questionArray = sharedPrefManager.getHealthAPI("Questions");
         buttonsubmit = (Button) findViewById(R.id.buttonsubmit);
+        txtquestions = (TextView) findViewById(R.id.txtlearnquestion);
 
 
         myServerData = new MyServerData();
@@ -104,6 +106,13 @@ public class QuizActivity extends AppCompatActivity {
 
 
         }
+
+        txtquestions.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
 
 
         //initialize category spinner
@@ -255,6 +264,7 @@ public class QuizActivity extends AppCompatActivity {
             }
         });
 
+
     }
 
 
@@ -369,9 +379,7 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Intent Main = new Intent(getApplicationContext(), MainActivity.class);
                 finish();
-                startActivity(Main);
                 myServerData.setTestState("notStarted");
                 myServerData.clearAnswers();
                 Toast.makeText(getBaseContext(), R.string.text_ended, Toast.LENGTH_LONG).show();
@@ -457,7 +465,10 @@ public class QuizActivity extends AppCompatActivity {
 
         //animate results
         final TextView tvTotalResult = (TextView) mainView.findViewById(R.id.myTotalAnswers);
+
+        final AppCompatTextView txt = (AppCompatTextView) mainView.findViewById(R.id.txtquestions);
         final String totalResultS = "/" + String.valueOf(totalQuestions);
+
         ValueAnimator totalResultsAnimator = new ValueAnimator();
         totalResultsAnimator.setObjectValues(0, totalCorrectQuestions);
         totalResultsAnimator.addUpdateListener(new ValueAnimator.AnimatorUpdateListener() {
@@ -472,6 +483,13 @@ public class QuizActivity extends AppCompatActivity {
         myServerData.setTestState("finished");
 
         setContentView(mainView);
+
+        txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                finish();
+            }
+        });
     }
 
     private void callServices(String myResultText, String s) {
